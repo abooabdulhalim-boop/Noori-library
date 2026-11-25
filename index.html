@@ -4,6 +4,843 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#123b35">
+<meta name="description" content="مسنون اذکار و دعائیں، سونے اور بیدار ہونے کے اذکار، طہارت، صبح و شام کی دعائیں اور دینی مضامین۔">
+<meta name="keywords" content="مسنون اذکار، دعائیں، صبح کے اذکار، شام کے اذکار، طہارت، اسلامی مضامین">
+<meta name="author" content="عبدالسلام نوری">
+<title>مسنون اذکار و دعائیں اور رمضان المبارک</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap');
+:root{--deep:#123b35;--green:#176b57;--gold:#d6ad58;--cream:#fffaf0;--ink:#263b36;--muted:#687a72;--rose:#a64b58}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(135deg,#eaf3ed,#f8f0df 55%,#e8f1ec);color:var(--ink);font-family:'Noto Nastaliq Urdu','Jameel Noori Nastaleeq',serif;line-height:2.15}
+.hero{position:relative;overflow:hidden;text-align:center;padding:42px 18px 35px;color:#fff;background:radial-gradient(circle at 15% 20%,#2d8069 0,transparent 28%),linear-gradient(135deg,#0b302b,#176b57 65%,#9a783d)}
+.hero:before,.hero:after{content:"۞";position:absolute;color:#ffffff18;font-size:130px;top:10px}.hero:before{right:4%}.hero:after{left:4%}
+.hero h1{font-size:clamp(27px,5vw,43px);margin:0 0 8px;font-weight:700}
+.hero p{margin:0;color:#f4e8c9;font-size:16px}
+.ornament{color:#e5c77e;font-size:22px;letter-spacing:8px;margin:6px}
+.wrap{max-width:980px;margin:auto;padding:22px 15px 55px}
+.intro{background:#ffffffc9;border:1px solid #e5d6ae;border-radius:18px;padding:15px 20px;text-align:center;box-shadow:0 8px 25px #244d3510;margin-bottom:20px}
+.intro strong{color:var(--green)}
+.navbox{background:var(--deep);color:#fff;border-radius:20px;padding:19px;margin:22px 0;box-shadow:0 12px 30px #123b3525}
+.navbox h2{margin:0 0 12px;color:#f3d58e;font-size:22px;text-align:center}
+.navgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px}
+.navgrid a{display:block;text-decoration:none;color:#fff;background:#ffffff12;border:1px solid #ffffff30;border-radius:12px;padding:8px 12px;transition:.2s}
+.navgrid a:hover{background:#d6ad58;color:#173c34;transform:translateY(-2px)}
+.group-title{margin:35px 0 14px;padding:10px 16px;border-right:5px solid var(--gold);border-radius:10px;background:linear-gradient(90deg,#ffffff00,#fff8e9);color:var(--deep);font-size:25px}
+.card{scroll-margin-top:18px;background:var(--cream);border:1px solid #e8d9b7;border-radius:18px;padding:20px 22px;margin:14px 0;box-shadow:0 7px 22px #294c3510;position:relative}
+.card:before{content:"";position:absolute;inset:7px;border:1px solid #eadfca;border-radius:13px;pointer-events:none}
+.card h3{position:relative;margin:0 0 10px;color:var(--green);font-size:21px}
+.arabic{position:relative;text-align:center;direction:rtl;font-family:'Noto Naskh Arabic','Amiri',serif;font-size:clamp(22px,4vw,30px);line-height:2.05;color:#183f35;margin:14px 0;padding:13px 8px;background:#f4f0e4;border-radius:12px}
+.translation{position:relative;color:#46584f;font-size:16px;margin:10px 0}
+.ref{position:relative;color:#92723c;font-size:14px;border-top:1px dashed #d9c99f;padding-top:7px;margin-top:10px}
+.note{position:relative;color:#6b776f;font-size:14px}
+.toplink{display:inline-block;position:relative;margin-top:8px;color:var(--rose);text-decoration:none;font-size:14px}
+.footer{text-align:center;color:#65766d;padding:24px 10px;font-size:15px}
+.pill{display:inline-block;background:#e6f0e9;color:#176b57;border-radius:30px;padding:2px 12px;font-size:13px;margin:3px}
+@media(max-width:560px){.hero{padding:32px 14px}.card{padding:16px}.navbox{padding:15px}.group-title{font-size:22px}}
+@media print{body{background:#fff}.hero{print-color-adjust:exact}.navbox{break-inside:avoid}.card{box-shadow:none;break-inside:avoid}.toplink{display:none}}
+
+/* ابتدائی منظر میں صرف فہرست؛ کلک کرنے پر متعلقہ دعا ظاہر ہو */
+.hero,.intro,.group-title,.card,.footer{display:none}
+.card:target{display:block}
+body:has(.card:target) #list{display:none}
+body:has(.card:target) .creator{display:none}
+.wrap{padding-top:22px}
+.navbox{margin:22px 0}
+.back-to-list{display:inline-block}
+
+/* نیا دیدہ زیب، گہرا اور رنگین انٹرفیس */
+body{background:radial-gradient(ellipse at top,#1d5b4d 0%,#102f2b 48%,#091d20 100%);color:#f5edd8;min-height:100vh}
+.wrap{max-width:1050px}
+.navbox{background:linear-gradient(145deg,#102f2b,#174d42 55%,#765b2c);border:1px solid #c7a85f;padding:22px;box-shadow:0 18px 45px #0006}
+.navbox h2{color:#ffe2a0;font-size:25px}
+.folder-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.folder-tile{min-height:145px;border-radius:18px;padding:18px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;text-decoration:none;color:#fff;border:1px solid #ffffff55;box-shadow:0 9px 20px #0003;transition:.22s}
+.folder-tile:hover{transform:translateY(-4px);filter:brightness(1.12)}
+.folder-tile span{font-size:30px;line-height:1.5}
+.folder-tile b{font-size:20px}
+.folder-tile small{font-size:13px;color:#fff2d2}
+.folder-tile.night{background:linear-gradient(135deg,#243d69,#111d39)}
+.folder-tile.dawn{background:linear-gradient(135deg,#986b37,#4b3426)}
+.folder-tile.water{background:linear-gradient(135deg,#176c78,#123b55)}
+.folder-tile.morning{background:linear-gradient(135deg,#c17a25,#7a421c)}
+.folder-tile.evening{background:linear-gradient(135deg,#684b83,#30294e)}
+.creator{background:linear-gradient(135deg,#183f36,#765b2c)!important;border:1px solid #d9b96e!important;color:#fff;box-shadow:0 10px 25px #0005!important}
+.creator div{color:#ffe2a0!important}
+.creator div:last-child{color:#fff!important}
+.navgrid a{background:#ffffff12;border-color:#ffffff38;border-radius:12px}
+.navgrid a:hover{background:#d6ad58;color:#173c34}
+.folder{display:none;scroll-margin-top:20px;background:linear-gradient(145deg,#173e36,#102b2d);border:1px solid #c6a75f;border-radius:20px;padding:22px;margin:20px 0;box-shadow:0 15px 35px #0005}
+.folder:target{display:block}
+.folder h2{color:#ffdf9b;text-align:center;margin:0 0 15px;font-size:24px}
+.folder .toplink{color:#ffdb8b}
+.card{background:linear-gradient(145deg,#173d36,#102b2d);border:1px solid #b99b58;color:#f6efd9;box-shadow:0 15px 35px #0005}
+.card:before{border-color:#ffffff20}
+.card h3{color:#ffdc91}
+.arabic{background:linear-gradient(135deg,#203f3b,#152e31);color:#ffe7ae;border:1px solid #b79a5a}
+.translation{color:#f4ecd9}
+.ref{color:#e2c27a;border-color:#8f7848}
+.note{color:#d4d9ca}
+.toplink{color:#ffcf78}
+.group-title{color:#ffe0a0;background:linear-gradient(90deg,#ffffff00,#ffffff12);border-right-color:#d6ad58}
+.intro{background:linear-gradient(135deg,#183e37,#12302e);color:#f7efd9;border-color:#b99b58}
+.intro strong{color:#ffdf9b}
+.footer{color:#e8d7ad}
+.hero{display:block;background:radial-gradient(circle at 15% 20%,#347c67 0,transparent 28%),linear-gradient(135deg,#081f20,#155546 65%,#765b2c);border-bottom:1px solid #c9a85e}
+body:has(.folder:target) #list,body:has(.folder:target) .creator{display:none}
+body:has(.folder:target) .folder:target{display:block}
+body:has(.card:target) #list,body:has(.card:target) .folder,body:has(.card:target) .creator{display:none}
+body:has(.card:target) .card:target{display:block}
+body:has(.card:target) .hero{display:none}
+body:has(.folder:target) .hero{display:none}
+body:has(.folder:target) .intro,body:has(.card:target) .intro,body:has(.article-detail:target) .intro{display:none!important}
+.back-to-list{color:#ffda8a}
+@media(max-width:560px){.folder{padding:15px}.folder-grid{grid-template-columns:1fr 1fr}.folder-tile{min-height:135px;padding:12px 7px}.folder-tile b{font-size:17px}.navbox{padding:15px}}
+
+
+
+.folder-tile.articles{background:linear-gradient(135deg,#7a4b2d,#422b24)}
+.folder-tile.people{background:linear-gradient(135deg,#315c73,#182f49)}
+.site-share{margin-top:18px;padding:14px;border:1px solid #d6ad58;border-radius:15px;background:#ffffff12;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:9px;text-align:center}
+.site-share strong,.site-share small{width:100%;color:#ffe2a0}
+.site-share small{font-size:12px;color:#eadfc7}
+.site-share button{font-family:inherit;border:1px solid #f0d18b;border-radius:10px;padding:8px 15px;background:linear-gradient(135deg,#e5c477,#b58a3d);color:#18382f;font-size:14px;cursor:pointer}
+.site-share button:active{transform:scale(.98)}
+
+.article-link{display:flex;align-items:center;gap:12px;margin:14px 0;padding:16px 18px;border:1px solid #d6ad58;border-radius:15px;background:linear-gradient(135deg,#fffaf0,#e7f2e9);color:#17483b;text-decoration:none;box-shadow:0 5px 16px #173d2b12}
+.article-link>span:first-child{font-size:27px}
+.article-link strong{display:block;font-size:18px;line-height:1.9}
+.article-link small{display:block;color:#78633c;font-size:13px}
+.article-arrow{margin-right:auto;font-size:22px}
+.article-detail{display:none;margin-top:16px;padding:20px 18px;border:1px solid #d6ad58;border-radius:16px;background:linear-gradient(135deg,#fffdf7,#f3f7ef);color:#263b36;box-shadow:0 8px 22px #173d2b12}
+.article-detail:target{display:block}
+.article-detail h3{margin:0 0 18px;padding-bottom:12px;text-align:center;color:#155746;font-size:23px;border-bottom:1px solid #dfc98f;line-height:2}
+.article-detail{font-family:'Noto Nastaliq Urdu','Jameel Noori Nastaleeq',serif}
+.article-detail h3,.article-detail p,.article-author{font-family:'Noto Nastaliq Urdu','Jameel Noori Nastaleeq',serif}
+.article-detail p{margin:0 0 14px;font-size:17px;line-height:2.35;text-align:justify}
+.article-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:18px 0 12px;padding:15px;border-top:1px solid #dfc98f}
+.article-actions a,.article-actions button{display:inline-block;border:0;border-radius:11px;padding:10px 17px;text-decoration:none;font-family:'Noto Nastaliq Urdu','Jameel Noori Nastaleeq',serif;font-size:15px;font-weight:700;cursor:pointer}
+.article-share-btn{background:linear-gradient(135deg,#e5c477,#b58a3d);color:#18382f}
+.article-wa-btn{background:linear-gradient(135deg,#28c76f,#159653);color:#fff}
+.article-author{margin:24px 0 12px;text-align:left;color:#8b682c;font-size:19px;font-weight:700}
+.empty-folder{padding:18px;text-align:center;border:1px dashed #d6ad58;border-radius:14px;color:#f4e8c9;background:#ffffff0b}
+
+.image-tools{position:relative;margin:18px 0 4px;padding:13px;border:1px solid #b99b58;border-radius:14px;background:linear-gradient(135deg,#102f2d,#1c5145);display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+.image-tools label{color:#ffe2a0;font-size:14px}
+.image-tools select{font-family:inherit;background:#f8efd9;color:#173b34;border:1px solid #c6a75f;border-radius:9px;padding:7px 10px;max-width:100%}
+.image-tools button{font-family:inherit;border:0;border-radius:10px;padding:8px 14px;font-size:14px;cursor:pointer;background:linear-gradient(135deg,#e5c477,#b58a3d);color:#18382f}
+.image-tools button.share{background:linear-gradient(135deg,#8cc9a5,#4d9671);color:#092e24}
+.image-tools button:active{transform:scale(.98)}
+.image-tools .hint{width:100%;font-size:12px;color:#d8d9c9}
+
+
+/* مضمون کھولنے پر اس کے والد فولڈر کو بھی ظاہر رکھیں */
+.folder:has(.article-detail:target){display:block}
+body:has(.article-detail:target) #list,
+body:has(.article-detail:target) .creator{display:none}
+body:has(.article-detail:target) .hero{display:none}
+.folder:has(.article-detail:target) .article-link{display:none}
+
+
+/* جدید ہوم پیج، تلاش اور موبائل کے لیے اضافی بہتری */
+.hero{display:block!important;padding:34px 16px 28px}
+.hero h1{letter-spacing:0}
+.intro{display:block!important;max-width:900px;margin:20px auto 22px;line-height:2.2}
+.library-search{margin:18px 0 20px;padding:16px;border:1px solid #d8bb76;border-radius:16px;background:#ffffff12}
+.library-search label{display:block;color:#ffe2a0;font-size:17px;font-weight:700;margin-bottom:8px}
+.library-search input{display:block;width:100%;padding:13px 15px;border:1px solid #d8bb76;border-radius:12px;background:#fffaf0;color:#18382f;font-family:inherit;font-size:16px;outline:none}
+.library-search input:focus{box-shadow:0 0 0 3px #d6ad5844;border-color:#ffe2a0}
+.search-status{font-size:13px;color:#eadfc7;margin-top:7px}
+.search-results{margin-top:12px;display:grid;gap:8px}
+.search-results[hidden]{display:none}
+.search-result{display:block;padding:11px 14px;border:1px solid #d6ad58;border-radius:11px;background:#fffaf0;color:#17483b;text-decoration:none;line-height:1.9}
+.search-result strong{display:block;font-size:16px}
+.search-result small{display:block;color:#78633c;font-size:12px}
+.search-empty{padding:12px;border:1px dashed #d6ad58;border-radius:11px;color:#ffe2a0;text-align:center}
+.folder-grid{margin-top:8px}
+.folder-tile{min-height:150px}
+.navbox{margin-top:20px}
+.creator{margin-top:20px!important}
+.folder{scroll-margin-top:12px}
+.folder .navgrid a{line-height:1.9}
+.article-detail{scroll-margin-top:12px}
+.article-detail p{overflow-wrap:anywhere}
+.card{scroll-margin-top:12px}
+.card .arabic{overflow-wrap:anywhere}
+.site-share{margin-top:20px}
+.site-share button,.article-actions a,.article-actions button,.image-tools button{min-height:42px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #f3d58e;outline-offset:3px}
+@media(max-width:600px){
+  .hero{padding:25px 12px 20px}
+  .hero h1{font-size:27px}
+  .hero p{font-size:14px}
+  .wrap{padding:12px 10px 38px}
+  .intro{padding:12px;font-size:14px}
+  .navbox{padding:13px;border-radius:16px}
+  .navbox h2{font-size:21px}
+  .folder-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .folder-tile{min-height:125px;padding:10px 6px;border-radius:14px}
+  .folder-tile span{font-size:25px}
+  .folder-tile b{font-size:15px;line-height:1.8}
+  .folder-tile small{font-size:11px;line-height:1.7}
+  .library-search{padding:12px}
+  .library-search label{font-size:15px}
+  .library-search input{font-size:14px}
+  .card{padding:14px;margin:12px 0}
+  .arabic{font-size:23px;line-height:2}
+  .translation{font-size:14px}
+  .article-detail{padding:15px 12px}
+  .article-detail p{font-size:15px;line-height:2.25}
+}
+@media print{
+  .library-search,.site-share,.image-tools,.article-actions{display:none!important}
+  .hero,.intro,.card,.article-detail{display:block!important}
+  body{background:#fff!important;color:#222!important}
+  .card,.article-detail{background:#fff!important;color:#222!important}
+  .arabic{background:#f7f7f7!important;color:#111!important}
+}
+
+
+button, input, select, summary, details, label {
+  font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+}
+
+
+/* رمضان المبارک اور ہجری تاریخ کا خوبصورت حصہ */
+.ramadan-banner {
+  margin: 20px 0 22px;
+  padding: 22px 18px;
+  border: 1px solid #d6ad58;
+  border-radius: 20px;
+  background: radial-gradient(ellipse at top, #1f5c4e 0%, #10322b 58%, #091e20 100%);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.ramadan-banner::before {
+  content: "☾";
+  position: absolute;
+  left: 18px;
+  top: 8px;
+  font-size: 68px;
+  color: rgba(231, 200, 120, 0.12);
+  pointer-events: none;
+}
+.ramadan-hijri {
+  color: #ffe2a0;
+  font-size: 18px;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(214, 173, 88, 0.35);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+.ramadan-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.ramadan-crescent {
+  color: #f3d58e;
+  font-size: 32px;
+  line-height: 1;
+}
+.ramadan-banner h2 {
+  margin: 0;
+  color: #ffe2a0;
+  font-size: clamp(23px, 4.5vw, 31px);
+  font-weight: 700;
+}
+.ramadan-subtitle {
+  color: #d8e5de;
+  font-size: 15px;
+  margin: 4px 0 14px;
+}
+.ramadan-main-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 12px 0 16px;
+}
+.ramadan-days-box {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(231, 200, 120, 0.45);
+  border-radius: 16px;
+  padding: 10px 26px;
+  min-width: 155px;
+}
+.ramadan-count {
+  font-size: clamp(44px, 9vw, 64px);
+  line-height: 1.25;
+  font-weight: 700;
+  color: #fff7df;
+}
+.ramadan-days-label {
+  color: #f3d58e;
+  font-size: 18px;
+  font-weight: 700;
+}
+.ramadan-clock {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(78px, 105px));
+  gap: 10px;
+}
+.ramadan-unit {
+  padding: 10px 6px;
+  border-radius: 14px;
+  border: 1px solid rgba(231, 200, 120, 0.35);
+  background: rgba(255, 255, 255, 0.055);
+}
+.ramadan-unit strong {
+  display: block;
+  font-size: 26px;
+  line-height: 1.4;
+  color: #ffffff;
+  font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+}
+.ramadan-unit span {
+  color: #d4e0d9;
+  font-size: 14px;
+}
+.ramadan-dates-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 28px;
+  border-top: 1px solid rgba(214, 173, 88, 0.32);
+  padding-top: 12px;
+  margin-top: 8px;
+  font-size: 15px;
+  color: #f4ecd9;
+}
+.ramadan-dates-row strong {
+  color: #ffe2a0;
+}
+.ramadan-note {
+  color: #c8d6ce;
+  font-size: 13px;
+  margin: 10px 0 0;
+  line-height: 1.9;
+}
+.ramadan-settings {
+  margin-top: 12px;
+}
+.ramadan-settings details {
+  display: inline-block;
+  text-align: right;
+  color: #e8d7ad;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(214, 173, 88, 0.3);
+  border-radius: 12px;
+  padding: 7px 14px;
+}
+.ramadan-settings summary {
+  cursor: pointer;
+  color: #ffe2a0;
+  font-size: 14px;
+  font-weight: 700;
+}
+.ramadan-settings-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.ramadan-settings label {
+  font-size: 14px;
+  color: #f4ecd9;
+}
+.ramadan-settings input[type="date"] {
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid #d6ad58;
+  background: #fffaf0;
+  color: #173b34;
+  font-family: inherit;
+  font-size: 14px;
+}
+.ramadan-settings button {
+  padding: 7px 15px;
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #e5c477, #b58a3d);
+  color: #18382f;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+/* جب کوئی دعا یا فولڈر کھلا ہو تو بینر بھی صاف ستھرا پوشیدہ رہے تاکہ پڑھنے میں آسانی ہو */
+body:has(.folder:target) .ramadan-banner,
+body:has(.card:target) .ramadan-banner,
+body:has(.article-detail:target) .ramadan-banner {
+  display: none !important;
+}
+@media (max-width: 560px) {
+  .ramadan-banner {
+    padding: 16px 12px;
+  }
+  .ramadan-clock {
+    grid-template-columns: repeat(3, minmax(72px, 1fr));
+    gap: 7px;
+  }
+  .ramadan-unit strong {
+    font-size: 22px;
+  }
+}
+
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <div class="ornament">✦ ۞ ✦</div>
+  <h1>مسنون اذکار و دعائیں</h1>
+  <p>سونے، بیدار ہونے، طہارت اور صبح و شام کے مسنون اذکار</p>
+  <div class="ornament">❁ ❁ ❁</div>
+</header>
+<main class="wrap">
+  <div class="intro"><strong>ذکرِ الٰہی سے رات کو بابرکت اور صبح کو روشن بنائیے</strong><br>اس صفحے میں دعاؤں کی فہرست دی گئی ہے۔ مطلوبہ دعا پر کلک کریں، وہیں پہنچ جائیں گے۔</div>
+
+  <section class="ramadan-banner" aria-label="رمضان المبارک">
+    <div class="ramadan-hijri" id="hijriDate">ہجری تاریخ</div>
+    <div class="ramadan-title-row">
+      <span class="ramadan-crescent">☾</span>
+      <h2>رمضان المبارک ۱۴۴۸ھ</h2>
+    </div>
+    <p class="ramadan-subtitle">رحمتوں اور برکتوں کے مہینے کی آمد میں</p>
+
+    <div class="ramadan-main-stats">
+      <div class="ramadan-days-box">
+        <div class="ramadan-count" id="days">---</div>
+        <div class="ramadan-days-label" id="daysLabel">دن باقی ہیں</div>
+      </div>
+
+      <div class="ramadan-clock">
+        <div class="ramadan-unit">
+          <strong id="hours">۰۰</strong>
+          <span>گھنٹے</span>
+        </div>
+        <div class="ramadan-unit">
+          <strong id="minutes">۰۰</strong>
+          <span>منٹ</span>
+        </div>
+        <div class="ramadan-unit">
+          <strong id="seconds">۰۰</strong>
+          <span>سیکنڈ</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ramadan-dates-row">
+      <div>متوقع پہلا روزہ: <strong id="targetText"></strong></div>
+      <div>آج کی انگریزی تاریخ: <strong id="todayText"></strong></div>
+    </div>
+
+    <p class="ramadan-note">یہ گنتی پہلے روزے کی متوقع تاریخ کے مطابق ہے۔ حتمی تاریخ چاند کی رؤیت اور مقامی اعلان کے مطابق ایک دن آگے پیچھے ہو سکتی ہے۔</p>
+
+    <div class="ramadan-settings">
+      <details>
+        <summary>⚙ پہلے روزے کی تاریخ تبدیل کریں</summary>
+        <div class="ramadan-settings-controls">
+          <label for="targetDate">تاریخ منتخب کریں:</label>
+          <input type="date" id="targetDate" value="2027-02-09">
+          <button type="button" id="saveDate">تاریخ محفوظ کریں</button>
+        </div>
+      </details>
+    </div>
+  </section>
+
+
+  <nav class="navbox" id="list" aria-label="اذکار کی فہرست">
+    <h2>اذکار، دعائیں اور علمی مضامین</h2>
+    <div class="library-search" role="search">
+      <label for="site-search">🔎 اپنی مطلوبہ دعا، ذکر یا مضمون تلاش کریں</label>
+      <input id="site-search" type="search" placeholder="مثلاً آیت الکرسی، وضو، صبح کے اذکار..." autocomplete="off">
+      <div id="search-status" class="search-status" aria-live="polite">تمام موضوعات میں تلاش کریں</div>
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+
+    <div class="folder-grid">
+      <a class="folder-tile night" href="#folder-sleep"><span>🌙</span><b>سونے کے اذکار</b><small>رات کو سونے سے پہلے</small></a>
+      <a class="folder-tile dawn" href="#folder-wake"><span>🌄</span><b>بیدار ہونے کے اذکار</b><small>نیند سے جاگنے کے بعد</small></a>
+      <a class="folder-tile water" href="#folder-purity"><span>💧</span><b>طہارت کے اذکار</b><small>بیت الخلا اور وضو</small></a>
+      <a class="folder-tile morning" href="#folder-morning"><span>☀️</span><b>صبح کے اذکار</b><small>صبح کے وقت پڑھی جانے والی دعائیں</small></a>
+      <a class="folder-tile evening" href="#folder-evening"><span>🌆</span><b>شام کے اذکار</b><small>شام کے وقت پڑھی جانے والی دعائیں</small></a>
+      <a class="folder-tile articles" href="#folder-articles"><span>📚</span><b>مضامین</b><small>دینی و اصلاحی مضامین</small></a>
+      <a class="folder-tile people" href="#folder-people"><span>👤</span><b>شخصیات</b><small>علماء، مشائخ اور اکابر کے تعارف</small></a>
+    </div>
+    <div class="site-share">
+      <strong>🌐 ویب سائٹ سوشل میڈیا پر شیئر کریں</strong>
+      <button type="button" id="share-site">شیئر کریں</button>
+      <button type="button" id="whatsapp-site">واٹس ایپ</button>
+      <button type="button" id="copy-site">لنک کاپی کریں</button>
+      <small>اپنے دوستوں اور احباب تک یہ ویب سائٹ پہنچائیں۔</small>
+    </div>
+  </nav>
+
+  <section class="folder" id="folder-sleep">
+    <h2>🌙 سونے کے اذکار</h2>
+    <div class="navgrid">
+      <a href="#sleep-wudu">① سونے سے پہلے وضو</a><a href="#ayat">② آیت الکرسی</a>
+      <a href="#three-quls">③ تینوں قل</a><a href="#tasbeeh">④ تسبیحاتِ فاطمی</a>
+      <a href="#sleep-dua">⑤ سونے کی دعا</a><a href="#protection">⑥ عذاب سے پناہ</a>
+      <a href="#last-dua">⑦ سونے کی جامع دعا</a>
+    </div><a class="toplink" href="#list">↩ تمام فولڈرز پر واپس</a>
+  </section>
+  <section class="folder" id="folder-wake">
+    <h2>🌄 بیدار ہونے کے اذکار</h2>
+    <div class="navgrid">
+      <a href="#wake-dua">⑧ بیداری کی دعا</a><a href="#wake-dua2">⑨ دوسری بیداری کی دعا</a>
+      <a href="#miswak">⑩ مسواک کرنا</a><a href="#hands">⑪ ہاتھ دھونا</a><a href="#tahajjud">⑫ تہجد کی نماز</a>
+    </div><a class="toplink" href="#list">↩ تمام فولڈرز پر واپس</a>
+  </section>
+  <section class="folder" id="folder-purity">
+    <h2>💧 طہارت کے اذکار</h2>
+    <div class="navgrid">
+      <a href="#toilet-enter">⑬ بیت الخلا میں داخلے کی دعا</a><a href="#toilet-exit">⑭ بیت الخلا سے نکلنے کی دعا</a>
+      <a href="#wudu-start">⑮ وضو سے پہلے</a><a href="#wudu-end">⑯ وضو کے بعد کی دعا</a>
+      <a href="#wudu-extra">⑰ وضو کے بعد مزید دعا</a><a href="#purification-note">⑱ طہارت کی وضاحت</a>
+    </div><a class="toplink" href="#list">↩ تمام فولڈرز پر واپس</a>
+  </section>
+  <section class="folder" id="folder-morning">
+    <h2>☀️ صبح کے مسنون اذکار</h2>
+    <div class="navgrid">
+      <a href="#morning-1">① صبح کی حمد</a><a href="#morning-2">② صبح و شام کی دعا</a>
+      <a href="#morning-3">③ رضيت بالله رباً</a><a href="#morning-4">④ سید الاستغفار</a>
+      <a href="#morning-5">⑤ عافیت کی دعا</a><a href="#morning-6">⑥ تسبیح سو مرتبہ</a>
+    </div><a class="toplink" href="#list">↩ تمام فولڈرز پر واپس</a>
+  </section>
+  <section class="folder" id="folder-evening">
+    <h2>🌆 شام کے مسنون اذکار</h2>
+    <div class="navgrid">
+      <a href="#evening-1">① شام کی حمد</a><a href="#evening-2">② شام کی دعا</a>
+      <a href="#evening-3">③ رضيت بالله رباً</a><a href="#evening-4">④ سید الاستغفار</a>
+      <a href="#evening-5">⑤ عافیت کی دعا</a><a href="#evening-6">⑥ تسبیح سو مرتبہ</a>
+    </div><a class="toplink" href="#list">↩ تمام فولڈرز پر واپس</a>
+  </section>
+
+  <section class="folder" id="folder-articles">
+    <h2>📚 مضامین</h2>
+    
+    <a class="article-link" href="#article-arab-salafiyyat">
+      <span>📖</span>
+      <span><strong>عرب کی سلفیت اور ہندوستان کے اہلِ حدیث</strong><small>مضمون پڑھنے کے لیے یہاں کلک کریں</small></span>
+      <span class="article-arrow">←</span>
+    </a>
+    <article class="article-detail" id="article-arab-salafiyyat">
+      <h3>عرب کی سلفیت اور ہندوستان کے اہلِ حدیث</h3>
+      <p>دنیا میں ایک ہی درخت مختلف زمینوں میں اگے تو اس کے پھل، رنگ اور خوشبو میں کچھ نہ کچھ فرق آجاتا ہے، اگرچہ جڑ ایک ہی ہوتی ہے۔</p>
+      <p>عرب کی سلفیت اور ہندوستان کے اہلِ حدیث کا معاملہ بھی کچھ ایسا ہی ہے۔</p>
+      <p>جڑ ایک ہے۔</p>
+      <p>کتاب اللہ ایک ہے۔</p>
+      <p>سنت رسول ﷺ ایک ہے۔</p>
+      <p>سلف صالحین کا منہج ایک ہے۔</p>
+      <p>مگر ماحول الگ الگ ہیں، اس لیے مزاجوں میں کچھ فرق پیدا ہوگیا ہے۔</p>
+      <p>عرب کی سلفیت صحرا کی پیداوار ہے اور ہندوستان کا اہلِ حدیث گنگا جمنی تہذیب، خانقاہی ماحول، مناظروں، مباحثوں اور صدیوں کی فقہی کشمکش کے درمیان پروان چڑھا ہے۔</p>
+      <p>نجد کے شیخ کو قبر کے گنبد نظر آتے تھے۔</p>
+      <p>ہندوستان کے عالم کو گنبد بھی نظر آتا تھا، تعزیہ بھی، قوالی بھی، نیاز بھی، عرس بھی، اور ان سب کے دفاع میں لکھی جانے والی ہزاروں کتابیں بھی۔</p>
+      <p>اس لیے دونوں کے ہاتھ میں ایک ہی تلوار تھی مگر میدان الگ الگ تھے۔</p>
+      <p>عرب کا سلفی جب توحید کی بات کرتا ہے تو اس کے ذہن میں اکثر توحیدِ ربوبیت، توحیدِ الوہیت اور توحیدِ اسماء و صفات کی تقسیم ہوتی ہے۔</p>
+      <p>ہندوستان کا اہلِ حدیث جب توحید کی بات کرتا ہے تو اس کے ذہن میں غازی میاں، قبروں کے میلے، چادریں، تعزیے اور مختلف رسومِ باطلہ گھوم رہی ہوتی ہیں۔</p>
+      <p>دونوں ایک ہی بیماری کا علاج کررہے ہیں مگر مریض الگ الگ ہیں۔</p>
+      <p>عرب کا طالب علم عموماً &quot;کتاب التوحید&quot;، &quot;العقیدہ الواسطیہ&quot; اور &quot;شرح السنہ&quot; سے سفر شروع کرتا ہے۔</p>
+      <p>ہندوستان کا طالب علم اکثر &quot;رفع الیدین&quot;، &quot;آمین بالجہر&quot;، &quot;نمازِ نبوی&quot;، &quot;مسئلہ تقلید&quot; اور &quot;بدعات و رسوم&quot; کے مباحث سے گزرتا ہے۔</p>
+      <p>ایک اصول سے چلتا ہے اور دوسرا اصول کے ساتھ مناظرہ بھی سیکھتا ہے۔</p>
+      <p>عرب کی سلفیت میں ادارہ زیادہ ہے۔</p>
+      <p>ہندوستان کے اہلِ حدیث میں جدوجہد زیادہ ہے۔</p>
+      <p>وہاں ریاست ساتھ کھڑی تھی۔</p>
+      <p>یہاں اکثر ریاست سامنے کھڑی تھی۔</p>
+      <p>وہاں مدرسہ، یونیورسٹی، عدالت اور سرکاری ادارے ایک حد تک مددگار بن گئے۔</p>
+      <p>یہاں مسجد، مدرسہ اور چھاپہ خانہ ہی سب کچھ تھے۔</p>
+      <p>وہاں شیخ کرسیِ تدریس پر بیٹھا۔</p>
+      <p>یہاں عالم ریل گاڑی میں بیٹھا، سائیکل پر چلا، گاؤں گاؤں پھرا، مناظرے کیے، رسائل لکھے اور گلی گلی دعوت دی۔</p>
+      <p>عرب سلفیت کی گفتگو میں &quot;منہج&quot; کا لفظ زیادہ سنائی دیتا ہے۔</p>
+      <p>ہندوستانی اہلِ حدیث کی گفتگو میں &quot;حدیث&quot; کا لفظ زیادہ سنائی دیتا ہے۔</p>
+      <p>وہ &quot;اصول&quot; سے بات شروع کرتے ہیں۔</p>
+      <p>یہ &quot;حدیث کہاں ہے؟&quot; سے بات شروع کرتے ہیں۔</p>
+      <p>وہ &quot;قاعدہ&quot; پیش کرتے ہیں۔</p>
+      <p>یہ &quot;دلیل&quot; پیش کرتے ہیں۔</p>
+      <p>وہ &quot;متن&quot; پڑھاتے ہیں۔</p>
+      <p>یہ &quot;مناظرہ&quot; بھی جیتتے ہیں۔</p>
+      <p>عرب کا سلفی بعض اوقات فقہ میں حنبلی خوشبو رکھتا ہے۔</p>
+      <p>ہندوستان کا اہلِ حدیث خود کو کسی ایک فقہی خانے میں قید نہیں کرتا۔</p>
+      <p>وہ براہِ راست حدیث کے دروازے پر دستک دینے کی کوشش کرتا ہے۔</p>
+      <p>تصوف کے باب میں بھی دونوں کے لہجے میں فرق ہے۔</p>
+      <p>عرب کا سلفی &quot;تزکیہ&quot; کی بات زیادہ کرتا ہے۔</p>
+      <p>ہندوستان کا اہلِ حدیث &quot;بدعت&quot; کی تردید زیادہ کرتا ہے۔</p>
+      <p>وجہ صاف ہے۔</p>
+      <p>ایک کے سامنے خانقاہ کم تھی۔</p>
+      <p>دوسرے کے سامنے خانقاہ ہر گلی میں تھی۔</p>
+      <p>ایک کے سامنے غلو کم تھا۔</p>
+      <p>دوسرے کے سامنے غلو بازاروں میں گھوم رہا تھا۔</p>
+      <p>سیاسی اعتبار سے بھی فرق ہے۔</p>
+      <p>عرب کا سلفی اکثریتی ماحول میں پلا بڑھا۔</p>
+      <p>ہندوستان کا اہلِ حدیث اقلیتی ماحول میں۔</p>
+      <p>ایک کو حکومت کے مسائل زیادہ پیش آئے۔</p>
+      <p>دوسرے کو شناخت کے مسائل زیادہ پیش آئے۔</p>
+      <p>ایک کے مباحث میں خروج، حکمران اور نظمِ ریاست نمایاں ہیں۔</p>
+      <p>دوسرے کے مباحث میں دعوت، بقا، تعلیم اور دینی شناخت نمایاں ہیں۔</p>
+      <p>مگر ان تمام فرقوں کے باوجود حقیقت یہ ہے کہ دونوں کی پیشانی ایک ہی قبلے کی طرف جھکتی ہے۔</p>
+      <p>دونوں قرآن کو امام مانتے ہیں۔</p>
+      <p>دونوں حدیث کو حجت مانتے ہیں۔</p>
+      <p>دونوں صحابۂ کرام رضی اللہ عنہم کی راہ کو نجات کا راستہ سمجھتے ہیں۔</p>
+      <p>اور دونوں اس بات پر یقین رکھتے ہیں کہ امت کی عزت کا راستہ کتاب و سنت کی طرف واپسی میں ہے۔</p>
+      <p>مختصر یہ کہ عرب کی سلفیت اور ہندوستان کا اہلِ حدیث دو الگ دریا نہیں ہیں۔</p>
+      <p>یہ ایک ہی دریا کی دو شاخیں ہیں۔</p>
+      <p>فرق پانی میں نہیں۔</p>
+      <p>فرق صرف زمینوں میں ہے جن سے گزر کر یہ پانی لوگوں تک پہنچا ہے۔</p>
+      <p>عرب کے مزاج میں کتاب التوحید زیادہ کام کرے گی اور ہندوستانی تناظر میں تقویہ الایمان ،</p>
+      <p>اہل حدیث عرب کی سلفیت سے بے نیاز نہیں ،عرب ہندوستانی اہل حدیثوں سے مستغنی نہیں ،ہندوستانی ماحول میں عرب کی پوری سلفیت کو انڈیل دینا نہ دانائی ہے ،نہ حکمت اور نہ بصیرت ۔</p>
+      <p>یہاں  صاحب حجہ اللہ البالغہ اور ان کے پوتےشاہ محمد اسماعیل دہلوی ،نوب صدیق حسن خاں ،سید احمد شہید ، اور میاں سید نذیر حسین دہلوی اور ان کے کبار شاگردان کو نظر انداز کرکے اہل حدیث کو اگر آپ صرف عرب کے ماحول میں سمجھنا چاہیں گے تو تاریخ کے ساتھ شاید آپ انصاف نہ کرپائیں ۔</p>
+      <p>تاریخ اہل حدیث ہند اور اہل حدیث کے کبار علماء کی کتابیں اور ان کے تعامل کو سامنےرکھے تو آدمی کے اندر توازن پیدا ہوتا ہے ۔</p>
+      <div class="article-author">✍ ابو اشعر فہیم</div>
+      <div class="article-actions">
+        <button type="button" class="article-share-btn" id="share-article">مضمون شیئر کریں</button>
+        <a class="article-wa-btn" href="https://wa.me/919429820648?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%DB%8C%DA%A9%D9%85%D8%8C%20%D9%85%D8%AC%DA%BE%DB%92%20%D8%A2%D9%BE%20%D8%B3%DB%92%20%D8%B1%D8%A7%D8%A8%D8%B7%DB%81%20%DA%A9%D8%B1%D9%86%D8%A7%20%DB%81%DB%92%D8%9B%20%D8%A8%D8%B1%D8%A7%DB%81%D9%90%20%DA%A9%D8%B1%D9%85%20%D8%B1%D9%88%D8%A7%D8%A8%D8%B7%DB%81%20%D9%81%D8%B1%D9%85%D8%A7%D8%A6%DB%8C%DA%BA." target="_blank" rel="noopener">واٹس ایپ پر رابطہ کریں</a>
+      </div>
+      <a class="toplink" href="#folder-articles">↩ مضامین کی فہرست پر واپس</a>
+    </article>
+
+    <a class="toplink" href="#list">↩ تمام فولڈرز پر واپس</a>
+  </section>
+
+  <section class="folder" id="folder-people">
+    <h2>👤 شخصیات</h2>
+    <div class="empty-folder">یہاں علماء، مشائخ، اکابر اور دیگر اہم شخصیات کے تعارف شامل کیے جا سکتے ہیں۔</div>
+    <a class="toplink" href="#list">↩ تمام فولڈرز پر واپس</a>
+  </section>
+
+
+  <aside class="creator" style="margin:18px 0 0;padding:15px 18px;text-align:center;border:1px solid #d6ad58;border-radius:16px;background:linear-gradient(135deg,#fffaf0,#eaf3ed);box-shadow:0 7px 20px #244d3510">
+    <div style="color:#92723c;font-size:14px">✦ ویب سائٹ کی تیاری ✦</div>
+    <div style="font-size:22px;color:#123b35;font-weight:700">عبدالسلام نوری</div>
+    <div style="direction:ltr;font-family:Arial,sans-serif;color:#176b57;font-size:16px;font-weight:600">M: 9429820648</div>
+  </aside>
+
+  <h2 class="group-title">🌙 سونے سے پہلے کے مسنون اذکار</h2>
+
+  <section class="card" id="sleep-wudu">
+    <h3>① سونے سے پہلے وضو کرنا</h3>
+    <div class="arabic">إِذَا أَتَيْتَ مَضْجَعَكَ فَتَوَضَّأْ وُضُوءَكَ لِلصَّلَاةِ</div>
+    <p class="translation">ترجمہ: جب تم اپنے بستر پر جانے لگو تو نماز کے وضو کی طرح وضو کرلو۔</p>
+    <p class="ref">حوالہ: صحیح بخاری: 247، صحیح مسلم: 2710</p>
+  <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+  <section class="card" id="ayat">
+    <h3>② آیت الکرسی پڑھنا</h3>
+    <div class="arabic">اللّٰهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ</div>
+    <p class="translation">ترجمہ: اللہ، اس کے سوا کوئی معبود نہیں، وہ زندہ اور سب کو قائم رکھنے والا ہے۔ اسے نہ اونگھ آتی ہے نہ نیند۔ آسمانوں اور زمین میں جو کچھ ہے سب اسی کا ہے۔۔۔ (مکمل ترجمہ سورۂ بقرہ، آیت 255 میں ہے۔)</p>
+    <p class="note">فضیلت: حدیث میں آیا ہے کہ رات بھر اللہ تعالیٰ کی طرف سے حفاظت کرنے والا مقرر رہتا ہے اور صبح تک شیطان قریب نہیں آتا۔</p>
+    <p class="ref">حوالہ: صحیح بخاری: 2311 — سورۂ بقرہ: 255</p>
+  <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+  <section class="card" id="three-quls">
+    <h3>③ سورۂ اخلاص، فلق اور ناس پڑھنا</h3>
+    <div class="arabic">قُلْ هُوَ اللّٰهُ أَحَدٌ ۝ اللّٰهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ ۝ وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ</div>
+    <div class="arabic">قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ۝ مِنْ شَرِّ مَا خَلَقَ ۝ وَمِنْ شَرِّ غَاسِقٍ إِذَا وَقَبَ ۝ وَمِنْ شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ ۝ وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ</div>
+    <div class="arabic">قُلْ أَعُوذُ بِرَبِّ النَّاسِ ۝ مَلِكِ النَّاسِ ۝ إِلَٰهِ النَّاسِ ۝ مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ۝ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ۝ مِنَ الْجِنَّةِ وَالنَّاسِ</div>
+    <p class="translation">طریقہ: تینوں سورتیں پڑھ کر دونوں ہاتھوں پر پھونک ماریں اور جہاں تک ممکن ہو جسم پر ہاتھ پھیر لیں۔ یہ عمل تین مرتبہ کریں۔</p>
+    <p class="ref">حوالہ: صحیح بخاری: 5017</p>
+  <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+  <section class="card" id="tasbeeh">
+    <h3>④ تسبیحاتِ فاطمی</h3>
+    <div class="arabic">سُبْحَانَ اللّٰهِ <span class="pill">33 مرتبہ</span></div>
+    <div class="arabic">الْحَمْدُ لِلّٰهِ <span class="pill">33 مرتبہ</span></div>
+    <div class="arabic">اللّٰهُ أَكْبَرُ <span class="pill">34 مرتبہ</span></div>
+    <p class="translation">ترجمہ: اللہ پاک ہے، تمام تعریف اللہ کے لیے ہے، اللہ سب سے بڑا ہے۔</p>
+    <p class="ref">حوالہ: صحیح بخاری: 5362، صحیح مسلم: 2727</p>
+  <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+  <section class="card" id="sleep-dua">
+    <h3>⑤ سونے کی دعا</h3>
+    <div class="arabic">بِاسْمِكَ اللّٰهُمَّ أَمُوتُ وَأَحْيَا</div>
+    <p class="translation">ترجمہ: اے اللہ! تیرے ہی نام کے ساتھ میں مرتا ہوں اور زندہ ہوتا ہوں۔</p>
+    <p class="ref">حوالہ: صحیح بخاری: 6324</p>
+  <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+  <section class="card" id="protection">
+    <h3>⑥ اللہ کے عذاب سے پناہ کی دعا</h3>
+    <div class="arabic">اللّٰهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ</div>
+    <p class="translation">ترجمہ: اے اللہ! جس دن تو اپنے بندوں کو دوبارہ زندہ کرکے اٹھائے گا، اس دن مجھے اپنے عذاب سے محفوظ رکھنا۔</p>
+    <p class="ref">حوالہ: سنن ابی داؤد: 5045</p>
+  <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+  <section class="card" id="last-dua">
+    <h3>⑦ سونے کی جامع دعا</h3>
+    <div class="arabic">اللّٰهُمَّ أَسْلَمْتُ نَفْسِي إِلَيْكَ، وَفَوَّضْتُ أَمْرِي إِلَيْكَ، وَوَجَّهْتُ وَجْهِي إِلَيْكَ، وَأَلْجَأْتُ ظَهْرِي إِلَيْكَ، رَغْبَةً وَرَهْبَةً إِلَيْكَ، لَا مَلْجَأَ وَلَا مَنْجَا مِنْكَ إِلَّا إِلَيْكَ، آمَنْتُ بِكِتَابِكَ الَّذِي أَنْزَلْتَ، وَبِنَبِيِّكَ الَّذِي أَرْسَلْتَ</div>
+    <p class="translation">ترجمہ: اے اللہ! میں نے اپنے آپ کو تیرے سپرد کردیا، اپنا معاملہ تیرے حوالے کردیا، اپنا رخ تیری طرف کرلیا اور اپنی پشت کو تیرا سہارا دے دیا، تیری رحمت کی امید اور تیرے عذاب کے خوف کے ساتھ۔ تیرے سوا نہ کوئی پناہ گاہ ہے اور نہ نجات کی جگہ۔ میں تیری نازل کردہ کتاب اور تیرے بھیجے ہوئے نبی پر ایمان لایا۔</p>
+    <p class="ref">حوالہ: صحیح بخاری: 247، صحیح مسلم: 2710</p>
+  <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+  <h2 class="group-title">🌅 نیند سے بیدار ہونے کے مسنون اذکار</h2>
+
+  <section class="card" id="wake-dua">
+    <h3>⑧ بیدار ہوتے ہی پڑھنے کی دعا</h3>
+    <div class="arabic">الْحَمْدُ لِلّٰهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ</div>
+    <p class="translation">ترجمہ: تمام تعریفیں اللہ کے لیے ہیں جس نے ہمیں موت (نیند) کے بعد زندگی عطا فرمائی اور اسی کی طرف دوبارہ اٹھ کر جانا ہے۔</p>
+    <p class="ref">حوالہ: صحیح بخاری: 6312</p>
+  <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+  <section class="card" id="wake-dua2">
+    <h3>⑨ بیداری کی دوسری دعا</h3>
+    <div class="arabic">الْحَمْدُ لِلّٰهِ الَّذِي عَافَانِي فِي جَسَدِي، وَرَدَّ عَلَيَّ رُوحِي، وَأَذِنَ لِي بِذِكْرِهِ</div>
+    <p class="translation">ترجمہ: تمام تعریفیں اللہ کے لیے ہیں جس نے میرے جسم کو عافیت عطا فرمائی، میری روح مجھے واپس لوٹائی اور مجھے اپنے ذکر کی اجازت عطا فرمائی۔</p>
+    <p class="ref">حوالہ: جامع ترمذی: 3401</p>
+  <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+  <section class="card" id="miswak">
+    <h3>⑩ بیدار ہوکر مسواک کرنا</h3>
+    <div class="arabic">كَانَ النَّبِيُّ ﷺ إِذَا قَامَ مِنَ اللَّيْلِ يَشُوصُ فَاهُ بِالسِّوَاكِ</div>
+    <p class="translation">ترجمہ: نبی کریم ﷺ جب رات کو بیدار ہوتے تو مسواک سے اپنا منہ صاف فرماتے۔</p>
+    <p class="ref">حوالہ: صحیح بخاری: 245، صحیح مسلم: 255</p>
+  <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+  <section class="card" id="hands">
+    <h3>⑪ بیدار ہونے کے بعد ہاتھ دھونا</h3>
+    <div class="arabic">إِذَا اسْتَيْقَظَ أَحَدُكُمْ مِنْ مَنَامِهِ فَلَا يَغْمِسْ يَدَهُ فِي الْإِنَاءِ حَتَّى يَغْسِلَهَا ثَلَاثًا</div>
+    <p class="translation">ترجمہ: جب تم میں سے کوئی شخص نیند سے بیدار ہو تو اپنا ہاتھ برتن میں ڈالنے سے پہلے تین مرتبہ دھوئے۔</p>
+    <p class="ref">حوالہ: صحیح بخاری: 162، صحیح مسلم: 278</p>
+  <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+  <section class="card" id="tahajjud">
+    <h3>⑫ بیدار ہونے کے بعد تہجد کی نماز</h3>
+    <p class="translation">اگر رات میں بیدار ہوں تو وضو کرکے نمازِ تہجد ادا کرنا بھی رسول اللہ ﷺ کی سنت ہے۔ رات کی تنہائی میں اللہ تعالیٰ سے دعا اور مناجات کا اہتمام کریں۔</p>
+  <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+
+  <h2 class="group-title">💧 طہارت اور وضو کے مسنون اذکار</h2>
+
+  <section class="card" id="toilet-enter">
+    <h3>⑬ بیت الخلا میں داخل ہونے کی دعا</h3>
+    <div class="arabic">اللّٰهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ</div>
+    <p class="translation">ترجمہ: اے اللہ! میں ناپاک جنّوں اور جنّیوں (اور ہر قسم کی خباثت) سے تیری پناہ مانگتا ہوں۔</p>
+    <p class="note">بیت الخلا میں داخل ہونے سے پہلے یہ دعا پڑھیں۔</p>
+    <p class="ref">حوالہ: صحیح بخاری: 142، صحیح مسلم: 375</p>
+    <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+  <section class="card" id="toilet-exit">
+    <h3>⑭ بیت الخلا سے نکلنے کی دعا</h3>
+    <div class="arabic">غُفْرَانَكَ</div>
+    <p class="translation">ترجمہ: اے اللہ! میں تجھ سے مغفرت طلب کرتا ہوں۔</p>
+    <p class="note">بیت الخلا سے باہر نکلنے کے بعد یہ دعا پڑھیں۔</p>
+    <p class="ref">حوالہ: سنن ابی داؤد: 30، جامع ترمذی: 7</p>
+    <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+  <section class="card" id="wudu-start">
+    <h3>⑮ وضو شروع کرنے سے پہلے</h3>
+    <div class="arabic">بِسْمِ اللّٰهِ</div>
+    <p class="translation">ترجمہ: اللہ کے نام سے شروع کرتا ہوں۔</p>
+    <p class="note">وضو شروع کرتے وقت بسم اللہ پڑھنا منقول ہے۔ اس بارے میں وارد روایت کی صحت کے درجے پر اہلِ علم کے درمیان گفتگو ہے۔</p>
+    <p class="ref">حوالہ: سنن ابی داؤد: 101؛ جامع ترمذی: 25</p>
+    <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+  <section class="card" id="wudu-end">
+    <h3>⑯ وضو مکمل کرنے کے بعد کی دعا</h3>
+    <div class="arabic">أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللّٰهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ</div>
+    <p class="translation">ترجمہ: میں گواہی دیتا ہوں کہ اللہ کے سوا کوئی معبود نہیں، وہ اکیلا ہے، اس کا کوئی شریک نہیں، اور میں گواہی دیتا ہوں کہ محمد ﷺ اللہ کے بندے اور رسول ہیں۔</p>
+    <p class="ref">حوالہ: صحیح مسلم: 234</p>
+    <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+  <section class="card" id="wudu-extra">
+    <h3>⑰ وضو کے بعد مزید مسنون دعا</h3>
+    <div class="arabic">اللّٰهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ</div>
+    <p class="translation">ترجمہ: اے اللہ! مجھے بہت توبہ کرنے والوں میں شامل فرما اور مجھے پاکیزگی اختیار کرنے والوں میں شامل فرما۔</p>
+    <p class="note">یہ الفاظ وضو کے بعد پڑھی جانے والی دعا کے طور پر جامع ترمذی میں منقول ہیں۔</p>
+    <p class="ref">حوالہ: جامع ترمذی: 55</p>
+    <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+  <section class="card" id="purification-note">
+    <h3>⑱ طہارت سے متعلق ضروری وضاحت</h3>
+    <p class="translation">وضو کے ہر عضو کو دھوتے وقت مخصوص دعائیں پڑھنا نبی کریم ﷺ سے صحیح طور پر ثابت نہیں۔ اس لیے ہر عضو کے لیے الگ الگ دعاؤں کو مسنون سمجھ کر لازم نہ کیا جائے۔ وضو میں بسم اللہ، مکمل وضو کے بعد ثابت اذکار، اور طہارت کے دیگر آداب کا اہتمام کریں۔</p>
+    <a class="toplink back-to-list" href="#list">↩ واپس فہرست پر جائیں</a>
+  </section>
+
+
+  <h2 class="group-title">☀️ صبح و شام کے مسنون اذکار</h2>
+  <section class="card" id="morning-1">
+    <h3>صبح کی حمد</h3>
+    <div class="arabic">أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلّٰهِ، وَالْحَمْدُ لِلّٰهِ، لَا إِلٰهَ إِلَّا اللّٰهُ وَحْدَهُ لَا شَرِيكَ لَهُ</div>
+    <p class="translation">ترجمہ: ہم نے صبح کی اور تمام بادشاہی اللہ ہی کے لیے صبح ہوئی، تمام تعریف اللہ کے لیے ہے۔ اللہ کے سوا کوئی معبود نہیں، وہ اکیلا ہے، اس کا کوئی شریک نہیں۔</p>
+    <p class="note">یہ صبح کے ذکر کے طور پر وارد ہے۔ شام کے لیے «أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلّٰهِ» کے الفاظ پڑھیں۔</p>
+    <p class="ref">حوالہ: صحیح مسلم: 2723 (صبح و شام کے اذکار کے الفاظ و روایت)</p>
+    <a class="toplink back-to-list" href="#folder-morning">↩ صبح کے فولڈر میں واپس</a>
+  </section>
+  <section class="card" id="morning-2">
+    <h3>صبح کی دعا</h3>
+    <div class="arabic">اللّٰهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ</div>
+    <p class="translation">ترجمہ: اے اللہ! تیرے ہی حکم سے ہم نے صبح کی، تیرے ہی حکم سے شام کرتے ہیں، تیرے ہی حکم سے جیتے ہیں اور تیرے ہی حکم سے مرتے ہیں، اور تیری ہی طرف دوبارہ اٹھ کر جانا ہے۔</p>
+    <p class="note">شام کے وقت آخری لفظ «وَإِلَيْكَ الْمَصِيرُ» پڑھا جاتا ہے۔</p>
+    <p class="ref">حوالہ: سنن ابی داؤد: 5068، جامع ترمذی: 3391</p>
+    <a class="toplink back-to-list" href="#folder-morning">↩ صبح کے فولڈر میں واپس</a>
+  </section>
+  <section class="card" id="morning-3">
+    <h3>رضيت بالله رباً</h3>
+    <div class="arabic">رَضِيتُ بِاللّٰهِ رَبًّا، وَبِالْإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ ﷺ نَبِيًّا</div>
+    <p class="translation">ترجمہ: میں اللہ کے رب ہونے، اسلام کے دین ہونے اور محمد ﷺ کے نبی ہونے پر راضی ہوں۔</p>
+    <p class="note">صبح اور شام تین مرتبہ پڑھنے کی ترغیب روایت میں آئی ہے۔</p>
+    <p class="ref">حوالہ: جامع ترمذی: 3389، سنن ابی داؤد: 5072</p>
+    <a class="toplink back-to-list" href="#folder-morning">↩ صبح کے فولڈر میں واپس</a>
+  </section>
+  <section class="card" id="morning-4">
+    <h3>سید الاستغفار</h3>
+    <div class="arabic">اللّٰهُمَّ أَنْتَ رَبِّي لَا إِلٰهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَىٰ عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي، فَاغْفِرْ لِي، فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ</div>
+    <p class="translation">ترجمہ: اے اللہ! تو میرا رب ہے، تیرے سوا کوئی معبود نہیں۔ تو نے مجھے پیدا کیا اور میں تیرا بندہ ہوں۔ اپنی استطاعت کے مطابق تیرے عہد اور وعدے پر قائم ہوں۔ اپنے کیے کے شر سے تیری پناہ مانگتا ہوں۔ تیری نعمتوں کا اقرار کرتا ہوں اور اپنے گناہ کا بھی اعتراف کرتا ہوں، پس مجھے بخش دے، کیونکہ تیرے سوا کوئی گناہوں کو نہیں بخشتا۔</p>
+    <p class="note">صبح یقین کے ساتھ پڑھ کر اسی دن شام سے پہلے وفات ہو جائے تو جنت کی بشارت، اور شام کو پڑھ کر صبح سے پہلے وفات ہو جائے تو جنت کی بشارت حدیث میں آئی ہے۔</p>
+    <p class="ref">حوالہ: صحیح بخاری: 6306</p>
+    <a class="toplink back-to-list" href="#folder-morning">↩ صبح کے فولڈر میں واپس</a>
+  </section>
+  <section class="card" id="morning-5">
+    <h3>دنیا و آخرت میں عافیت کی دعا</h3>
+    <div class="arabic">اللّٰهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ</div>
+    <p class="translation">ترجمہ: اے اللہ! میں تجھ سے دنیا اور آخرت میں معافی اور عافیت کا سوال کرتا ہوں۔</p>
+    <p class="note">اس دعا کے مکمل الفاظ میں صبح و شام عافیت مانگنے کی تعلیم آئی ہے۔</p>
+    <p class="ref">حوالہ: سنن ابی داؤد: 5074، سنن ابن ماجہ: 3871</p>
+    <a class="toplink back-to-list" href="#folder-morning">↩ صبح کے فولڈر میں واپس</a>
+  </section>
+  <section class="card" id="morning-6">
+    <h3>سو مرتبہ سبحان اللہ وبحمدہ</h3>
+    <div class="arabic">سُبْحَانَ اللّٰهِ وَبِحَمْدِهِ</div>
+    <p class="translation">ترجمہ: اللہ پاک ہے اور اسی کی تعریف ہے۔</p>
+    <p class="note">صبح یا دن میں سو مرتبہ پڑھنے کی بڑی فضیلت صحیح حدیث میں آئی ہے۔</p>
+    <p class="ref">حوالہ: صحیح مسلم: 2692</p>
+    <a class="toplink back-to-list" href="#folder-morning">↩ صبح کے فولڈر میں واپس</a>
+  </section>
+
+  <section class="card" id="evening-1">
+    <h3>شام کی حمد</h3>
+    <div class="arabic">أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلّٰهِ، وَالْحَمْدُ لِلّٰهِ، لَا إِلٰهَ إِلَّا اللّٰهُ وَحْدَهُ لَا شَرِيكَ لَهُ</div>
+    <p class="translation">ترجمہ: ہم نے شام کی اور تمام بادشاہی اللہ ہی کے لیے شام ہوئی، تمام تعریف اللہ کے لیے ہے۔ اللہ کے سوا کوئی معبود نہیں، وہ اکیلا ہے،
+
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123b35">
 <title>مسنون اذکار | سونے اور بیدار ہونے کی دعائیں</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap');
