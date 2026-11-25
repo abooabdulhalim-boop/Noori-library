@@ -1,4 +1,290 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مدرسہ مینجمنٹ سسٹم</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq","Noto Naskh Arabic",Tahoma,Arial,sans-serif;background:#f3f6f4;color:#17251d}
+header{background:#14532d;color:#fff;padding:18px;text-align:center;position:sticky;top:0;z-index:5}
+header h1{margin:0 0 6px;font-size:25px} header p{margin:0;font-size:13px}
+nav{display:flex;gap:7px;overflow:auto;background:#fff;padding:8px;position:sticky;top:78px;z-index:4;box-shadow:0 2px 8px #0001}
+nav button{white-space:nowrap;border:0;background:#e8f2eb;color:#14532d;padding:10px 13px;border-radius:9px;font-weight:bold;cursor:pointer}
+nav button.active{background:#14532d;color:#fff}
+main{max-width:1200px;margin:auto;padding:14px}.section{display:none}.section.active{display:block}
+.card{background:#fff;border-radius:14px;padding:15px;margin-bottom:14px;box-shadow:0 2px 10px #00000012}
+h2{margin-top:0;color:#14532d}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.stat{padding:15px;border-radius:12px;background:#eef7f0;text-align:center}.stat b{display:block;font-size:24px;color:#14532d;margin-top:5px}
+input,select,textarea{width:100%;padding:10px;border:1px solid #ccd7cf;border-radius:8px;font-size:15px;background:#fff}
+label{font-weight:bold;font-size:13px;display:block;margin:5px 0}.formgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.btn{border:0;border-radius:8px;padding:10px 14px;background:#14532d;color:white;font-weight:bold;margin:5px 2px;cursor:pointer}
+.btn.secondary{background:#64748b}.btn.danger{background:#b91c1c}.btn.light{background:#e8f2eb;color:#14532d}.btn.warning{background:#b7791f;color:#fff}
+table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px;background:#fff}th,td{border:1px solid #dbe3dd;padding:8px;text-align:right}
+th{background:#e8f2eb;color:#14532d}.tablewrap{overflow:auto}.empty{text-align:center;color:#64748b;padding:20px}
+.notice{background:#fff7d6;border-right:4px solid #d6a400;padding:10px;border-radius:8px;margin-bottom:10px}.search{margin-top:10px}.small{font-size:12px;color:#64748b}
+.reportbox{padding:15px;border:1px dashed #9aa9a0;border-radius:10px;margin-top:10px}.result-good{color:#15803d;font-weight:bold}.result-fail{color:#b91c1c;font-weight:bold}
+.urdu-text,h1,h2,h3,p,label,button,th,td,input,select,textarea{font-family:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq","Noto Naskh Arabic",Tahoma,Arial,sans-serif}
+h1,h2,h3{line-height:2}button{line-height:1.8}input,select,textarea{line-height:1.8}
+@media print{header,nav,.no-print{display:none!important}.section{display:none!important}.section.active{display:block!important}body{background:#fff}.card{box-shadow:none}}
 
+#landingPage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(145deg,#0b3d26,#17613b 55%,#d7b56d);text-align:center}
+.landing-card{width:min(94%,760px);padding:clamp(28px,7vw,64px) 20px;border:2px solid rgba(255,255,255,.78);border-radius:28px;background:rgba(255,255,255,.10);box-shadow:0 18px 55px #0004;color:#fff}
+.landing-mark{font-size:clamp(42px,9vw,76px);margin-bottom:12px}
+#launchSystem{display:block;width:100%;border:0;border-radius:20px;padding:22px 12px;background:#fff;color:#14532d;font-size:clamp(30px,7vw,54px);font-weight:900;line-height:1.7;cursor:pointer;box-shadow:0 8px 24px #0003;font-family:inherit}
+#launchSystem:active{transform:scale(.985)}
+.landing-sub{font-size:clamp(15px,3vw,20px);margin-top:18px;color:#fff}
+#appShell{display:none}
+
+</style>
+</head>
+<body>
+
+<div id="splashScreen" style="display:none;position:fixed;inset:0;z-index:9999;background:#14532d;display:flex;align-items:center;justify-content:center;text-align:center;color:white;font-family:Tahoma,Arial,sans-serif">
+<div style="width:min(88%,520px);padding:35px 22px;border:3px solid rgba(255,255,255,.8);border-radius:28px;background:rgba(255,255,255,.08);box-shadow:0 10px 40px rgba(0,0,0,.25)">
+<div style="width:105px;height:105px;margin:0 auto 20px;border:3px solid white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:48px;background:#166534">📚</div>
+<div style="font-size:34px;font-weight:bold;line-height:1.5">مدرسہ مینجمنٹ سسٹم</div>
+<div style="font-size:18px;margin-top:10px;opacity:.95">Madrasa Management System</div>
+<div style="margin-top:24px;font-size:13px;opacity:.8">نظام شروع ہو رہا ہے...</div>
+</div></div>
+
+<section id="landingPage" aria-label="مرکزی صفحہ">
+  <div class="landing-card">
+    <div class="landing-mark">📚</div>
+    <button id="launchSystem" type="button" onclick="openSystem()">مدرسہ مینیجمنٹ</button>
+    <div class="landing-sub">سسٹم کھولنے کے لیے اوپر کلک کریں</div>
+    <div style="margin-top:28px;font-size:13px;opacity:.85">MADRASA MANAGEMENT SYSTEM</div>
+  </div>
+</section>
+<div id="appShell">
+<header>
+<h1 id="appTitle">مدرسہ مینجمنٹ سسٹم</h1>
+<p id="madrasaNameDisplay">طلبہ، اساتذہ، فیس، تعاون، تنخواہوں اور مالی حساب کا جامع ریکارڈ</p>
+<div style="margin-top:10px">
+<button class="btn light" onclick="setLanguage('ur')">اردو</button>
+<button class="btn light" onclick="setLanguage('gu')">ગુજરાતી</button>
+<button class="btn light" onclick="setMadrasaName()">🏫 مدرسے کا نام</button>
+</div>
+</header>
+
+<nav>
+<button onclick="goBack()">⬅️ بیک</button><button onclick="exitApp()">🚪 ایگزٹ</button>
+<button class="active" onclick="showSection('home',this)">🏠 ڈیش بورڈ</button>
+<button onclick="showSection('students',this)">👨‍🎓 طلبہ</button>
+<button onclick="showSection('teachers',this)">👨‍🏫 اساتذہ</button>
+<button onclick="showSection('fees',this)">💰 فیس</button>
+<button onclick="showSection('donors',this)">🤝 تعاون</button>
+<button onclick="showSection('salaries',this)">💵 تنخواہیں</button>
+<button onclick="showSection('finance',this)">📊 آمدنی/اخراجات</button>
+<button onclick="showSection('reports',this)">📄 رپورٹس</button>
+</nav>
+
+<main>
+<section id="home" class="section active">
+<div class="card"><h2>مدرسہ مینجمنٹ سسٹم</h2>
+<p>مدرسے کے انتظامی، تعلیمی اور مالی امور کو آسان اور منظم انداز میں محفوظ رکھنے کے لیے یہ آف لائن نظام استعمال کریں۔</p>
+<div class="notice">تمام ریکارڈ اسی ڈیوائس کے براؤزر میں محفوظ ہوگا۔ باقاعدہ بیک اپ کے لیے ڈیٹا ایکسپورٹ کریں۔</div>
+<div class="grid">
+<div class="stat">کل طلبہ<b id="sStudents">0</b></div><div class="stat">کل اساتذہ<b id="sTeachers">0</b></div><div class="stat">معاونین<b id="sDonors">0</b></div>
+<div class="stat">کل آمدنی<b id="sIncome">₹0</b></div><div class="stat">کل اخراجات<b id="sExpense">₹0</b></div><div class="stat">موجودہ بیلنس<b id="sBalance">₹0</b></div>
+</div></div>
+<div class="card no-print"><h2>ڈیٹا کی حفاظت</h2>
+<button class="btn" onclick="exportData()">💾 ڈیٹا بیک اپ</button>
+<button class="btn secondary" onclick="document.getElementById('importFile').click()">📥 بیک اپ بحال کریں</button>
+<input id="importFile" type="file" accept=".json" style="display:none" onchange="importData(event)">
+<button class="btn danger" onclick="clearAll()">⚠️ تمام ڈیٹا حذف کریں</button>
+</div></section>
+
+<section id="students" class="section"><div class="card"><h2>طلبہ کا ریکارڈ</h2><input type="hidden" id="studentId">
+<div class="formgrid">
+<div><label>طالب علم کا نام</label><input id="studentName"></div><div><label>والد کا نام</label><input id="studentFather"></div>
+<div><label>موبائل نمبر</label><input id="studentPhone"></div><div><label>جماعت / درجہ</label><input id="studentClass"></div>
+<div><label>پتہ</label><input id="studentAddress"></div><div><label>داخلے کی تاریخ</label><input id="studentDate" type="date"></div>
+</div><button class="btn" onclick="saveStudent()">محفوظ کریں</button><button class="btn light" onclick="resetForm('student')">نیا اندراج</button>
+<input class="search" id="studentSearch" oninput="renderStudents()" placeholder="نام یا والد کا نام تلاش کریں">
+<div class="tablewrap"><table><thead><tr><th>نام</th><th>والد</th><th>موبائل</th><th>جماعت</th><th>تاریخ</th><th>عمل</th></tr></thead><tbody id="studentTable"></tbody></table></div>
+</div></section>
+
+<section id="teachers" class="section"><div class="card"><h2>اساتذہ و عملہ</h2><input type="hidden" id="teacherId">
+<div class="formgrid"><div><label>نام</label><input id="teacherName"></div><div><label>عہدہ</label><input id="teacherRole"></div><div><label>موبائل</label><input id="teacherPhone"></div><div><label>ماہانہ تنخواہ</label><input id="teacherSalary" type="number"></div></div>
+<button class="btn" onclick="saveTeacher()">محفوظ کریں</button><button class="btn light" onclick="resetForm('teacher')">نیا اندراج</button>
+<div class="tablewrap"><table><thead><tr><th>نام</th><th>عہدہ</th><th>موبائل</th><th>تنخواہ</th><th>عمل</th></tr></thead><tbody id="teacherTable"></tbody></table></div>
+</div></section>
+
+<section id="fees" class="section"><div class="card"><h2>طلبہ کی فیس</h2>
+<div class="formgrid"><div><label>تاریخ</label><input id="feeDate" type="date"></div><div><label>طالب علم</label><select id="feeStudent"></select></div><div><label>مہینہ</label><input id="feeMonth" placeholder="مثلاً اگست 2026"></div><div><label>واجب رقم</label><input id="feeDue" type="number"></div><div><label>جمع رقم</label><input id="feePaid" type="number"></div></div>
+<button class="btn" onclick="saveFee()">فیس محفوظ کریں</button><button class="btn light" onclick="resetForm('fee')">نیا اندراج</button>
+<div class="tablewrap"><table><thead><tr><th>تاریخ</th><th>طالب علم</th><th>مہینہ</th><th>واجب</th><th>جمع</th><th>باقی</th><th>عمل</th></tr></thead><tbody id="feeTable"></tbody></table></div>
+</div></section>
+
+<section id="donors" class="section"><div class="card"><h2>مدرسے کے معاونین اور ماہانہ تعاون</h2>
+<div class="formgrid"><div><label>معاون کا نام</label><input id="donorName"></div><div><label>موبائل</label><input id="donorPhone"></div><div><label>ماہانہ مقررہ تعاون</label><input id="donorMonthly" type="number"></div><div><label>آج جمع رقم</label><input id="donorPaid" type="number"></div><div><label>مہینہ</label><input id="donorMonth"></div><div><label>تاریخ</label><input id="donorDate" type="date"></div></div>
+<button class="btn" onclick="saveDonor()">محفوظ کریں</button><button class="btn light" onclick="resetForm('donor')">نیا اندراج</button>
+<div class="tablewrap"><table><thead><tr><th>نام</th><th>موبائل</th><th>ماہانہ</th><th>جمع</th><th>مہینہ</th><th>عمل</th></tr></thead><tbody id="donorTable"></tbody></table></div>
+</div></section>
+
+<section id="salaries" class="section"><div class="card"><h2>اساتذہ و ملازمین کی تنخواہیں</h2>
+<div class="formgrid"><div><label>استاد/ملازم</label><select id="salaryTeacher"></select></div><div><label>مہینہ</label><input id="salaryMonth"></div><div><label>مقررہ تنخواہ</label><input id="salaryDue" type="number"></div><div><label>ادا شدہ</label><input id="salaryPaid" type="number"></div><div><label>تاریخ</label><input id="salaryDate" type="date"></div></div>
+<button class="btn" onclick="saveSalary()">محفوظ کریں</button><button class="btn light" onclick="resetForm('salary')">نیا اندراج</button>
+<div class="tablewrap"><table><thead><tr><th>نام</th><th>مہینہ</th><th>مقررہ</th><th>ادا</th><th>باقی</th><th>عمل</th></tr></thead><tbody id="salaryTable"></tbody></table></div>
+</div></section>
+
+<section id="finance" class="section"><div class="card"><h2>آمدنی اور اخراجات</h2>
+<div class="formgrid"><div><label>تاریخ</label><input id="finDate" type="date"></div><div><label>قسم</label><select id="finType"><option>آمدنی</option><option>اخراجات</option></select></div><div><label>رقم</label><input id="finAmount" type="number"></div><div><label>تفصیل</label><input id="finNote"></div></div>
+<button class="btn" onclick="saveFinance()">محفوظ کریں</button><button class="btn light" onclick="resetForm('finance')">نیا اندراج</button>
+<div class="tablewrap"><table><thead><tr><th>تاریخ</th><th>قسم</th><th>رقم</th><th>تفصیل</th><th>عمل</th></tr></thead><tbody id="financeTable"></tbody></table></div>
+</div></section>
+
+<section id="reports" class="section"><div class="card"><h2>رپورٹس</h2><p>جس رپورٹ کی ضرورت ہو اسے منتخب کریں۔ پرنٹ سے PDF بھی محفوظ کی جا سکتی ہے۔</p>
+<div class="grid no-print">
+<div><label>رپورٹ کی تاریخ سے</label><input id="reportFrom" type="date"></div><div><label>رپورٹ کی تاریخ تک</label><input id="reportTo" type="date"></div><button class="btn light" onclick="clearReportDates()">تمام تاریخیں</button>
+<button class="btn" onclick="report('students')">طلبہ رپورٹ</button><button class="btn" onclick="report('fees')">فیس رپورٹ</button><button class="btn" onclick="report('donors')">تعاون رپورٹ</button><button class="btn" onclick="report('salaries')">تنخواہ رپورٹ</button><button class="btn" onclick="report('finance')">مالی رپورٹ</button>
+</div><div id="reportOutput" class="reportbox"></div></div></section>
+</main>
+</div><!-- appShell -->
+
+<script>
+function openSystem(){
+  document.getElementById('landingPage').style.display='none';
+  document.getElementById('appShell').style.display='block';
+  window.scrollTo(0,0);
+}
+setTimeout(()=>{const s=document.getElementById("splashScreen");if(s){s.style.transition="opacity .5s ease";s.style.opacity="0";setTimeout(()=>s.remove(),550)}},1800);
+
+const KEY="madrasa_management_v2";
+let db=JSON.parse(localStorage.getItem(KEY)||'{"students":[],"teachers":[],"attendance":[],"exams":[],"fees":[],"donors":[],"salaries":[],"finance":[]}');
+["students","teachers","attendance","exams","fees","donors","salaries","finance"].forEach(k=>{if(!Array.isArray(db[k]))db[k]=[]});
+
+const URDU_GUJARATI = {
+"مدرسہ مینجمنٹ سسٹم":"મદ્રસા મેનેજમેન્ટ સિસ્ટમ","نظام شروع ہو رہا ہے...":"સિસ્ટમ શરૂ થઈ રહી છે...","طلبہ، اساتذہ، فیس، تعاون، تنخواہوں اور مالی حساب کا جامع ریکارڈ":"વિદ્યાર્થીઓ, શિક્ષકો, ફી, સહયોગ, પગાર અને નાણાકીય હિસાબનો સંપૂર્ણ રેકોર્ડ","🏫 مدرسے کا نام":"🏫 મદ્રસાનું નામ","⬅️ بیک":"⬅️ પાછા","🚪 ایگزٹ":"🚪 બહાર નીકળો","🏠 ڈیش بورڈ":"🏠 ડેશબોર્ડ","👨‍🎓 طلبہ":"👨‍🎓 વિદ્યાર્થીઓ","👨‍🏫 اساتذہ":"👨‍🏫 શિક્ષકો","💰 فیس":"💰 ફી","🤝 تعاون":"🤝 સહયોગ","💵 تنخواہیں":"💵 પગાર","📊 آمدنی/اخراجات":"📊 આવક/ખર્ચ","📄 رپورٹس":"📄 અહેવાલો","مدرسے کے انتظامی، تعلیمی اور مالی امور کو آسان اور منظم انداز میں محفوظ رکھنے کے لیے یہ آف لائن نظام استعمال کریں۔":"મદ્રસાના વહીવટી, શૈક્ષણિક અને નાણાકીય કાર્યોનો રેકોર્ડ સરળતાથી સાચવવા માટે આ ઑફલાઇન સિસ્ટમનો ઉપયોગ કરો.","تمام ریکارڈ اسی ڈیوائس کے براؤزر میں محفوظ ہوگا۔ باقاعدہ بیک اپ کے لیے ڈیٹا ایکسپورٹ کریں۔":"તમામ રેકોર્ડ આ જ ડિવાઇસના બ્રાઉઝરમાં સાચવાશે. નિયમિત બેકઅપ માટે ડેટા એક્સપોર્ટ કરો.","کل طلبہ":"કુલ વિદ્યાર્થીઓ","کل اساتذہ":"કુલ શિક્ષકો","معاونین":"સહયોગીઓ","کل آمدنی":"કુલ આવક","کل اخراجات":"કુલ ખર્ચ","موجودہ بیلنس":"હાલનું બેલેન્સ","ڈیٹا کی حفاظت":"ડેટા સુરક્ષા","💾 ڈیٹا بیک اپ":"💾 ડેટા બેકઅપ","📥 بیک اپ بحال کریں":"📥 બેકઅપ પુનઃસ્થાપિત કરો","⚠️ تمام ڈیٹا حذف کریں":"⚠️ તમામ ડેટા કાઢી નાખો","طلبہ کا ریکارڈ":"વિદ્યાર્થી રેકોર્ડ","طالب علم کا نام":"વિદ્યાર્થીનું નામ","والد کا نام":"પિતાનું નામ","موبائل نمبر":"મોબાઇલ નંબર","جماعت / درجہ":"વર્ગ / ધોરણ","پتہ":"સરનામું","داخلے کی تاریخ":"પ્રવેશ તારીખ","محفوظ کریں":"સાચવો","نیا اندراج":"નવી એન્ટ્રી","نام":"નામ","والد":"પિતા","موبائل":"મોબાઇલ","جماعت":"વર્ગ","تاریخ":"તારીખ","عمل":"ક્રિયા","اساتذہ و عملہ":"શિક્ષકો અને સ્ટાફ","عہدہ":"હોદ્દો","ماہانہ تنخواہ":"માસિક પગાર","تنخواہ":"પગાર","طلبہ کی فیس":"વિદ્યાર્થી ફી","طالب علم":"વિદ્યાર્થી","مہینہ":"મહિનો","واجب رقم":"બાકી રકમ","جمع رقم":"જમા રકમ","واجب":"બાકી","جمع":"જમા","باقی":"બાકી","مدرسے کے معاونین اور ماہانہ تعاون":"મદ્રસાના સહયોગીઓ અને માસિક સહયોગ","معاون کا نام":"સહયોગીનું નામ","ماہانہ مقررہ تعاون":"માસિક નિર્ધારિત સહયોગ","آج جمع رقم":"આજે જમા રકમ","ماہانہ":"માસિક","اساتذہ و ملازمین کی تنخواہیں":"શિક્ષકો અને કર્મચારીઓના પગાર","استاد/ملازم":"શિક્ષક/કર્મચારી","مقررہ تنخواہ":"નિર્ધારિત પગાર","ادا شدہ":"ચૂકવેલ","مقررہ":"નિર્ધારિત","ادا":"ચૂકવેલ","آمدنی اور اخراجات":"આવક અને ખર્ચ","قسم":"પ્રકાર","آمدنی":"આવક","اخراجات":"ખર્ચ","رقم":"રકમ","تفصیل":"વિગત","رپورٹس":"અહેવાલો","جس رپورٹ کی ضرورت ہو اسے منتخب کریں۔ پرنٹ سے PDF بھی محفوظ کی جا سکتی ہے۔":"જરૂરી અહેવાલ પસંદ કરો. પ્રિન્ટ દ્વારા PDF પણ સાચવી શકાય છે.","رپورٹ کی تاریخ سے":"અહેવાલની તારીખથી","رپورٹ کی تاریخ تک":"અહેવાલની તારીખ સુધી","تمام تاریخیں":"બધી તારીખો","طلبہ رپورٹ":"વિદ્યાર્થી અહેવાલ","فیس رپورٹ":"ફી અહેવાલ","تعاون رپورٹ":"સહયોગ અહેવાલ","تنخواہ رپورٹ":"પગાર અહેવાલ","مالی رپورٹ":"નાણાકીય અહેવાલ","کوئی ریکارڈ نہیں":"કોઈ રેકોર્ડ નથી","منتخب کریں":"પસંદ કરો","مدرسے کا نام درج کریں:":"મદ્રસાનું નામ દાખલ કરો:","مدرسے کا نام محفوظ ہوگیا۔":"મદ્રસાનું નામ સાચવાયું.","غلط بیک اپ فائل":"ખોટી બેકઅપ ફાઇલ","بیک اپ کامیابی سے بحال ہوگیا۔":"બેકઅપ સફળતાપૂર્વક પુનઃસ્થાપિત થયો.","کیا یہ ریکارڈ حذف کرنا ہے؟":"શું આ રેકોર્ડ કાઢી નાખવો છે?","تمام ریکارڈ مستقل طور پر حذف ہو جائیں گے۔ کیا آپ پُریقین ہیں؟":"તમામ રેકોર્ડ કાયમ માટે કાઢી નાખવામાં આવશે. શું તમે ખાતરી કરો છો?","کیا آپ سسٹم سے باہر نکلنا چاہتے ہیں؟":"શું તમે સિસ્ટમમાંથી બહાર નીકળવા માંગો છો?","اگر ایپ خود بند نہ ہو تو اس ونڈو/ٹیب کو دستی طور پر بند کریں۔":"જો એપ આપમેળે બંધ ન થાય તો આ વિન્ડો/ટેબને જાતે બંધ કરો.","طالب علم کا نام لکھیں":"વિદ્યાર્થીનું નામ લખો","استاد کا نام لکھیں":"શિક્ષકનું નામ લખો","معاون کا نام لکھیں":"સહયોગીનું નામ લખો","استاد منتخب کریں":"શિક્ષક પસંદ કરો","رقم درج کریں":"રકમ દાખલ કરો","نام یا والد کا نام تلاش کریں":"નામ અથવા પિતાનું નામ શોધો","پرنٹ / Save as PDF":"પ્રિન્ટ / PDF તરીકે સાચવો","طلبہ کی رپورٹ":"વિદ્યાર્થી અહેવાલ","فیس رپورٹ":"ફી અહેવાલ","تعاون رپورٹ":"સહયોગ અહેવાલ","تنخواہ رپورٹ":"પગાર અહેવાલ","مالی رپورٹ":"નાણાકીય અહેવાલ","تاریخ:":"તારીખ:","ابتدا":"શરૂઆત","آخر تک":"અંત સુધી","تا":"સુધી","نام حذف ہوچکا ہے":"નામ કાઢી નાખવામાં આવ્યું છે","طالب علم منتخب کریں":"વિદ્યાર્થી પસંદ કરો","استاد منتخب کریں":"શિક્ષક પસંદ કરો"
+};
+const GUJ_URDU=Object.fromEntries(Object.entries(URDU_GUJARATI).map(([u,g])=>[g,u]));
+let currentLanguage=localStorage.getItem("madrasa_language")||"ur";
+function translatePage(){
+ const dict=currentLanguage==="gu"?URDU_GUJARATI:GUJ_URDU;
+ document.querySelectorAll("input,textarea").forEach(el=>{if(el.placeholder&&dict[el.placeholder])el.placeholder=dict[el.placeholder]});
+ const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+ nodes.forEach(n=>{const v=n.nodeValue.trim();if(dict[v])n.nodeValue=n.nodeValue.replace(v,dict[v])});
+ document.documentElement.lang=currentLanguage==="gu"?"gu":"ur";document.documentElement.dir=currentLanguage==="gu"?"ltr":"rtl";
+}
+function setLanguage(lang){currentLanguage=lang==="gu"?"gu":"ur";localStorage.setItem("madrasa_language",currentLanguage);translatePage();refresh();translatePage()}
+function save(){localStorage.setItem(KEY,JSON.stringify(db));refresh();translatePage()}
+function id(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function money(n){return "₹"+Number(n||0).toLocaleString('en-IN')}
+function today(){return new Date().toISOString().slice(0,10)}
+function showSection(name,btn){document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));document.getElementById(name).classList.add('active');document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');refresh()}
+
+function fillSelects(){
+ const ids=["feeStudent"];ids.forEach(id=>{document.getElementById(id).innerHTML='<option value="">منتخب کریں</option>';db.students.forEach(x=>document.getElementById(id).innerHTML+=`<option value="${x.id}">${esc(x.name)}</option>`)});
+ salaryTeacher.innerHTML='<option value="">منتخب کریں</option>';db.teachers.forEach(x=>salaryTeacher.innerHTML+=`<option value="${x.id}">${esc(x.name)}</option>`)
+}
+function studentNameBy(i){return esc((db.students.find(x=>x.id===i)||{}).name||'نام حذف ہوچکا ہے')}
+function teacherNameBy(i){return esc((db.teachers.find(x=>x.id===i)||{}).name||'نام حذف ہوچکا ہے')}
+
+function saveStudent(){const o={id:studentId.value||id(),name:studentName.value,father:studentFather.value,phone:studentPhone.value,cls:studentClass.value,address:studentAddress.value,date:studentDate.value};if(!o.name.trim())return alert('طالب علم کا نام لکھیں');const i=db.students.findIndex(x=>x.id===o.id);if(i>=0)db.students[i]=o;else db.students.push(o);save();resetForm('student')}
+function renderStudents(){const q=(studentSearch.value||'').toLowerCase();studentTable.innerHTML=db.students.filter(x=>(x.name+x.father).toLowerCase().includes(q)).map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.father)}</td><td>${esc(x.phone)}</td><td>${esc(x.cls)}</td><td>${esc(x.date)}</td><td><button class="btn warning" onclick="editStudent('${x.id}')">ترمیم</button><button class="btn danger" onclick="del('students','${x.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="6" class="empty">کوئی ریکارڈ نہیں</td></tr>'}
+function editStudent(k){const x=db.students.find(x=>x.id===k);if(!x)return;studentId.value=x.id;studentName.value=x.name;studentFather.value=x.father;studentPhone.value=x.phone;studentClass.value=x.cls;studentAddress.value=x.address;studentDate.value=x.date;showSection('students',document.querySelector('nav button:nth-child(2)'))}
+
+function saveTeacher(){const o={id:teacherId.value||id(),name:teacherName.value,role:teacherRole.value,phone:teacherPhone.value,salary:Number(teacherSalary.value)||0};if(!o.name.trim())return alert('استاد کا نام لکھیں');const i=db.teachers.findIndex(x=>x.id===o.id);if(i>=0)db.teachers[i]=o;else db.teachers.push(o);save();resetForm('teacher')}
+function renderTeachers(){teacherTable.innerHTML=db.teachers.map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.role)}</td><td>${esc(x.phone)}</td><td>${money(x.salary)}</td><td><button class="btn warning" onclick="editTeacher('${x.id}')">ترمیم</button><button class="btn danger" onclick="del('teachers','${x.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="5" class="empty">کوئی ریکارڈ نہیں</td></tr>'}
+function editTeacher(k){const x=db.teachers.find(x=>x.id===k);if(!x)return;teacherId.value=x.id;teacherName.value=x.name;teacherRole.value=x.role;teacherPhone.value=x.phone;teacherSalary.value=x.salary;showSection('teachers',document.querySelector('nav button:nth-child(3)'))}
+
+
+function saveFee(){if(!feeStudent.value)return alert('طالب علم منتخب کریں');db.fees.push({id:id(),date:feeDate.value||today(),student:feeStudent.value,month:feeMonth.value,due:Number(feeDue.value)||0,paid:Number(feePaid.value)||0});save();resetForm('fee')}
+function renderFees(){feeTable.innerHTML=db.fees.slice().reverse().map(x=>`<tr><td>${esc(x.date)}</td><td>${studentNameBy(x.student)}</td><td>${esc(x.month)}</td><td>${money(x.due)}</td><td>${money(x.paid)}</td><td>${money(x.due-x.paid)}</td><td><button class="btn danger" onclick="del('fees','${x.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">کوئی ریکارڈ نہیں</td></tr>'}
+function saveDonor(){if(!donorName.value.trim())return alert('معاون کا نام لکھیں');db.donors.push({id:id(),name:donorName.value,phone:donorPhone.value,monthly:Number(donorMonthly.value)||0,paid:Number(donorPaid.value)||0,month:donorMonth.value,date:donorDate.value||today()});save();resetForm('donor')}
+function renderDonors(){donorTable.innerHTML=db.donors.slice().reverse().map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.phone)}</td><td>${money(x.monthly)}</td><td>${money(x.paid)}</td><td>${esc(x.month)}</td><td><button class="btn danger" onclick="del('donors','${x.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="6" class="empty">کوئی ریکارڈ نہیں</td></tr>'}
+function saveSalary(){if(!salaryTeacher.value)return alert('استاد منتخب کریں');db.salaries.push({id:id(),teacher:salaryTeacher.value,month:salaryMonth.value,due:Number(salaryDue.value)||0,paid:Number(salaryPaid.value)||0,date:salaryDate.value||today()});save();resetForm('salary')}
+function renderSalaries(){salaryTable.innerHTML=db.salaries.slice().reverse().map(x=>`<tr><td>${teacherNameBy(x.teacher)}</td><td>${esc(x.month)}</td><td>${money(x.due)}</td><td>${money(x.paid)}</td><td>${money(x.due-x.paid)}</td><td><button class="btn danger" onclick="del('salaries','${x.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="6" class="empty">کوئی ریکارڈ نہیں</td></tr>'}
+function saveFinance(){if(!finAmount.value)return alert('رقم درج کریں');db.finance.push({id:id(),date:finDate.value||today(),type:finType.value,amount:Number(finAmount.value)||0,note:finNote.value});save();resetForm('finance')}
+function renderFinance(){financeTable.innerHTML=db.finance.slice().reverse().map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.type)}</td><td>${money(x.amount)}</td><td>${esc(x.note)}</td><td><button class="btn danger" onclick="del('finance','${x.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="5" class="empty">کوئی ریکارڈ نہیں</td></tr>'}
+
+function del(arr,key){if(confirm('کیا یہ ریکارڈ حذف کرنا ہے؟')){db[arr]=db[arr].filter(x=>x.id!==key);save()}}
+function resetForm(type){
+ if(type==='student'){document.querySelectorAll('#students input').forEach(x=>{if(x.type!=='hidden')x.value=''});studentId.value=''}
+ if(type==='teacher'){document.querySelectorAll('#teachers input').forEach(x=>{if(x.type!=='hidden')x.value=''});teacherId.value=''}
+ if(type==='fee'){feeMonth.value='';feeDue.value='';feePaid.value='';feeDate.value=today()}
+ if(type==='donor'){donorName.value='';donorPhone.value='';donorMonthly.value='';donorPaid.value='';donorMonth.value='';donorDate.value=today()}
+ if(type==='salary'){salaryTeacher.value='';salaryMonth.value='';salaryDue.value='';salaryPaid.value='';salaryDate.value=today()}
+ if(type==='finance'){finAmount.value='';finNote.value='';finDate.value=today()}
+}
+
+function report(type){
+  let title='',html='';
+  const from=(document.getElementById('reportFrom')?.value||''),to=(document.getElementById('reportTo')?.value||'');
+  const inRange=d=>(!from||!d||d>=from)&&(!to||!d||d<=to);
+  const filtered=a=>a.filter(x=>inRange(x.date||''));
+  const T=(u)=>currentLanguage==='gu'?(URDU_GUJARATI[u]||u):u;
+  const noRec=T('کوئی ریکارڈ نہیں');
+  if(type==='students'){
+    title=T('طلبہ کی رپورٹ');
+    html='<table><tr><th>'+T('نام')+'</th><th>'+T('والد')+'</th><th>'+T('جماعت')+'</th><th>'+T('موبائل')+'</th><th>'+T('تاریخ')+'</th></tr>'+filtered(db.students).map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.father)}</td><td>${esc(x.cls)}</td><td>${esc(x.phone)}</td><td>${esc(x.date)}</td></tr>`).join('')+'</table>';
+  }
+  if(type==='fees'){
+    title=T('فیس رپورٹ');
+    html='<table><tr><th>'+T('تاریخ')+'</th><th>'+T('طالب علم')+'</th><th>'+T('مہینہ')+'</th><th>'+T('واجب')+'</th><th>'+T('جمع')+'</th><th>'+T('باقی')+'</th></tr>'+filtered(db.fees).map(x=>`<tr><td>${esc(x.date)}</td><td>${studentNameBy(x.student)}</td><td>${esc(x.month)}</td><td>${money(x.due)}</td><td>${money(x.paid)}</td><td>${money(x.due-x.paid)}</td></tr>`).join('')+'</table>';
+  }
+  if(type==='donors'){
+    title=T('تعاون رپورٹ');
+    html='<table><tr><th>'+T('تاریخ')+'</th><th>'+T('معاون')+'</th><th>'+T('ماہانہ')+'</th><th>'+T('جمع')+'</th><th>'+T('مہینہ')+'</th></tr>'+filtered(db.donors).map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.name)}</td><td>${money(x.monthly)}</td><td>${money(x.paid)}</td><td>${esc(x.month)}</td></tr>`).join('')+'</table>';
+  }
+  if(type==='salaries'){
+    title=T('تنخواہ رپورٹ');
+    html='<table><tr><th>'+T('تاریخ')+'</th><th>'+T('نام')+'</th><th>'+T('مہینہ')+'</th><th>'+T('مقررہ')+'</th><th>'+T('ادا')+'</th><th>'+T('باقی')+'</th></tr>'+filtered(db.salaries).map(x=>`<tr><td>${esc(x.date)}</td><td>${teacherNameBy(x.teacher)}</td><td>${esc(x.month)}</td><td>${money(x.due)}</td><td>${money(x.paid)}</td><td>${money(x.due-x.paid)}</td></tr>`).join('')+'</table>';
+  }
+  if(type==='finance'){
+    title=T('مالی رپورٹ');
+    const rows=filtered(db.finance),inc=rows.filter(x=>x.type==='آمدنی').reduce((a,x)=>a+x.amount,0),exp=rows.filter(x=>x.type==='اخراجات').reduce((a,x)=>a+x.amount,0);
+    html=`<p><b>${T('کل آمدنی')}:</b> ${money(inc)} &nbsp; <b>${T('کل اخراجات')}:</b> ${money(exp)} &nbsp; <b>${T('موجودہ بیلنس')}:</b> ${money(inc-exp)}</p><table><tr><th>${T('تاریخ')}</th><th>${T('قسم')}</th><th>${T('رقم')}</th><th>${T('تفصیل')}</th></tr>`+rows.map(x=>`<tr><td>${esc(x.date)}</td><td>${currentLanguage==='gu'?(x.type==='آمدنی'?'આવક':'ખર્ચ'):esc(x.type)}</td><td>${money(x.amount)}</td><td>${esc(x.note)}</td></tr>`).join('')+'</table>';
+  }
+  if(!html) html='<div class="empty">'+noRec+'</div>';
+  reportOutput.innerHTML=`<h3>${title}</h3><div class="small">${T('تاریخ:')} ${from||T('ابتدا')} ${T('تا')} ${to||T('آخر تک')}</div>${html}<button class="btn no-print" onclick="window.print()">🖨️ ${T('پرنٹ / Save as PDF')}</button>`;
+}
+
+function clearReportDates(){document.getElementById('reportFrom').value='';document.getElementById('reportTo').value=''}
+function goBack(){if(history.length>1)history.back();else showSection('home',document.querySelector('nav button'))}
+function exitApp(){if(confirm('کیا آپ سسٹم سے باہر نکلنا چاہتے ہیں؟')){window.close();setTimeout(()=>alert('اگر ایپ خود بند نہ ہو تو اس ونڈو/ٹیب کو دستی طور پر بند کریں۔'),300)}}
+
+function exportData(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Madrasa_Management_Backup.json';a.click();URL.revokeObjectURL(a.href)}
+function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!x.students||!x.teachers)throw 0;["exams","attendance","fees","donors","salaries","finance"].forEach(k=>{if(!Array.isArray(x[k]))x[k]=[]});db=x;save();alert('بیک اپ کامیابی سے بحال ہوگیا۔')}catch{alert('غلط بیک اپ فائل')}};r.readAsText(f)}
+function clearAll(){if(confirm('تمام ریکارڈ مستقل طور پر حذف ہو جائیں گے۔ کیا آپ پُریقین ہیں؟')){localStorage.removeItem(KEY);location.reload()}}
+function setMadrasaName(){
+  const current=localStorage.getItem("madrasa_name")||"";
+  const name=prompt("مدرسے کا نام درج کریں:",current);
+  if(name===null)return;
+  const clean=name.trim();
+  if(clean){
+    localStorage.setItem("madrasa_name",clean);
+    updateMadrasaName();
+    alert("مدرسے کا نام محفوظ ہوگیا۔");
+  }else{
+    localStorage.removeItem("madrasa_name");
+    updateMadrasaName();
+  }
+}
+function updateMadrasaName(){
+  const name=localStorage.getItem("madrasa_name")||"";
+  const title=document.getElementById("appTitle");
+  const sub=document.getElementById("madrasaNameDisplay");
+  if(name){
+    title.textContent=name;
+    sub.textContent="مدرسہ مینجمنٹ سسٹم";
+  }else{
+    title.textContent="مدرسہ مینجمنٹ سسٹم";
+    sub.textContent="طلبہ، اساتذہ، فیس، تعاون، تنخواہوں اور مالی حساب کا جامع ریکارڈ";
+  }
+}
+function refresh(){
+ fillSelects();renderStudents();renderTeachers();renderFees();renderDonors();renderSalaries();renderFinance();
+ const income=db.finance.filter(x=>x.type==='آمدنی').reduce((a,x)=>a+x.amount,0)+db.fees.reduce((a,x)=>a+x.paid,0)+db.donors.reduce((a,x)=>a+x.paid,0);
+ const expense=db.finance.filter(x=>x.type==='اخراجات').reduce((a,x)=>a+x.amount,0)+db.salaries.reduce((a,x)=>a+x.paid,0);
+ sStudents.textContent=db.students.length;sTeachers.textContent=db.teachers.length;sDonors.textContent=db.donors.length;sIncome.textContent=money(income);sExpense.textContent=money(expense);sBalance.textContent=money(income-expense)
+}
+document.addEventListener('DOMContentLoaded',()=>{['feeDate','donorDate','salaryDate','finDate','studentDate'].forEach(x=>{if(document.getElementById(x))document.getElementById(x).value=today()});refresh();updateMadrasaName();translatePage()});
+</script>
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
