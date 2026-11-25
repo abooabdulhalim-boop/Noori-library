@@ -817,6 +817,415 @@ button {
 </body>
 </html>
 
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123b32">
+<title>رمضان المبارک کاؤنٹ ڈاؤن</title>
+
+<style>
+:root {
+  color-scheme: dark;
+  --gold:#e7c878;
+  --cream:#f8f1df;
+  --muted:#c8d5cd;
+}
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  background:radial-gradient(
+    ellipse at top,#285747 0%,#123b32 48%,#09251f 100%
+  );
+  color:var(--cream);
+  font-family:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq",serif;
+}
+
+.card {
+  width:min(100%,560px);
+  text-align:center;
+  padding:25px 20px;
+  border:1px solid rgba(231,200,120,.55);
+  border-radius:25px;
+  background:rgba(4,27,22,.48);
+  box-shadow:0 18px 55px rgba(0,0,0,.28);
+}
+
+.hijri-date {
+  color:var(--gold);
+  font-size:19px;
+  line-height:2;
+  font-weight:bold;
+  border-bottom:1px solid rgba(231,200,120,.3);
+  padding-bottom:12px;
+  margin-bottom:15px;
+}
+
+.crescent {
+  color:var(--gold);
+  font-size:50px;
+}
+
+h1 {
+  font-size:clamp(28px,7vw,39px);
+  margin:8px 0;
+  color:var(--gold);
+}
+
+.subtitle {
+  color:var(--muted);
+  font-size:17px;
+  margin-bottom:25px;
+}
+
+.count {
+  font-size:clamp(64px,18vw,100px);
+  line-height:1.15;
+  font-weight:bold;
+  color:#fff7df;
+}
+
+.days-label {
+  color:var(--gold);
+  font-size:21px;
+  margin:5px 0 22px;
+}
+
+.clock {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-bottom:24px;
+}
+
+.unit {
+  padding:12px 5px;
+  border-radius:14px;
+  border:1px solid rgba(231,200,120,.3);
+  background:rgba(255,255,255,.055);
+}
+
+.unit strong {
+  display:block;
+  font-size:28px;
+  color:white;
+  font-family:Arial,sans-serif;
+}
+
+.unit span {
+  color:var(--muted);
+  font-size:14px;
+}
+
+.date {
+  border-top:1px solid rgba(231,200,120,.3);
+  padding-top:17px;
+  font-size:17px;
+  line-height:2;
+}
+
+.note {
+  color:#c4d0c9;
+  font-size:13px;
+  line-height:1.9;
+  margin-top:16px;
+}
+
+.settings { margin-top:20px; }
+
+details {
+  text-align:right;
+  color:var(--muted);
+}
+
+summary {
+  cursor:pointer;
+  color:var(--gold);
+}
+
+label {
+  display:block;
+  margin:12px 0 6px;
+}
+
+input {
+  width:100%;
+  padding:10px;
+  border-radius:9px;
+  font-size:16px;
+}
+
+button {
+  margin-top:10px;
+  padding:10px 18px;
+  border:0;
+  border-radius:9px;
+  background:var(--gold);
+  color:#18382f;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+@media(max-width:360px) {
+  .card {padding:20px 12px;}
+  .clock {gap:6px;}
+}
+</style>
+</head>
+
+<body>
+
+<main class="card">
+
+  <!-- آج کی ہجری تاریخ -->
+  <div class="hijri-date" id="hijriDate">
+    ہجری تاریخ
+  </div>
+
+  <div class="crescent">☾</div>
+
+  <h1>رمضان المبارک ۱۴۴۸ھ</h1>
+
+  <p class="subtitle">
+    رحمتوں اور برکتوں کے مہینے کی آمد میں
+  </p>
+
+  <div class="count" id="days">---</div>
+  <div class="days-label" id="daysLabel">دن باقی</div>
+
+  <section class="clock">
+
+    <div class="unit">
+      <strong id="hours">00</strong>
+      <span>گھنٹے</span>
+    </div>
+
+    <div class="unit">
+      <strong id="minutes">00</strong>
+      <span>منٹ</span>
+    </div>
+
+    <div class="unit">
+      <strong id="seconds">00</strong>
+      <span>سیکنڈ</span>
+    </div>
+
+  </section>
+
+  <div class="date">
+
+    <div>
+      متوقع پہلا روزہ:
+      <strong id="targetText"></strong>
+    </div>
+
+    <div>
+      آج کی انگریزی تاریخ:
+      <strong id="todayText"></strong>
+    </div>
+
+  </div>
+
+  <p class="note">
+    یہ گنتی پہلے روزے کی متوقع تاریخ کے مطابق ہے۔
+    حتمی تاریخ چاند کی رؤیت اور مقامی اعلان کے مطابق
+    ایک دن آگے پیچھے ہو سکتی ہے۔
+  </p>
+
+  <div class="settings">
+
+    <details>
+
+      <summary>⚙ تاریخ تبدیل کریں</summary>
+
+      <label for="targetDate">
+        پہلے روزے کی تاریخ منتخب کریں
+      </label>
+
+      <input type="date" id="targetDate"
+             value="2027-02-09">
+
+      <button id="saveDate">
+        تاریخ محفوظ کریں
+      </button>
+
+    </details>
+
+  </div>
+
+</main>
+
+<script>
+(() => {
+
+  const defaultDate = "2027-02-09";
+  const dateInput = document.getElementById("targetDate");
+
+  let target = defaultDate;
+
+  try {
+    target = localStorage.getItem("ramadanTargetDate")
+      || defaultDate;
+  } catch(e) {}
+
+  dateInput.value = target;
+
+  const urduDigits = n =>
+    String(n).replace(/\d/g, d => "۰۱۲۳۴۵۶۷۸۹"[Number(d)]);
+
+  const months = [
+    "جنوری","فروری","مارچ","اپریل","مئی","جون",
+    "جولائی","اگست","ستمبر","اکتوبر","نومبر","دسمبر"
+  ];
+
+  const weekdays = [
+    "اتوار","پیر","منگل","بدھ",
+    "جمعرات","جمعہ","ہفتہ"
+  ];
+
+  const hijriMonths = [
+    "محرم","صفر","ربیع الاول","ربیع الآخر",
+    "جمادی الاول","جمادی الآخر","رجب","شعبان",
+    "رمضان","شوال","ذوالقعدہ","ذوالحجہ"
+  ];
+
+  function formatHijriDate(d) {
+    try {
+      const parts = new Intl.DateTimeFormat(
+        "en-u-ca-islamic-umalqura",
+        {
+          day:"numeric",
+          month:"numeric",
+          year:"numeric"
+        }
+      ).formatToParts(d);
+
+      const get = type =>
+        Number(parts.find(p => p.type === type)?.value);
+
+      const day = get("day");
+      const month = get("month");
+      const year = get("year");
+
+      if (!day || !month || !year ||
+          !hijriMonths[month - 1]) {
+        throw new Error("Date unavailable");
+      }
+
+      return "آج کی ہجری تاریخ: " +
+        urduDigits(day) + " " +
+        hijriMonths[month - 1] + " " +
+        urduDigits(year) + "ھ";
+
+    } catch(e) {
+      return "ہجری تاریخ اس براؤزر میں دستیاب نہیں";
+    }
+  }
+
+  function formatDate(d) {
+    return `${urduDigits(d.getDate())} ${
+      months[d.getMonth()]
+    } ${urduDigits(d.getFullYear())}ء، بروز ${
+      weekdays[d.getDay()]
+    }`;
+  }
+
+  function update() {
+
+    const now = new Date();
+
+    const parts = target.split("-").map(Number);
+
+    const goal = new Date(
+      parts[0],parts[1]-1,parts[2],0,0,0
+    );
+
+    document.getElementById("hijriDate").textContent =
+      formatHijriDate(now);
+
+    document.getElementById("todayText").textContent =
+      formatDate(now);
+
+    document.getElementById("targetText").textContent =
+      formatDate(goal);
+
+    let diff = goal.getTime() - now.getTime();
+
+    if (diff <= 0) {
+
+      document.getElementById("days").textContent = "مبارک";
+
+      document.getElementById("daysLabel").textContent =
+        "رمضان المبارک شروع ہو چکا ہے";
+
+      ["hours","minutes","seconds"].forEach(id => {
+        document.getElementById(id).textContent = "۰۰";
+      });
+
+      return;
+    }
+
+    const totalSeconds = Math.floor(diff / 1000);
+
+    const days = Math.floor(totalSeconds / 86400);
+
+    const hours = Math.floor(
+      (totalSeconds % 86400) / 3600
+    );
+
+    const minutes = Math.floor(
+      (totalSeconds % 3600) / 60
+    );
+
+    const seconds = totalSeconds % 60;
+
+    document.getElementById("days").textContent =
+      urduDigits(days);
+
+    document.getElementById("daysLabel").textContent =
+      "دن باقی ہیں";
+
+    document.getElementById("hours").textContent =
+      urduDigits(String(hours).padStart(2,"0"));
+
+    document.getElementById("minutes").textContent =
+      urduDigits(String(minutes).padStart(2,"0"));
+
+    document.getElementById("seconds").textContent =
+      urduDigits(String(seconds).padStart(2,"0"));
+  }
+
+  document.getElementById("saveDate")
+    .addEventListener("click", () => {
+
+      if (!dateInput.value) return;
+
+      target = dateInput.value;
+
+      try {
+        localStorage.setItem("ramadanTargetDate",target);
+      } catch(e) {}
+
+      update();
+    });
+
+  update();
+
+  setInterval(update,1000);
+
+})();
+</script>
+
+</body>
+</html>
+
 
 
 <!DOCTYPE html>
