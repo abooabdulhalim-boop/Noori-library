@@ -178,7 +178,7 @@ body:has(.article-detail:target) .hero{display:none}
         <time class="date-value" id="hijriDate">--</time>
       </div>
     </div>
-    
+    <small class="date-note">اسلامی تاریخ ام القریٰ کیلنڈر کے مطابق ہے؛ مقامی رؤیتِ ہلال کے اعتبار سے ایک دن کا فرق ممکن ہے۔</small>
   </section>
 </header>
 <main class="wrap">
@@ -195,7 +195,7 @@ body:has(.article-detail:target) .hero{display:none}
       <a class="folder-tile articles" href="#folder-articles"><span>📚</span><b>مضامین</b><small>دینی و اصلاحی مضامین</small></a>
       <a class="folder-tile people" href="#folder-people"><span>👤</span><b>شخصیات</b><small>علماء، مشائخ اور اکابر کے تعارف</small></a>
       <a class="folder-tile madrasa-folder" href="#madrasa-system" onclick="event.preventDefault();document.getElementById('madrasa-overlay').style.display='block';document.getElementById('madrasa-frame').style.display='block';">
-        <span>🏫</span><b>مدرسہ مینجمنٹ</b><small>طلبہ، اساتذہ، فیس اور مالی حساب</small>
+        <span>🏫</span><b>مکاتب حاضری مینجمنٹ</b>
       </a>
 
     </div>
@@ -793,296 +793,202 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <div id="madrasa-overlay" style="display:none;position:fixed;inset:0;z-index:999999;background:#071b1b;">
   <div style="height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;background:#123d35;color:#fff;box-sizing:border-box;">
-    <strong style="font-size:18px">🏫 مدرسہ مینجمنٹ</strong>
+    <strong style="font-size:18px">🏫 مکاتب حاضری مینجمنٹ</strong>
     <button type="button" onclick="document.getElementById('madrasa-overlay').style.display='none';document.getElementById('madrasa-frame').style.display='none';" style="border:0;border-radius:8px;padding:8px 16px;font-size:16px;background:#f3d58b;color:#173b32;">واپس لائبریری</button>
   </div>
-  <iframe id="madrasa-frame" title="مدرسہ مینجمنٹ سسٹم" srcdoc="&lt;!DOCTYPE html&gt;
+  <iframe id="madrasa-frame" title="مکاتب حاضری مینجمنٹ سسٹم" style="display:none;border:0;width:100%;height:calc(100% - 54px);background:#fff;" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;ur&quot; dir=&quot;rtl&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-&lt;title&gt;مدرسہ مینجمنٹ سسٹم&lt;/title&gt;
+&lt;title&gt;مکاتب حاضری مینجمنٹ&lt;/title&gt;
 &lt;style&gt;
-*{box-sizing:border-box}
-body{margin:0;font-family:&quot;Noto Nastaliq Urdu&quot;,&quot;Jameel Noori Nastaleeq&quot;,&quot;Noto Naskh Arabic&quot;,Tahoma,Arial,sans-serif;background:#f3f6f4;color:#17251d}
-header{background:#14532d;color:#fff;padding:18px;text-align:center;position:sticky;top:0;z-index:5}
-header h1{margin:0 0 6px;font-size:25px} header p{margin:0;font-size:13px}
-nav{display:flex;gap:7px;overflow:auto;background:#fff;padding:8px;position:sticky;top:78px;z-index:4;box-shadow:0 2px 8px #0001}
-nav button{white-space:nowrap;border:0;background:#e8f2eb;color:#14532d;padding:10px 13px;border-radius:9px;font-weight:bold;cursor:pointer}
-nav button.active{background:#14532d;color:#fff}
-main{max-width:1200px;margin:auto;padding:14px}.section{display:none}.section.active{display:block}
-.card{background:#fff;border-radius:14px;padding:15px;margin-bottom:14px;box-shadow:0 2px 10px #00000012}
-h2{margin-top:0;color:#14532d}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
-.stat{padding:15px;border-radius:12px;background:#eef7f0;text-align:center}.stat b{display:block;font-size:24px;color:#14532d;margin-top:5px}
-input,select,textarea{width:100%;padding:10px;border:1px solid #ccd7cf;border-radius:8px;font-size:15px;background:#fff}
-label{font-weight:bold;font-size:13px;display:block;margin:5px 0}.formgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
-.btn{border:0;border-radius:8px;padding:10px 14px;background:#14532d;color:white;font-weight:bold;margin:5px 2px;cursor:pointer}
-.btn.secondary{background:#64748b}.btn.danger{background:#b91c1c}.btn.light{background:#e8f2eb;color:#14532d}.btn.warning{background:#b7791f;color:#fff}
-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px;background:#fff}th,td{border:1px solid #dbe3dd;padding:8px;text-align:right}
-th{background:#e8f2eb;color:#14532d}.tablewrap{overflow:auto}.empty{text-align:center;color:#64748b;padding:20px}
-.notice{background:#fff7d6;border-right:4px solid #d6a400;padding:10px;border-radius:8px;margin-bottom:10px}.search{margin-top:10px}.small{font-size:12px;color:#64748b}
-.reportbox{padding:15px;border:1px dashed #9aa9a0;border-radius:10px;margin-top:10px}.result-good{color:#15803d;font-weight:bold}.result-fail{color:#b91c1c;font-weight:bold}
-.urdu-text,h1,h2,h3,p,label,button,th,td,input,select,textarea{font-family:&quot;Noto Nastaliq Urdu&quot;,&quot;Jameel Noori Nastaleeq&quot;,&quot;Noto Naskh Arabic&quot;,Tahoma,Arial,sans-serif}
-h1,h2,h3{line-height:2}button{line-height:1.8}input,select,textarea{line-height:1.8}
-@media print{header,nav,.no-print{display:none!important}.section{display:none!important}.section.active{display:block!important}body{background:#fff}.card{box-shadow:none}}
+*{box-sizing:border-box}body{margin:0;background:#f1f5f9;color:#172033;font-family:Arial,&quot;Noto Nastaliq Urdu&quot;,sans-serif}
+header{background:#0f766e;color:#fff;padding:16px;text-align:center;position:sticky;top:0;z-index:5}
+header h1{margin:0 0 8px;font-size:24px}#schoolTitle{font-size:19px;font-weight:bold}
+.container{max-width:1100px;margin:auto;padding:14px}.card{background:#fff;border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 2px 10px #00000012}
+h2{margin:0 0 12px;font-size:20px;color:#0f766e}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+input,select,button{width:100%;padding:11px;border-radius:9px;border:1px solid #cbd5e1;font-size:15px}
+button{border:0;background:#0f766e;color:#fff;cursor:pointer;font-weight:bold}.btn-red{background:#dc2626}.btn-blue{background:#2563eb}.btn-gray{background:#475569}.btn-green{background:#16a34a}.btn-orange{background:#ea580c}
+.actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}.notice{padding:10px;background:#ecfeff;border-right:4px solid #0f766e;border-radius:8px;margin-bottom:10px}
+.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:500px}th,td{padding:10px;border-bottom:1px solid #e2e8f0;text-align:center}th{background:#f8fafc}
+.present{background:#dcfce7!important;color:#166534;font-weight:bold}.absent{background:#fee2e2!important;color:#991b1b;font-weight:bold}.status-btn{min-width:100px;border-radius:20px}
+.student-row{display:flex;align-items:center;gap:10px;justify-content:space-between;border:1px solid #e2e8f0;border-radius:10px;padding:8px;margin:7px 0}
+.student-name{font-weight:bold;flex:1;text-align:right}.small{font-size:12px;color:#64748b}.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px}
+.stat{padding:14px;border-radius:12px;background:#f8fafc;text-align:center}.attendance-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}.summary-btn{padding:12px;border-radius:10px;border:1px solid #cbd5e1;font-weight:bold;cursor:pointer}.summary-total{background:#fff;color:#172033}.summary-present{background:#16a34a;color:#fff;border-color:#16a34a}.summary-absent{background:#dc2626;color:#fff;border-color:#dc2626}.summary-btn b{font-size:20px;display:block;margin-top:3px}.stat b{display:block;font-size:22px;margin-top:4px}.report-title{text-align:center;margin-bottom:15px}
+footer{text-align:center;color:#64748b;padding:20px}
+@media print{header,.no-print,.card.form-card{display:none!important}body{background:#fff}.card{box-shadow:none;border:0}#reportArea{display:block!important}}
 
-#landingPage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(145deg,#0b3d26,#17613b 55%,#d7b56d);text-align:center}
-.landing-card{width:min(94%,760px);padding:clamp(28px,7vw,64px) 20px;border:2px solid rgba(255,255,255,.78);border-radius:28px;background:rgba(255,255,255,.10);box-shadow:0 18px 55px #0004;color:#fff}
-.landing-mark{font-size:clamp(42px,9vw,76px);margin-bottom:12px}
-#launchSystem{display:block;width:100%;border:0;border-radius:20px;padding:22px 12px;background:#fff;color:#14532d;font-size:clamp(30px,7vw,54px);font-weight:900;line-height:1.7;cursor:pointer;box-shadow:0 8px 24px #0003;font-family:inherit}
-#launchSystem:active{transform:scale(.985)}
-.landing-sub{font-size:clamp(15px,3vw,20px);margin-top:18px;color:#fff}
-#appShell{display:none}
-
+.home-page{min-height:100vh;background:linear-gradient(145deg,#e0f2fe,#f0fdfa);display:flex;align-items:center;justify-content:center;padding:24px}
+.home-inner{width:100%;max-width:520px;text-align:center}
+.home-inner h1{color:#134e4a;font-size:28px;margin:0 0 10px}
+.home-inner p{color:#475569;margin:0 0 28px}
+.folder-card{width:min(100%,330px);margin:auto;background:#fff;border:1px solid #cbd5e1;border-radius:20px;padding:25px 18px;box-shadow:0 8px 24px #0f172a18;cursor:pointer;color:#134e4a;transition:transform .15s,box-shadow .15s}
+.folder-card:active{transform:scale(.98)}
+.folder-icon{font-size:76px;line-height:1.2;display:block;margin-bottom:12px}
+.folder-card strong{font-size:23px;display:block}
+.folder-card small{display:block;color:#64748b;margin-top:8px;font-size:14px}
+.home-footer{margin-top:28px;color:#64748b;font-size:13px}
+#appRoot{display:none}
+.home-back{width:auto;padding:7px 13px;margin-top:10px;background:#115e59;border:1px solid #ffffff66;font-size:14px}
+@media(max-width:480px){.home-inner h1{font-size:24px}.folder-card{padding:22px 14px}}
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-
-&lt;div id=&quot;splashScreen&quot; style=&quot;display:none;position:fixed;inset:0;z-index:9999;background:#14532d;display:flex;align-items:center;justify-content:center;text-align:center;color:white;font-family:Tahoma,Arial,sans-serif&quot;&gt;
-&lt;div style=&quot;width:min(88%,520px);padding:35px 22px;border:3px solid rgba(255,255,255,.8);border-radius:28px;background:rgba(255,255,255,.08);box-shadow:0 10px 40px rgba(0,0,0,.25)&quot;&gt;
-&lt;div style=&quot;width:105px;height:105px;margin:0 auto 20px;border:3px solid white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:48px;background:#166534&quot;&gt;📚&lt;/div&gt;
-&lt;div style=&quot;font-size:34px;font-weight:bold;line-height:1.5&quot;&gt;مدرسہ مینجمنٹ سسٹم&lt;/div&gt;
-&lt;div style=&quot;font-size:18px;margin-top:10px;opacity:.95&quot;&gt;Madrasa Management System&lt;/div&gt;
-&lt;div style=&quot;margin-top:24px;font-size:13px;opacity:.8&quot;&gt;نظام شروع ہو رہا ہے...&lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;
-
-&lt;section id=&quot;landingPage&quot; aria-label=&quot;مرکزی صفحہ&quot;&gt;
-  &lt;div class=&quot;landing-card&quot;&gt;
-    &lt;div class=&quot;landing-mark&quot;&gt;📚&lt;/div&gt;
-    &lt;button id=&quot;launchSystem&quot; type=&quot;button&quot; onclick=&quot;openSystem()&quot;&gt;مدرسہ مینیجمنٹ&lt;/button&gt;
-    &lt;div class=&quot;landing-sub&quot;&gt;سسٹم کھولنے کے لیے اوپر کلک کریں&lt;/div&gt;
-    &lt;div style=&quot;margin-top:28px;font-size:13px;opacity:.85&quot;&gt;MADRASA MANAGEMENT SYSTEM&lt;/div&gt;
+&lt;div id=&quot;homePage&quot; class=&quot;home-page&quot;&gt;
+  &lt;div class=&quot;home-inner&quot;&gt;
+    &lt;h1&gt;مکاتب حاضری مینجمنٹ&lt;/h1&gt;
+    &lt;p&gt;تمام مکاتب کے طلبہ اور حاضری کا مکمل نظام&lt;/p&gt;
+    &lt;div class=&quot;folder-card&quot; role=&quot;button&quot; tabindex=&quot;0&quot; onclick=&quot;openAttendanceSystem()&quot; onkeydown=&quot;if(event.key===&#x27;Enter&#x27;||event.key===&#x27; &#x27;){event.preventDefault();openAttendanceSystem()}&quot;&gt;
+      &lt;span class=&quot;folder-icon&quot;&gt;📁&lt;/span&gt;
+      &lt;strong&gt;مکاتب حاضری مینجمنٹ&lt;/strong&gt;
+      &lt;small&gt;سسٹم کھولنے کے لیے یہاں کلک کریں&lt;/small&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;home-footer&quot;&gt;حاضری، طلبہ، ماہانہ و سالانہ رپورٹس اور بیک اپ&lt;/div&gt;
   &lt;/div&gt;
-&lt;/section&gt;
-&lt;div id=&quot;appShell&quot;&gt;
-&lt;header&gt;
-&lt;h1 id=&quot;appTitle&quot;&gt;مدرسہ مینجمنٹ سسٹم&lt;/h1&gt;
-&lt;p id=&quot;madrasaNameDisplay&quot;&gt;طلبہ، اساتذہ، فیس، تعاون، تنخواہوں اور مالی حساب کا جامع ریکارڈ&lt;/p&gt;
-&lt;div style=&quot;margin-top:10px&quot;&gt;
-&lt;button class=&quot;btn light&quot; onclick=&quot;setLanguage(&#x27;ur&#x27;)&quot;&gt;اردو&lt;/button&gt;
-&lt;button class=&quot;btn light&quot; onclick=&quot;setLanguage(&#x27;gu&#x27;)&quot;&gt;ગુજરાતી&lt;/button&gt;
-&lt;button class=&quot;btn light&quot; onclick=&quot;setMadrasaName()&quot;&gt;🏫 مدرسے کا نام&lt;/button&gt;
 &lt;/div&gt;
-&lt;/header&gt;
-
-&lt;nav&gt;
-&lt;button onclick=&quot;goBack()&quot;&gt;⬅️ بیک&lt;/button&gt;&lt;button onclick=&quot;exitApp()&quot;&gt;🚪 ایگزٹ&lt;/button&gt;
-&lt;button class=&quot;active&quot; onclick=&quot;showSection(&#x27;home&#x27;,this)&quot;&gt;🏠 ڈیش بورڈ&lt;/button&gt;
-&lt;button onclick=&quot;showSection(&#x27;students&#x27;,this)&quot;&gt;👨‍🎓 طلبہ&lt;/button&gt;
-&lt;button onclick=&quot;showSection(&#x27;teachers&#x27;,this)&quot;&gt;👨‍🏫 اساتذہ&lt;/button&gt;
-&lt;button onclick=&quot;showSection(&#x27;fees&#x27;,this)&quot;&gt;💰 فیس&lt;/button&gt;
-&lt;button onclick=&quot;showSection(&#x27;donors&#x27;,this)&quot;&gt;🤝 تعاون&lt;/button&gt;
-&lt;button onclick=&quot;showSection(&#x27;salaries&#x27;,this)&quot;&gt;💵 تنخواہیں&lt;/button&gt;
-&lt;button onclick=&quot;showSection(&#x27;finance&#x27;,this)&quot;&gt;📊 آمدنی/اخراجات&lt;/button&gt;
-&lt;button onclick=&quot;showSection(&#x27;reports&#x27;,this)&quot;&gt;📄 رپورٹس&lt;/button&gt;
-&lt;/nav&gt;
-
-&lt;main&gt;
-&lt;section id=&quot;home&quot; class=&quot;section active&quot;&gt;
-&lt;div class=&quot;card&quot;&gt;&lt;h2&gt;مدرسہ مینجمنٹ سسٹم&lt;/h2&gt;
-&lt;p&gt;مدرسے کے انتظامی، تعلیمی اور مالی امور کو آسان اور منظم انداز میں محفوظ رکھنے کے لیے یہ آف لائن نظام استعمال کریں۔&lt;/p&gt;
-&lt;div class=&quot;notice&quot;&gt;تمام ریکارڈ اسی ڈیوائس کے براؤزر میں محفوظ ہوگا۔ باقاعدہ بیک اپ کے لیے ڈیٹا ایکسپورٹ کریں۔&lt;/div&gt;
-&lt;div class=&quot;grid&quot;&gt;
-&lt;div class=&quot;stat&quot;&gt;کل طلبہ&lt;b id=&quot;sStudents&quot;&gt;0&lt;/b&gt;&lt;/div&gt;&lt;div class=&quot;stat&quot;&gt;کل اساتذہ&lt;b id=&quot;sTeachers&quot;&gt;0&lt;/b&gt;&lt;/div&gt;&lt;div class=&quot;stat&quot;&gt;معاونین&lt;b id=&quot;sDonors&quot;&gt;0&lt;/b&gt;&lt;/div&gt;
-&lt;div class=&quot;stat&quot;&gt;کل آمدنی&lt;b id=&quot;sIncome&quot;&gt;₹0&lt;/b&gt;&lt;/div&gt;&lt;div class=&quot;stat&quot;&gt;کل اخراجات&lt;b id=&quot;sExpense&quot;&gt;₹0&lt;/b&gt;&lt;/div&gt;&lt;div class=&quot;stat&quot;&gt;موجودہ بیلنس&lt;b id=&quot;sBalance&quot;&gt;₹0&lt;/b&gt;&lt;/div&gt;
+&lt;div id=&quot;appRoot&quot;&gt;
+&lt;header&gt;&lt;h1&gt;مکاتب حاضری مینجمنٹ&lt;/h1&gt;&lt;div id=&quot;schoolTitle&quot;&gt;مدرسہ کا نام درج کریں&lt;/div&gt;&lt;button class=&quot;home-back no-print&quot; onclick=&quot;backToHome()&quot;&gt;⌂ مرکزی صفحہ&lt;/button&gt;&lt;/header&gt;
+&lt;div class=&quot;container&quot;&gt;
+&lt;div class=&quot;card form-card&quot;&gt;&lt;h2&gt;🏫 مدرسہ / مکتب منتخب کریں&lt;/h2&gt;&lt;div class=&quot;grid&quot;&gt;&lt;select id=&quot;madrasaSelect&quot; onchange=&quot;switchMadrasa(this.value)&quot; aria-label=&quot;مدرسہ منتخب کریں&quot;&gt;&lt;/select&gt;&lt;button class=&quot;btn-green&quot; onclick=&quot;addMadrasa()&quot;&gt;➕ نیا مدرسہ / مکتب شامل کریں&lt;/button&gt;&lt;button class=&quot;btn-red&quot; onclick=&quot;deleteMadrasa()&quot;&gt;🗑️ موجودہ مدرسہ حذف کریں&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;small&quot;&gt;ہر مدرسے کے طلبہ، حاضری، ماہانہ و سالانہ رپورٹس اور بیک اپ الگ محفوظ رہیں گے۔&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;card form-card&quot;&gt;&lt;h2&gt;🏫 مدرسہ کی معلومات&lt;/h2&gt;&lt;div class=&quot;grid&quot;&gt;&lt;input id=&quot;schoolName&quot; placeholder=&quot;مدرسہ کا نام لکھیں&quot;&gt;&lt;button onclick=&quot;saveSchoolName()&quot;&gt;مدرسہ کا نام محفوظ کریں&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;small&quot;&gt;مدرسہ کا نام ایک مرتبہ محفوظ کرنے کے بعد تمام رپورٹس میں خودکار ظاہر ہوگا۔&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;card form-card&quot;&gt;&lt;h2&gt;👨‍🎓 طالب علم شامل کریں&lt;/h2&gt;&lt;div class=&quot;grid&quot;&gt;&lt;input id=&quot;studentName&quot; placeholder=&quot;طالب علم کا نام&quot;&gt;&lt;input id=&quot;rollNo&quot; placeholder=&quot;رول نمبر (اختیاری)&quot;&gt;&lt;button onclick=&quot;addStudent()&quot;&gt;طالب علم شامل کریں&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;card form-card&quot;&gt;&lt;h2&gt;📅 روزانہ حاضری&lt;/h2&gt;&lt;div class=&quot;grid&quot;&gt;&lt;input type=&quot;date&quot; id=&quot;attendanceDate&quot; lang=&quot;en-GB&quot; title=&quot;تاریخ: D/m/y&quot; onchange=&quot;loadAttendance()&quot;&gt;&lt;button onclick=&quot;loadAttendance()&quot;&gt;حاضری لسٹ دکھائیں&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;attendance-summary&quot;&gt;
+&lt;button type=&quot;button&quot; class=&quot;summary-btn summary-total&quot; onclick=&quot;filterAttendance(&#x27;all&#x27;)&quot;&gt;کل طلبہ&lt;b id=&quot;totalStudentsCount&quot;&gt;0&lt;/b&gt;&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;summary-btn summary-present&quot; onclick=&quot;filterAttendance(&#x27;present&#x27;)&quot;&gt;حاضر طلبہ&lt;b id=&quot;presentStudentsCount&quot;&gt;0&lt;/b&gt;&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;summary-btn summary-absent&quot; onclick=&quot;filterAttendance(&#x27;absent&#x27;)&quot;&gt;غیر حاضر طلبہ&lt;b id=&quot;absentStudentsCount&quot;&gt;0&lt;/b&gt;&lt;/button&gt;
+&lt;/div&gt;&lt;div class=&quot;notice&quot;&gt;📅 تاریخ کا کیلنڈر: D/m/y (دن/مہینہ/سال) &amp;nbsp;&amp;nbsp; 🟢 سبز = حاضر &amp;nbsp;&amp;nbsp; 🔴 لال = غیر حاضر&lt;/div&gt;&lt;div id=&quot;attendanceList&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;card form-card&quot;&gt;&lt;h2&gt;🔎 طالب علم کی رپورٹ&lt;/h2&gt;&lt;div class=&quot;grid&quot;&gt;&lt;input id=&quot;searchStudent&quot; list=&quot;studentNames&quot; placeholder=&quot;طالب علم کا نام تلاش کریں&quot; oninput=&quot;searchReport()&quot;&gt;&lt;datalist id=&quot;studentNames&quot;&gt;&lt;/datalist&gt;&lt;select id=&quot;reportMonth&quot; onchange=&quot;searchReport()&quot;&gt;&lt;/select&gt;&lt;select id=&quot;reportYear&quot; onchange=&quot;searchReport()&quot;&gt;&lt;/select&gt;&lt;/div&gt;&lt;div id=&quot;studentReport&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;card form-card&quot;&gt;&lt;h2&gt;📊 تمام طلبہ کی رپورٹس اور بیک اپ&lt;/h2&gt;&lt;div class=&quot;actions&quot;&gt;
+&lt;button class=&quot;btn-blue&quot; onclick=&quot;showMonthlyAll()&quot;&gt;ماہانہ رپورٹ&lt;/button&gt;&lt;button class=&quot;btn-orange&quot; onclick=&quot;showYearlyAll()&quot;&gt;سالانہ رپورٹ&lt;/button&gt;&lt;button class=&quot;btn-gray&quot; onclick=&quot;saveAsPDF()&quot;&gt;📄 Save as PDF&lt;/button&gt;
+&lt;button class=&quot;btn-green&quot; onclick=&quot;backupData()&quot;&gt;💾 بیک اپ محفوظ کریں&lt;/button&gt;&lt;button class=&quot;btn-blue&quot; onclick=&quot;document.getElementById(&#x27;restoreFile&#x27;).click()&quot;&gt;📂 بیک اپ فائل منتخب کریں&lt;/button&gt;
+&lt;button class=&quot;btn-gray&quot; id=&quot;restoreBtn&quot; onclick=&quot;restoreSelected()&quot; disabled&gt;♻️ منتخب بیک اپ بحال کریں&lt;/button&gt;&lt;button class=&quot;btn-red&quot; onclick=&quot;clearSelectedBackup()&quot;&gt;🗑️ منتخب بیک اپ ہٹائیں&lt;/button&gt;
+&lt;input id=&quot;restoreFile&quot; type=&quot;file&quot; accept=&quot;.json,application/json&quot; hidden onchange=&quot;fileSelected(event)&quot;&gt;&lt;div id=&quot;backupFileName&quot; class=&quot;small&quot; style=&quot;grid-column:1/-1&quot;&gt;کوئی بیک اپ فائل منتخب نہیں کی گئی۔&lt;/div&gt;
 &lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;card no-print&quot;&gt;&lt;h2&gt;ڈیٹا کی حفاظت&lt;/h2&gt;
-&lt;button class=&quot;btn&quot; onclick=&quot;exportData()&quot;&gt;💾 ڈیٹا بیک اپ&lt;/button&gt;
-&lt;button class=&quot;btn secondary&quot; onclick=&quot;document.getElementById(&#x27;importFile&#x27;).click()&quot;&gt;📥 بیک اپ بحال کریں&lt;/button&gt;
-&lt;input id=&quot;importFile&quot; type=&quot;file&quot; accept=&quot;.json&quot; style=&quot;display:none&quot; onchange=&quot;importData(event)&quot;&gt;
-&lt;button class=&quot;btn danger&quot; onclick=&quot;clearAll()&quot;&gt;⚠️ تمام ڈیٹا حذف کریں&lt;/button&gt;
-&lt;/div&gt;&lt;/section&gt;
-
-&lt;section id=&quot;students&quot; class=&quot;section&quot;&gt;&lt;div class=&quot;card&quot;&gt;&lt;h2&gt;طلبہ کا ریکارڈ&lt;/h2&gt;&lt;input type=&quot;hidden&quot; id=&quot;studentId&quot;&gt;
-&lt;div class=&quot;formgrid&quot;&gt;
-&lt;div&gt;&lt;label&gt;طالب علم کا نام&lt;/label&gt;&lt;input id=&quot;studentName&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;والد کا نام&lt;/label&gt;&lt;input id=&quot;studentFather&quot;&gt;&lt;/div&gt;
-&lt;div&gt;&lt;label&gt;موبائل نمبر&lt;/label&gt;&lt;input id=&quot;studentPhone&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;جماعت / درجہ&lt;/label&gt;&lt;input id=&quot;studentClass&quot;&gt;&lt;/div&gt;
-&lt;div&gt;&lt;label&gt;پتہ&lt;/label&gt;&lt;input id=&quot;studentAddress&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;داخلے کی تاریخ&lt;/label&gt;&lt;input id=&quot;studentDate&quot; type=&quot;date&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;&lt;button class=&quot;btn&quot; onclick=&quot;saveStudent()&quot;&gt;محفوظ کریں&lt;/button&gt;&lt;button class=&quot;btn light&quot; onclick=&quot;resetForm(&#x27;student&#x27;)&quot;&gt;نیا اندراج&lt;/button&gt;
-&lt;input class=&quot;search&quot; id=&quot;studentSearch&quot; oninput=&quot;renderStudents()&quot; placeholder=&quot;نام یا والد کا نام تلاش کریں&quot;&gt;
-&lt;div class=&quot;tablewrap&quot;&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;نام&lt;/th&gt;&lt;th&gt;والد&lt;/th&gt;&lt;th&gt;موبائل&lt;/th&gt;&lt;th&gt;جماعت&lt;/th&gt;&lt;th&gt;تاریخ&lt;/th&gt;&lt;th&gt;عمل&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody id=&quot;studentTable&quot;&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;/div&gt;&lt;/section&gt;
-
-&lt;section id=&quot;teachers&quot; class=&quot;section&quot;&gt;&lt;div class=&quot;card&quot;&gt;&lt;h2&gt;اساتذہ و عملہ&lt;/h2&gt;&lt;input type=&quot;hidden&quot; id=&quot;teacherId&quot;&gt;
-&lt;div class=&quot;formgrid&quot;&gt;&lt;div&gt;&lt;label&gt;نام&lt;/label&gt;&lt;input id=&quot;teacherName&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;عہدہ&lt;/label&gt;&lt;input id=&quot;teacherRole&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;موبائل&lt;/label&gt;&lt;input id=&quot;teacherPhone&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;ماہانہ تنخواہ&lt;/label&gt;&lt;input id=&quot;teacherSalary&quot; type=&quot;number&quot;&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;button class=&quot;btn&quot; onclick=&quot;saveTeacher()&quot;&gt;محفوظ کریں&lt;/button&gt;&lt;button class=&quot;btn light&quot; onclick=&quot;resetForm(&#x27;teacher&#x27;)&quot;&gt;نیا اندراج&lt;/button&gt;
-&lt;div class=&quot;tablewrap&quot;&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;نام&lt;/th&gt;&lt;th&gt;عہدہ&lt;/th&gt;&lt;th&gt;موبائل&lt;/th&gt;&lt;th&gt;تنخواہ&lt;/th&gt;&lt;th&gt;عمل&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody id=&quot;teacherTable&quot;&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;/div&gt;&lt;/section&gt;
-
-&lt;section id=&quot;fees&quot; class=&quot;section&quot;&gt;&lt;div class=&quot;card&quot;&gt;&lt;h2&gt;طلبہ کی فیس&lt;/h2&gt;
-&lt;div class=&quot;formgrid&quot;&gt;&lt;div&gt;&lt;label&gt;تاریخ&lt;/label&gt;&lt;input id=&quot;feeDate&quot; type=&quot;date&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;طالب علم&lt;/label&gt;&lt;select id=&quot;feeStudent&quot;&gt;&lt;/select&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;مہینہ&lt;/label&gt;&lt;input id=&quot;feeMonth&quot; placeholder=&quot;مثلاً اگست 2026&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;واجب رقم&lt;/label&gt;&lt;input id=&quot;feeDue&quot; type=&quot;number&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;جمع رقم&lt;/label&gt;&lt;input id=&quot;feePaid&quot; type=&quot;number&quot;&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;button class=&quot;btn&quot; onclick=&quot;saveFee()&quot;&gt;فیس محفوظ کریں&lt;/button&gt;&lt;button class=&quot;btn light&quot; onclick=&quot;resetForm(&#x27;fee&#x27;)&quot;&gt;نیا اندراج&lt;/button&gt;
-&lt;div class=&quot;tablewrap&quot;&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;تاریخ&lt;/th&gt;&lt;th&gt;طالب علم&lt;/th&gt;&lt;th&gt;مہینہ&lt;/th&gt;&lt;th&gt;واجب&lt;/th&gt;&lt;th&gt;جمع&lt;/th&gt;&lt;th&gt;باقی&lt;/th&gt;&lt;th&gt;عمل&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody id=&quot;feeTable&quot;&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;/div&gt;&lt;/section&gt;
-
-&lt;section id=&quot;donors&quot; class=&quot;section&quot;&gt;&lt;div class=&quot;card&quot;&gt;&lt;h2&gt;مدرسے کے معاونین اور ماہانہ تعاون&lt;/h2&gt;
-&lt;div class=&quot;formgrid&quot;&gt;&lt;div&gt;&lt;label&gt;معاون کا نام&lt;/label&gt;&lt;input id=&quot;donorName&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;موبائل&lt;/label&gt;&lt;input id=&quot;donorPhone&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;ماہانہ مقررہ تعاون&lt;/label&gt;&lt;input id=&quot;donorMonthly&quot; type=&quot;number&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;آج جمع رقم&lt;/label&gt;&lt;input id=&quot;donorPaid&quot; type=&quot;number&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;مہینہ&lt;/label&gt;&lt;input id=&quot;donorMonth&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;تاریخ&lt;/label&gt;&lt;input id=&quot;donorDate&quot; type=&quot;date&quot;&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;button class=&quot;btn&quot; onclick=&quot;saveDonor()&quot;&gt;محفوظ کریں&lt;/button&gt;&lt;button class=&quot;btn light&quot; onclick=&quot;resetForm(&#x27;donor&#x27;)&quot;&gt;نیا اندراج&lt;/button&gt;
-&lt;div class=&quot;tablewrap&quot;&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;نام&lt;/th&gt;&lt;th&gt;موبائل&lt;/th&gt;&lt;th&gt;ماہانہ&lt;/th&gt;&lt;th&gt;جمع&lt;/th&gt;&lt;th&gt;مہینہ&lt;/th&gt;&lt;th&gt;عمل&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody id=&quot;donorTable&quot;&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;/div&gt;&lt;/section&gt;
-
-&lt;section id=&quot;salaries&quot; class=&quot;section&quot;&gt;&lt;div class=&quot;card&quot;&gt;&lt;h2&gt;اساتذہ و ملازمین کی تنخواہیں&lt;/h2&gt;
-&lt;div class=&quot;formgrid&quot;&gt;&lt;div&gt;&lt;label&gt;استاد/ملازم&lt;/label&gt;&lt;select id=&quot;salaryTeacher&quot;&gt;&lt;/select&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;مہینہ&lt;/label&gt;&lt;input id=&quot;salaryMonth&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;مقررہ تنخواہ&lt;/label&gt;&lt;input id=&quot;salaryDue&quot; type=&quot;number&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;ادا شدہ&lt;/label&gt;&lt;input id=&quot;salaryPaid&quot; type=&quot;number&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;تاریخ&lt;/label&gt;&lt;input id=&quot;salaryDate&quot; type=&quot;date&quot;&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;button class=&quot;btn&quot; onclick=&quot;saveSalary()&quot;&gt;محفوظ کریں&lt;/button&gt;&lt;button class=&quot;btn light&quot; onclick=&quot;resetForm(&#x27;salary&#x27;)&quot;&gt;نیا اندراج&lt;/button&gt;
-&lt;div class=&quot;tablewrap&quot;&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;نام&lt;/th&gt;&lt;th&gt;مہینہ&lt;/th&gt;&lt;th&gt;مقررہ&lt;/th&gt;&lt;th&gt;ادا&lt;/th&gt;&lt;th&gt;باقی&lt;/th&gt;&lt;th&gt;عمل&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody id=&quot;salaryTable&quot;&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;/div&gt;&lt;/section&gt;
-
-&lt;section id=&quot;finance&quot; class=&quot;section&quot;&gt;&lt;div class=&quot;card&quot;&gt;&lt;h2&gt;آمدنی اور اخراجات&lt;/h2&gt;
-&lt;div class=&quot;formgrid&quot;&gt;&lt;div&gt;&lt;label&gt;تاریخ&lt;/label&gt;&lt;input id=&quot;finDate&quot; type=&quot;date&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;قسم&lt;/label&gt;&lt;select id=&quot;finType&quot;&gt;&lt;option&gt;آمدنی&lt;/option&gt;&lt;option&gt;اخراجات&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;رقم&lt;/label&gt;&lt;input id=&quot;finAmount&quot; type=&quot;number&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;تفصیل&lt;/label&gt;&lt;input id=&quot;finNote&quot;&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;button class=&quot;btn&quot; onclick=&quot;saveFinance()&quot;&gt;محفوظ کریں&lt;/button&gt;&lt;button class=&quot;btn light&quot; onclick=&quot;resetForm(&#x27;finance&#x27;)&quot;&gt;نیا اندراج&lt;/button&gt;
-&lt;div class=&quot;tablewrap&quot;&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;تاریخ&lt;/th&gt;&lt;th&gt;قسم&lt;/th&gt;&lt;th&gt;رقم&lt;/th&gt;&lt;th&gt;تفصیل&lt;/th&gt;&lt;th&gt;عمل&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody id=&quot;financeTable&quot;&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;/div&gt;&lt;/section&gt;
-
-&lt;section id=&quot;reports&quot; class=&quot;section&quot;&gt;&lt;div class=&quot;card&quot;&gt;&lt;h2&gt;رپورٹس&lt;/h2&gt;&lt;p&gt;جس رپورٹ کی ضرورت ہو اسے منتخب کریں۔ پرنٹ سے PDF بھی محفوظ کی جا سکتی ہے۔&lt;/p&gt;
-&lt;div class=&quot;grid no-print&quot;&gt;
-&lt;div&gt;&lt;label&gt;رپورٹ کی تاریخ سے&lt;/label&gt;&lt;input id=&quot;reportFrom&quot; type=&quot;date&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;label&gt;رپورٹ کی تاریخ تک&lt;/label&gt;&lt;input id=&quot;reportTo&quot; type=&quot;date&quot;&gt;&lt;/div&gt;&lt;button class=&quot;btn light&quot; onclick=&quot;clearReportDates()&quot;&gt;تمام تاریخیں&lt;/button&gt;
-&lt;button class=&quot;btn&quot; onclick=&quot;report(&#x27;students&#x27;)&quot;&gt;طلبہ رپورٹ&lt;/button&gt;&lt;button class=&quot;btn&quot; onclick=&quot;report(&#x27;fees&#x27;)&quot;&gt;فیس رپورٹ&lt;/button&gt;&lt;button class=&quot;btn&quot; onclick=&quot;report(&#x27;donors&#x27;)&quot;&gt;تعاون رپورٹ&lt;/button&gt;&lt;button class=&quot;btn&quot; onclick=&quot;report(&#x27;salaries&#x27;)&quot;&gt;تنخواہ رپورٹ&lt;/button&gt;&lt;button class=&quot;btn&quot; onclick=&quot;report(&#x27;finance&#x27;)&quot;&gt;مالی رپورٹ&lt;/button&gt;
-&lt;/div&gt;&lt;div id=&quot;reportOutput&quot; class=&quot;reportbox&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/section&gt;
-&lt;/main&gt;
-&lt;/div&gt;&lt;!-- appShell --&gt;
-
+&lt;div class=&quot;card&quot;&gt;&lt;div id=&quot;reportArea&quot;&gt;&lt;div class=&quot;report-title&quot;&gt;&lt;h2 id=&quot;reportSchoolName&quot;&gt;&lt;/h2&gt;&lt;h2 id=&quot;reportHeading&quot;&gt;رپورٹ&lt;/h2&gt;&lt;/div&gt;&lt;div id=&quot;allReport&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;card form-card&quot;&gt;&lt;h2&gt;👥 طلبہ کی فہرست&lt;/h2&gt;&lt;div id=&quot;studentsList&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;footer&gt;مکاتب حاضری مینجمنٹ — ڈیٹا اسی ڈیوائس میں محفوظ رہتا ہے۔&lt;/footer&gt;
+&lt;/div&gt;
 &lt;script&gt;
-function openSystem(){
-  document.getElementById(&#x27;landingPage&#x27;).style.display=&#x27;none&#x27;;
-  document.getElementById(&#x27;appShell&#x27;).style.display=&#x27;block&#x27;;
-  window.scrollTo(0,0);
-}
-setTimeout(()=&gt;{const s=document.getElementById(&quot;splashScreen&quot;);if(s){s.style.transition=&quot;opacity .5s ease&quot;;s.style.opacity=&quot;0&quot;;setTimeout(()=&gt;s.remove(),550)}},1800);
+function openAttendanceSystem(){document.getElementById(&quot;homePage&quot;).style.display=&quot;none&quot;;document.getElementById(&quot;appRoot&quot;).style.display=&quot;block&quot;;window.scrollTo(0,0)}
+function backToHome(){document.getElementById(&quot;appRoot&quot;).style.display=&quot;none&quot;;document.getElementById(&quot;homePage&quot;).style.display=&quot;flex&quot;;window.scrollTo(0,0)}
 
-const KEY=&quot;madrasa_management_v2&quot;;
-let db=JSON.parse(localStorage.getItem(KEY)||&#x27;{&quot;students&quot;:[],&quot;teachers&quot;:[],&quot;attendance&quot;:[],&quot;exams&quot;:[],&quot;fees&quot;:[],&quot;donors&quot;:[],&quot;salaries&quot;:[],&quot;finance&quot;:[]}&#x27;);
-[&quot;students&quot;,&quot;teachers&quot;,&quot;attendance&quot;,&quot;exams&quot;,&quot;fees&quot;,&quot;donors&quot;,&quot;salaries&quot;,&quot;finance&quot;].forEach(k=&gt;{if(!Array.isArray(db[k]))db[k]=[]});
-
-const URDU_GUJARATI = {
-&quot;مدرسہ مینجمنٹ سسٹم&quot;:&quot;મદ્રસા મેનેજમેન્ટ સિસ્ટમ&quot;,&quot;نظام شروع ہو رہا ہے...&quot;:&quot;સિસ્ટમ શરૂ થઈ રહી છે...&quot;,&quot;طلبہ، اساتذہ، فیس، تعاون، تنخواہوں اور مالی حساب کا جامع ریکارڈ&quot;:&quot;વિદ્યાર્થીઓ, શિક્ષકો, ફી, સહયોગ, પગાર અને નાણાકીય હિસાબનો સંપૂર્ણ રેકોર્ડ&quot;,&quot;🏫 مدرسے کا نام&quot;:&quot;🏫 મદ્રસાનું નામ&quot;,&quot;⬅️ بیک&quot;:&quot;⬅️ પાછા&quot;,&quot;🚪 ایگزٹ&quot;:&quot;🚪 બહાર નીકળો&quot;,&quot;🏠 ڈیش بورڈ&quot;:&quot;🏠 ડેશબોર્ડ&quot;,&quot;👨‍🎓 طلبہ&quot;:&quot;👨‍🎓 વિદ્યાર્થીઓ&quot;,&quot;👨‍🏫 اساتذہ&quot;:&quot;👨‍🏫 શિક્ષકો&quot;,&quot;💰 فیس&quot;:&quot;💰 ફી&quot;,&quot;🤝 تعاون&quot;:&quot;🤝 સહયોગ&quot;,&quot;💵 تنخواہیں&quot;:&quot;💵 પગાર&quot;,&quot;📊 آمدنی/اخراجات&quot;:&quot;📊 આવક/ખર્ચ&quot;,&quot;📄 رپورٹس&quot;:&quot;📄 અહેવાલો&quot;,&quot;مدرسے کے انتظامی، تعلیمی اور مالی امور کو آسان اور منظم انداز میں محفوظ رکھنے کے لیے یہ آف لائن نظام استعمال کریں۔&quot;:&quot;મદ્રસાના વહીવટી, શૈક્ષણિક અને નાણાકીય કાર્યોનો રેકોર્ડ સરળતાથી સાચવવા માટે આ ઑફલાઇન સિસ્ટમનો ઉપયોગ કરો.&quot;,&quot;تمام ریکارڈ اسی ڈیوائس کے براؤزر میں محفوظ ہوگا۔ باقاعدہ بیک اپ کے لیے ڈیٹا ایکسپورٹ کریں۔&quot;:&quot;તમામ રેકોર્ડ આ જ ડિવાઇસના બ્રાઉઝરમાં સાચવાશે. નિયમિત બેકઅપ માટે ડેટા એક્સપોર્ટ કરો.&quot;,&quot;کل طلبہ&quot;:&quot;કુલ વિદ્યાર્થીઓ&quot;,&quot;کل اساتذہ&quot;:&quot;કુલ શિક્ષકો&quot;,&quot;معاونین&quot;:&quot;સહયોગીઓ&quot;,&quot;کل آمدنی&quot;:&quot;કુલ આવક&quot;,&quot;کل اخراجات&quot;:&quot;કુલ ખર્ચ&quot;,&quot;موجودہ بیلنس&quot;:&quot;હાલનું બેલેન્સ&quot;,&quot;ڈیٹا کی حفاظت&quot;:&quot;ડેટા સુરક્ષા&quot;,&quot;💾 ڈیٹا بیک اپ&quot;:&quot;💾 ડેટા બેકઅપ&quot;,&quot;📥 بیک اپ بحال کریں&quot;:&quot;📥 બેકઅપ પુનઃસ્થાપિત કરો&quot;,&quot;⚠️ تمام ڈیٹا حذف کریں&quot;:&quot;⚠️ તમામ ડેટા કાઢી નાખો&quot;,&quot;طلبہ کا ریکارڈ&quot;:&quot;વિદ્યાર્થી રેકોર્ડ&quot;,&quot;طالب علم کا نام&quot;:&quot;વિદ્યાર્થીનું નામ&quot;,&quot;والد کا نام&quot;:&quot;પિતાનું નામ&quot;,&quot;موبائل نمبر&quot;:&quot;મોબાઇલ નંબર&quot;,&quot;جماعت / درجہ&quot;:&quot;વર્ગ / ધોરણ&quot;,&quot;پتہ&quot;:&quot;સરનામું&quot;,&quot;داخلے کی تاریخ&quot;:&quot;પ્રવેશ તારીખ&quot;,&quot;محفوظ کریں&quot;:&quot;સાચવો&quot;,&quot;نیا اندراج&quot;:&quot;નવી એન્ટ્રી&quot;,&quot;نام&quot;:&quot;નામ&quot;,&quot;والد&quot;:&quot;પિતા&quot;,&quot;موبائل&quot;:&quot;મોબાઇલ&quot;,&quot;جماعت&quot;:&quot;વર્ગ&quot;,&quot;تاریخ&quot;:&quot;તારીખ&quot;,&quot;عمل&quot;:&quot;ક્રિયા&quot;,&quot;اساتذہ و عملہ&quot;:&quot;શિક્ષકો અને સ્ટાફ&quot;,&quot;عہدہ&quot;:&quot;હોદ્દો&quot;,&quot;ماہانہ تنخواہ&quot;:&quot;માસિક પગાર&quot;,&quot;تنخواہ&quot;:&quot;પગાર&quot;,&quot;طلبہ کی فیس&quot;:&quot;વિદ્યાર્થી ફી&quot;,&quot;طالب علم&quot;:&quot;વિદ્યાર્થી&quot;,&quot;مہینہ&quot;:&quot;મહિનો&quot;,&quot;واجب رقم&quot;:&quot;બાકી રકમ&quot;,&quot;جمع رقم&quot;:&quot;જમા રકમ&quot;,&quot;واجب&quot;:&quot;બાકી&quot;,&quot;جمع&quot;:&quot;જમા&quot;,&quot;باقی&quot;:&quot;બાકી&quot;,&quot;مدرسے کے معاونین اور ماہانہ تعاون&quot;:&quot;મદ્રસાના સહયોગીઓ અને માસિક સહયોગ&quot;,&quot;معاون کا نام&quot;:&quot;સહયોગીનું નામ&quot;,&quot;ماہانہ مقررہ تعاون&quot;:&quot;માસિક નિર્ધારિત સહયોગ&quot;,&quot;آج جمع رقم&quot;:&quot;આજે જમા રકમ&quot;,&quot;ماہانہ&quot;:&quot;માસિક&quot;,&quot;اساتذہ و ملازمین کی تنخواہیں&quot;:&quot;શિક્ષકો અને કર્મચારીઓના પગાર&quot;,&quot;استاد/ملازم&quot;:&quot;શિક્ષક/કર્મચારી&quot;,&quot;مقررہ تنخواہ&quot;:&quot;નિર્ધારિત પગાર&quot;,&quot;ادا شدہ&quot;:&quot;ચૂકવેલ&quot;,&quot;مقررہ&quot;:&quot;નિર્ધારિત&quot;,&quot;ادا&quot;:&quot;ચૂકવેલ&quot;,&quot;آمدنی اور اخراجات&quot;:&quot;આવક અને ખર્ચ&quot;,&quot;قسم&quot;:&quot;પ્રકાર&quot;,&quot;آمدنی&quot;:&quot;આવક&quot;,&quot;اخراجات&quot;:&quot;ખર્ચ&quot;,&quot;رقم&quot;:&quot;રકમ&quot;,&quot;تفصیل&quot;:&quot;વિગત&quot;,&quot;رپورٹس&quot;:&quot;અહેવાલો&quot;,&quot;جس رپورٹ کی ضرورت ہو اسے منتخب کریں۔ پرنٹ سے PDF بھی محفوظ کی جا سکتی ہے۔&quot;:&quot;જરૂરી અહેવાલ પસંદ કરો. પ્રિન્ટ દ્વારા PDF પણ સાચવી શકાય છે.&quot;,&quot;رپورٹ کی تاریخ سے&quot;:&quot;અહેવાલની તારીખથી&quot;,&quot;رپورٹ کی تاریخ تک&quot;:&quot;અહેવાલની તારીખ સુધી&quot;,&quot;تمام تاریخیں&quot;:&quot;બધી તારીખો&quot;,&quot;طلبہ رپورٹ&quot;:&quot;વિદ્યાર્થી અહેવાલ&quot;,&quot;فیس رپورٹ&quot;:&quot;ફી અહેવાલ&quot;,&quot;تعاون رپورٹ&quot;:&quot;સહયોગ અહેવાલ&quot;,&quot;تنخواہ رپورٹ&quot;:&quot;પગાર અહેવાલ&quot;,&quot;مالی رپورٹ&quot;:&quot;નાણાકીય અહેવાલ&quot;,&quot;کوئی ریکارڈ نہیں&quot;:&quot;કોઈ રેકોર્ડ નથી&quot;,&quot;منتخب کریں&quot;:&quot;પસંદ કરો&quot;,&quot;مدرسے کا نام درج کریں:&quot;:&quot;મદ્રસાનું નામ દાખલ કરો:&quot;,&quot;مدرسے کا نام محفوظ ہوگیا۔&quot;:&quot;મદ્રસાનું નામ સાચવાયું.&quot;,&quot;غلط بیک اپ فائل&quot;:&quot;ખોટી બેકઅપ ફાઇલ&quot;,&quot;بیک اپ کامیابی سے بحال ہوگیا۔&quot;:&quot;બેકઅપ સફળતાપૂર્વક પુનઃસ્થાપિત થયો.&quot;,&quot;کیا یہ ریکارڈ حذف کرنا ہے؟&quot;:&quot;શું આ રેકોર્ડ કાઢી નાખવો છે?&quot;,&quot;تمام ریکارڈ مستقل طور پر حذف ہو جائیں گے۔ کیا آپ پُریقین ہیں؟&quot;:&quot;તમામ રેકોર્ડ કાયમ માટે કાઢી નાખવામાં આવશે. શું તમે ખાતરી કરો છો?&quot;,&quot;کیا آپ سسٹم سے باہر نکلنا چاہتے ہیں؟&quot;:&quot;શું તમે સિસ્ટમમાંથી બહાર નીકળવા માંગો છો?&quot;,&quot;اگر ایپ خود بند نہ ہو تو اس ونڈو/ٹیب کو دستی طور پر بند کریں۔&quot;:&quot;જો એપ આપમેળે બંધ ન થાય તો આ વિન્ડો/ટેબને જાતે બંધ કરો.&quot;,&quot;طالب علم کا نام لکھیں&quot;:&quot;વિદ્યાર્થીનું નામ લખો&quot;,&quot;استاد کا نام لکھیں&quot;:&quot;શિક્ષકનું નામ લખો&quot;,&quot;معاون کا نام لکھیں&quot;:&quot;સહયોગીનું નામ લખો&quot;,&quot;استاد منتخب کریں&quot;:&quot;શિક્ષક પસંદ કરો&quot;,&quot;رقم درج کریں&quot;:&quot;રકમ દાખલ કરો&quot;,&quot;نام یا والد کا نام تلاش کریں&quot;:&quot;નામ અથવા પિતાનું નામ શોધો&quot;,&quot;پرنٹ / Save as PDF&quot;:&quot;પ્રિન્ટ / PDF તરીકે સાચવો&quot;,&quot;طلبہ کی رپورٹ&quot;:&quot;વિદ્યાર્થી અહેવાલ&quot;,&quot;فیس رپورٹ&quot;:&quot;ફી અહેવાલ&quot;,&quot;تعاون رپورٹ&quot;:&quot;સહયોગ અહેવાલ&quot;,&quot;تنخواہ رپورٹ&quot;:&quot;પગાર અહેવાલ&quot;,&quot;مالی رپورٹ&quot;:&quot;નાણાકીય અહેવાલ&quot;,&quot;تاریخ:&quot;:&quot;તારીખ:&quot;,&quot;ابتدا&quot;:&quot;શરૂઆત&quot;,&quot;آخر تک&quot;:&quot;અંત સુધી&quot;,&quot;تا&quot;:&quot;સુધી&quot;,&quot;نام حذف ہوچکا ہے&quot;:&quot;નામ કાઢી નાખવામાં આવ્યું છે&quot;,&quot;طالب علم منتخب کریں&quot;:&quot;વિદ્યાર્થી પસંદ કરો&quot;,&quot;استاد منتخب کریں&quot;:&quot;શિક્ષક પસંદ કરો&quot;
-};
-const GUJ_URDU=Object.fromEntries(Object.entries(URDU_GUJARATI).map(([u,g])=&gt;[g,u]));
-let currentLanguage=localStorage.getItem(&quot;madrasa_language&quot;)||&quot;ur&quot;;
-function translatePage(){
- const dict=currentLanguage===&quot;gu&quot;?URDU_GUJARATI:GUJ_URDU;
- document.querySelectorAll(&quot;input,textarea&quot;).forEach(el=&gt;{if(el.placeholder&amp;&amp;dict[el.placeholder])el.placeholder=dict[el.placeholder]});
- const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
- nodes.forEach(n=&gt;{const v=n.nodeValue.trim();if(dict[v])n.nodeValue=n.nodeValue.replace(v,dict[v])});
- document.documentElement.lang=currentLanguage===&quot;gu&quot;?&quot;gu&quot;:&quot;ur&quot;;document.documentElement.dir=currentLanguage===&quot;gu&quot;?&quot;ltr&quot;:&quot;rtl&quot;;
+const KEY=&quot;SPECIAL_STUDENTS_ATTENDANCE_V1&quot;,MULTI_KEY=&quot;SPECIAL_STUDENTS_MULTI_MADRASA_V1&quot;,SELECTED_BACKUP_KEY=&quot;SPECIAL_STUDENTS_SELECTED_BACKUP_V1&quot;;
+function emptyDB(name=&quot;&quot;){return{schoolName:name,students:[],attendance:{}}}
+function cleanDB(d){if(!d||typeof d!==&quot;object&quot;)d=emptyDB();if(!Array.isArray(d.students))d.students=[];if(!d.attendance||typeof d.attendance!==&quot;object&quot;)d.attendance={};return{schoolName:d.schoolName||&quot;&quot;,students:d.students,attendance:d.attendance}}
+function loadAppState(){
+ try{const raw=localStorage.getItem(MULTI_KEY);if(raw){const st=JSON.parse(raw);if(st&amp;&amp;Array.isArray(st.madrasas)&amp;&amp;st.madrasas.length){st.madrasas=st.madrasas.map(m=&gt;({id:String(m.id||(&quot;m_&quot;+Date.now()+Math.random())),name:m.name||m.data?.schoolName||&quot;مدرسہ&quot;,data:cleanDB(m.data)}));if(!st.madrasas.some(m=&gt;m.id===st.activeId))st.activeId=st.madrasas[0].id;return st;}}}catch(e){}
+ // پہلی بار پرانے ایک مدرسے کے ڈیٹا کو خودکار طور پر منتقل کریں
+ let legacy=emptyDB();try{const raw=localStorage.getItem(KEY);if(raw)legacy=cleanDB(JSON.parse(raw));}catch(e){}
+ const first={id:&quot;m_&quot;+Date.now(),name:legacy.schoolName||&quot;پہلا مدرسہ&quot;,data:legacy};const st={madrasas:[first],activeId:first.id};try{localStorage.setItem(MULTI_KEY,JSON.stringify(st));}catch(e){}return st;
 }
-function setLanguage(lang){currentLanguage=lang===&quot;gu&quot;?&quot;gu&quot;:&quot;ur&quot;;localStorage.setItem(&quot;madrasa_language&quot;,currentLanguage);translatePage();refresh();translatePage()}
-function save(){localStorage.setItem(KEY,JSON.stringify(db));refresh();translatePage()}
-function id(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
-function esc(s){return String(s??&#x27;&#x27;).replace(/[&amp;&lt;&gt;&quot;&#x27;]/g,m=&gt;({&#x27;&amp;&#x27;:&#x27;&amp;amp;&#x27;,&#x27;&lt;&#x27;:&#x27;&amp;lt;&#x27;,&#x27;&gt;&#x27;:&#x27;&amp;gt;&#x27;,&#x27;&quot;&#x27;:&#x27;&amp;quot;&#x27;,&quot;&#x27;&quot;:&#x27;&amp;#039;&#x27;}[m]))}
-function money(n){return &quot;₹&quot;+Number(n||0).toLocaleString(&#x27;en-IN&#x27;)}
+let appState=loadAppState();
+function activeMadrasa(){return appState.madrasas.find(m=&gt;m.id===appState.activeId)||appState.madrasas[0];}
+let db=activeMadrasa().data;
+function save(){try{const m=activeMadrasa();if(!m)return false;m.data=db;m.name=db.schoolName||m.name||&quot;مدرسہ&quot;;localStorage.setItem(MULTI_KEY,JSON.stringify(appState));return true;}catch(e){alert(&quot;ڈیٹا محفوظ نہیں ہوسکا۔&quot;);return false}}
+function renderMadrasaSelect(){const el=document.getElementById(&quot;madrasaSelect&quot;);if(!el)return;el.innerHTML=appState.madrasas.map(m=&gt;`&lt;option value=&quot;${esc(m.id)}&quot;&gt;${esc(m.name)}&lt;/option&gt;`).join(&quot;&quot;);el.value=appState.activeId;}
+function switchMadrasa(id){if(id===appState.activeId)return;save();const m=appState.madrasas.find(x=&gt;x.id===id);if(!m)return;appState.activeId=id;db=m.data;save();init();}
+function addMadrasa(){const name=prompt(&quot;نئے مدرسے یا مکتب کا نام لکھیں:&quot;);if(name===null)return;const n=name.trim();if(!n)return alert(&quot;مدرسے کا نام ضروری ہے۔&quot;);if(appState.madrasas.some(m=&gt;(m.name||&quot;&quot;).trim().toLocaleLowerCase()===n.toLocaleLowerCase()))return alert(&quot;اس نام کا مدرسہ پہلے سے موجود ہے۔&quot;);save();const m={id:&quot;m_&quot;+Date.now()+&quot;_&quot;+Math.random().toString(36).slice(2,7),name:n,data:emptyDB(n)};appState.madrasas.push(m);appState.activeId=m.id;db=m.data;save();init();alert(&quot;نیا مدرسہ شامل ہوگیا۔&quot;);}
+function deleteMadrasa(){if(appState.madrasas.length&lt;=1)return alert(&quot;کم از کم ایک مدرسہ باقی رہنا ضروری ہے۔&quot;);const m=activeMadrasa();if(!confirm(`کیا ”${m.name}“ کو اس کے تمام طلبہ اور حاضری سمیت حذف کرنا چاہتے ہیں؟ یہ عمل واپس نہیں ہوگا۔`))return;appState.madrasas=appState.madrasas.filter(x=&gt;x.id!==m.id);appState.activeId=appState.madrasas[0].id;db=activeMadrasa().data;save();init();alert(&quot;مدرسہ حذف ہوگیا۔&quot;);}
 function today(){return new Date().toISOString().slice(0,10)}
-function showSection(name,btn){document.querySelectorAll(&#x27;.section&#x27;).forEach(x=&gt;x.classList.remove(&#x27;active&#x27;));document.getElementById(name).classList.add(&#x27;active&#x27;);document.querySelectorAll(&#x27;nav button&#x27;).forEach(x=&gt;x.classList.remove(&#x27;active&#x27;));if(btn)btn.classList.add(&#x27;active&#x27;);refresh()}
-
-function fillSelects(){
- const ids=[&quot;feeStudent&quot;];ids.forEach(id=&gt;{document.getElementById(id).innerHTML=&#x27;&lt;option value=&quot;&quot;&gt;منتخب کریں&lt;/option&gt;&#x27;;db.students.forEach(x=&gt;document.getElementById(id).innerHTML+=`&lt;option value=&quot;${x.id}&quot;&gt;${esc(x.name)}&lt;/option&gt;`)});
- salaryTeacher.innerHTML=&#x27;&lt;option value=&quot;&quot;&gt;منتخب کریں&lt;/option&gt;&#x27;;db.teachers.forEach(x=&gt;salaryTeacher.innerHTML+=`&lt;option value=&quot;${x.id}&quot;&gt;${esc(x.name)}&lt;/option&gt;`)
+function esc(s){return String(s??&quot;&quot;).replace(/[&amp;&lt;&gt;&quot;&#x27;]/g,m=&gt;({&quot;&amp;&quot;:&quot;&amp;amp;&quot;,&quot;&lt;&quot;:&quot;&amp;lt;&quot;,&quot;&gt;&quot;:&quot;&amp;gt;&quot;,&#x27;&quot;&#x27;:&quot;&amp;quot;&quot;,&quot;&#x27;&quot;:&quot;&amp;#039;&quot;}[m]))}
+function init(){renderMadrasaSelect();document.getElementById(&quot;attendanceDate&quot;).value=today();document.getElementById(&quot;schoolName&quot;).value=db.schoolName||&quot;&quot;;document.getElementById(&quot;schoolTitle&quot;).textContent=db.schoolName||&quot;مدرسہ کا نام درج کریں&quot;;document.getElementById(&quot;reportSchoolName&quot;).textContent=db.schoolName||&quot;مدرسہ کا نام&quot;;let m=document.getElementById(&quot;reportMonth&quot;),y=document.getElementById(&quot;reportYear&quot;);m.innerHTML=&quot;&quot;;for(let i=1;i&lt;=12;i++)m.innerHTML+=`&lt;option value=&quot;${i}&quot;&gt;${monthName(i)}&lt;/option&gt;`;let yr=new Date().getFullYear();y.innerHTML=&quot;&quot;;for(let i=yr-5;i&lt;=yr+2;i++)y.innerHTML+=`&lt;option value=&quot;${i}&quot;&gt;${i}&lt;/option&gt;`;m.value=new Date().getMonth()+1;y.value=yr;renderStudents();updateNames();loadAttendance();restoreSelectedBackupInfo()}
+function monthName(m){return[&quot;&quot;,&quot;جنوری&quot;,&quot;فروری&quot;,&quot;مارچ&quot;,&quot;اپریل&quot;,&quot;مئی&quot;,&quot;جون&quot;,&quot;جولائی&quot;,&quot;اگست&quot;,&quot;ستمبر&quot;,&quot;اکتوبر&quot;,&quot;نومبر&quot;,&quot;دسمبر&quot;][m]}
+function saveSchoolName(){db.schoolName=document.getElementById(&quot;schoolName&quot;).value.trim()||&quot;مدرسہ کا نام&quot;;if(save()){document.getElementById(&quot;schoolTitle&quot;).textContent=db.schoolName;document.getElementById(&quot;reportSchoolName&quot;).textContent=db.schoolName;renderMadrasaSelect();alert(&quot;مدرسہ کا نام محفوظ ہوگیا۔&quot;)}}
+function addStudent(){let name=document.getElementById(&quot;studentName&quot;).value.trim(),roll=document.getElementById(&quot;rollNo&quot;).value.trim();if(!name)return alert(&quot;طالب علم کا نام لکھیں۔&quot;);db.students.push({id:Date.now().toString(),name,roll});if(save()){document.getElementById(&quot;studentName&quot;).value=&quot;&quot;;document.getElementById(&quot;rollNo&quot;).value=&quot;&quot;;renderStudents();updateNames();loadAttendance()}}
+function deleteStudent(id){if(!confirm(&quot;کیا یہ طالب علم حذف کرنا ہے؟&quot;))return;db.students=db.students.filter(s=&gt;s.id!==id);for(const d in db.attendance)if(db.attendance[d])delete db.attendance[d][id];save();renderStudents();updateNames();loadAttendance()}
+function editStudent(id){let s=db.students.find(x=&gt;x.id===id);if(!s)return;let n=prompt(&quot;طالب علم کا نام:&quot;,s.name);if(n===null)return;n=n.trim();if(!n)return;s.name=n;save();renderStudents();updateNames();loadAttendance()}
+function renderStudents(){let box=document.getElementById(&quot;studentsList&quot;);if(!db.students.length){box.innerHTML=&quot;&lt;div class=&#x27;notice&#x27;&gt;ابھی کوئی طالب علم شامل نہیں کیا گیا۔&lt;/div&gt;&quot;;return}box.innerHTML=db.students.map(s=&gt;`&lt;div class=&quot;student-row&quot;&gt;&lt;div class=&quot;student-name&quot;&gt;${esc(s.name)} &lt;span class=&quot;small&quot;&gt;${s.roll?`(رول نمبر: ${esc(s.roll)})`:&quot;&quot;}&lt;/span&gt;&lt;/div&gt;&lt;button class=&quot;btn-blue&quot; style=&quot;width:auto&quot; onclick=&quot;editStudent(&#x27;${s.id}&#x27;)&quot;&gt;ترمیم&lt;/button&gt;&lt;button class=&quot;btn-red&quot; style=&quot;width:auto&quot; onclick=&quot;deleteStudent(&#x27;${s.id}&#x27;)&quot;&gt;حذف&lt;/button&gt;&lt;/div&gt;`).join(&quot;&quot;)}
+function updateNames(){document.getElementById(&quot;studentNames&quot;).innerHTML=db.students.map(s=&gt;`&lt;option value=&quot;${esc(s.name)}&quot;&gt;`).join(&quot;&quot;)}
+let attendanceFilter=&quot;all&quot;;
+function loadAttendance(){
+  let date=document.getElementById(&quot;attendanceDate&quot;).value||today(),
+      dayRecord=db.attendance[date]||{},
+      box=document.getElementById(&quot;attendanceList&quot;);
+  const total=db.students.length;
+  const present=db.students.filter(s=&gt;dayRecord[s.id]===&quot;present&quot;).length;
+  const absent=db.students.filter(s=&gt;dayRecord[s.id]===&quot;absent&quot;).length;
+  document.getElementById(&quot;totalStudentsCount&quot;).textContent=total;
+  document.getElementById(&quot;presentStudentsCount&quot;).textContent=present;
+  document.getElementById(&quot;absentStudentsCount&quot;).textContent=absent;
+  if(!total){box.innerHTML=&quot;&lt;div class=&#x27;notice&#x27;&gt;پہلے طالب علم شامل کریں۔&lt;/div&gt;&quot;;return}
+  let students=db.students.filter(s=&gt;{
+    const v=dayRecord[s.id];
+    return attendanceFilter===&quot;all&quot; || v===attendanceFilter;
+  });
+  if(!students.length){box.innerHTML=&quot;&lt;div class=&#x27;notice&#x27;&gt;اس زمرے میں کوئی طالب علم نہیں ہے۔&lt;/div&gt;&quot;;return}
+  box.innerHTML=students.map(s=&gt;{
+    let v=dayRecord[s.id];
+    return `&lt;div class=&quot;student-row&quot;&gt;&lt;div class=&quot;student-name&quot;&gt;${esc(s.name)} &lt;span class=&quot;small&quot;&gt;${s.roll?`رول: ${esc(s.roll)}`:&quot;&quot;}&lt;/span&gt;&lt;/div&gt;&lt;button class=&quot;status-btn ${v===&quot;present&quot;?&quot;present&quot;:&quot;&quot;}&quot; onclick=&quot;setAttendance(&#x27;${date}&#x27;,&#x27;${s.id}&#x27;,&#x27;present&#x27;)&quot;&gt;🟢 حاضر&lt;/button&gt;&lt;button class=&quot;status-btn ${v===&quot;absent&quot;?&quot;absent&quot;:&quot;&quot;}&quot; onclick=&quot;setAttendance(&#x27;${date}&#x27;,&#x27;${s.id}&#x27;,&#x27;absent&#x27;)&quot;&gt;🔴 غیر حاضر&lt;/button&gt;&lt;/div&gt;`;
+  }).join(&quot;&quot;);
 }
-function studentNameBy(i){return esc((db.students.find(x=&gt;x.id===i)||{}).name||&#x27;نام حذف ہوچکا ہے&#x27;)}
-function teacherNameBy(i){return esc((db.teachers.find(x=&gt;x.id===i)||{}).name||&#x27;نام حذف ہوچکا ہے&#x27;)}
+function filterAttendance(filter){attendanceFilter=filter;loadAttendance()}
+function setAttendance(date,id,status){if(!db.attendance[date])db.attendance[date]={};db.attendance[date][id]=status;if(save()){loadAttendance();searchReport()}}
+function getStats(id,from,to){let total=0,present=0,absent=0;for(const d in db.attendance)if(d&gt;=from&amp;&amp;d&lt;=to&amp;&amp;db.attendance[d]&amp;&amp;db.attendance[d][id]){total++;if(db.attendance[d][id]===&quot;present&quot;)present++;else if(db.attendance[d][id]===&quot;absent&quot;)absent++}return{total,present,absent,pct:total?((present/total)*100).toFixed(2):&quot;0.00&quot;}}
+function searchReport(){let name=document.getElementById(&quot;searchStudent&quot;).value.trim(),box=document.getElementById(&quot;studentReport&quot;);if(!name){box.innerHTML=&quot;&quot;;return}let s=db.students.find(x=&gt;x.name===name)||db.students.find(x=&gt;x.name.includes(name));if(!s){box.innerHTML=&quot;&lt;div class=&#x27;notice&#x27;&gt;طالب علم نہیں ملا۔&lt;/div&gt;&quot;;return}let month=+document.getElementById(&quot;reportMonth&quot;).value,year=+document.getElementById(&quot;reportYear&quot;).value,from=`${year}-${String(month).padStart(2,&quot;0&quot;)}-01`,last=new Date(year,month,0).getDate(),to=`${year}-${String(month).padStart(2,&quot;0&quot;)}-${last}`,st=getStats(s.id,from,to),ys=getStats(s.id,`${year}-01-01`,`${year}-12-31`);box.innerHTML=`&lt;div class=&quot;stat-grid&quot;&gt;&lt;div class=&quot;stat&quot;&gt;طالب علم&lt;b&gt;${esc(s.name)}&lt;/b&gt;&lt;/div&gt;&lt;div class=&quot;stat&quot;&gt;ماہانہ حاضر&lt;b&gt;${st.present}&lt;/b&gt;&lt;/div&gt;&lt;div class=&quot;stat&quot;&gt;ماہانہ غیر حاضر&lt;b&gt;${st.absent}&lt;/b&gt;&lt;/div&gt;&lt;div class=&quot;stat&quot;&gt;ماہانہ فیصد&lt;b&gt;${st.pct}%&lt;/b&gt;&lt;/div&gt;&lt;div class=&quot;stat&quot;&gt;سالانہ حاضر&lt;b&gt;${ys.present}&lt;/b&gt;&lt;/div&gt;&lt;div class=&quot;stat&quot;&gt;سالانہ غیر حاضر&lt;b&gt;${ys.absent}&lt;/b&gt;&lt;/div&gt;&lt;div class=&quot;stat&quot;&gt;سالانہ فیصد&lt;b&gt;${ys.pct}%&lt;/b&gt;&lt;/div&gt;&lt;/div&gt;`}
+function showMonthlyAll(){let month=+document.getElementById(&quot;reportMonth&quot;).value,year=+document.getElementById(&quot;reportYear&quot;).value,last=new Date(year,month,0).getDate(),from=`${year}-${String(month).padStart(2,&quot;0&quot;)}-01`,to=`${year}-${String(month).padStart(2,&quot;0&quot;)}-${last}`;document.getElementById(&quot;reportHeading&quot;).textContent=`${monthName(month)} ${year} — ماہانہ حاضری رپورٹ`;document.getElementById(&quot;reportSchoolName&quot;).textContent=db.schoolName||&quot;مدرسہ کا نام&quot;;document.getElementById(&quot;allReport&quot;).innerHTML=reportTable(from,to)}
+function showYearlyAll(){let year=+document.getElementById(&quot;reportYear&quot;).value;document.getElementById(&quot;reportHeading&quot;).textContent=`${year} — سالانہ حاضری رپورٹ`;document.getElementById(&quot;reportSchoolName&quot;).textContent=db.schoolName||&quot;مدرسہ کا نام&quot;;document.getElementById(&quot;allReport&quot;).innerHTML=reportTable(`${year}-01-01`,`${year}-12-31`)}
+function reportTable(from,to){if(!db.students.length)return&quot;&lt;div class=&#x27;notice&#x27;&gt;کوئی طالب علم موجود نہیں۔&lt;/div&gt;&quot;;return`&lt;div class=&quot;table-wrap&quot;&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;نمبر&lt;/th&gt;&lt;th&gt;طالب علم&lt;/th&gt;&lt;th&gt;رول نمبر&lt;/th&gt;&lt;th&gt;کل درج شدہ دن&lt;/th&gt;&lt;th&gt;حاضر&lt;/th&gt;&lt;th&gt;غیر حاضر&lt;/th&gt;&lt;th&gt;فیصد&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;${db.students.map((s,i)=&gt;{let x=getStats(s.id,from,to);return`&lt;tr&gt;&lt;td&gt;${i+1}&lt;/td&gt;&lt;td&gt;${esc(s.name)}&lt;/td&gt;&lt;td&gt;${esc(s.roll||&quot;-&quot;)}&lt;/td&gt;&lt;td&gt;${x.total}&lt;/td&gt;&lt;td class=&quot;present&quot;&gt;${x.present}&lt;/td&gt;&lt;td class=&quot;absent&quot;&gt;${x.absent}&lt;/td&gt;&lt;td&gt;${x.pct}%&lt;/td&gt;&lt;/tr&gt;`}).join(&quot;&quot;)}&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;`}
+function saveAsPDF(){
+  const report=document.getElementById(&quot;reportArea&quot;);
+  if(!report || !report.innerHTML.trim()){
+    alert(&quot;پہلے ماہانہ یا سالانہ رپورٹ کھولیں، پھر PDF بٹن دبائیں۔&quot;);
+    return;
+  }
 
-function saveStudent(){const o={id:studentId.value||id(),name:studentName.value,father:studentFather.value,phone:studentPhone.value,cls:studentClass.value,address:studentAddress.value,date:studentDate.value};if(!o.name.trim())return alert(&#x27;طالب علم کا نام لکھیں&#x27;);const i=db.students.findIndex(x=&gt;x.id===o.id);if(i&gt;=0)db.students[i]=o;else db.students.push(o);save();resetForm(&#x27;student&#x27;)}
-function renderStudents(){const q=(studentSearch.value||&#x27;&#x27;).toLowerCase();studentTable.innerHTML=db.students.filter(x=&gt;(x.name+x.father).toLowerCase().includes(q)).map(x=&gt;`&lt;tr&gt;&lt;td&gt;${esc(x.name)}&lt;/td&gt;&lt;td&gt;${esc(x.father)}&lt;/td&gt;&lt;td&gt;${esc(x.phone)}&lt;/td&gt;&lt;td&gt;${esc(x.cls)}&lt;/td&gt;&lt;td&gt;${esc(x.date)}&lt;/td&gt;&lt;td&gt;&lt;button class=&quot;btn warning&quot; onclick=&quot;editStudent(&#x27;${x.id}&#x27;)&quot;&gt;ترمیم&lt;/button&gt;&lt;button class=&quot;btn danger&quot; onclick=&quot;del(&#x27;students&#x27;,&#x27;${x.id}&#x27;)&quot;&gt;حذف&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;`).join(&#x27;&#x27;)||&#x27;&lt;tr&gt;&lt;td colspan=&quot;6&quot; class=&quot;empty&quot;&gt;کوئی ریکارڈ نہیں&lt;/td&gt;&lt;/tr&gt;&#x27;}
-function editStudent(k){const x=db.students.find(x=&gt;x.id===k);if(!x)return;studentId.value=x.id;studentName.value=x.name;studentFather.value=x.father;studentPhone.value=x.phone;studentClass.value=x.cls;studentAddress.value=x.address;studentDate.value=x.date;showSection(&#x27;students&#x27;,document.querySelector(&#x27;nav button:nth-child(2)&#x27;))}
+  const school=(db.schoolName||&quot;مدرسہ&quot;).replace(/[\\/:*?&quot;&lt;&gt;|]/g,&quot;_&quot;);
+  const title=document.getElementById(&quot;reportHeading&quot;)?.textContent||&quot;حاضری رپورٹ&quot;;
+  const w=window.open(&quot;&quot;,&quot;_blank&quot;);
+  if(!w){
+    alert(&quot;PDF/پرنٹ ونڈو نہیں کھل سکی۔ اگر ایپ میں پاپ اپ کی اجازت کا اختیار ہو تو اسے فعال کریں۔&quot;);
+    return;
+  }
 
-function saveTeacher(){const o={id:teacherId.value||id(),name:teacherName.value,role:teacherRole.value,phone:teacherPhone.value,salary:Number(teacherSalary.value)||0};if(!o.name.trim())return alert(&#x27;استاد کا نام لکھیں&#x27;);const i=db.teachers.findIndex(x=&gt;x.id===o.id);if(i&gt;=0)db.teachers[i]=o;else db.teachers.push(o);save();resetForm(&#x27;teacher&#x27;)}
-function renderTeachers(){teacherTable.innerHTML=db.teachers.map(x=&gt;`&lt;tr&gt;&lt;td&gt;${esc(x.name)}&lt;/td&gt;&lt;td&gt;${esc(x.role)}&lt;/td&gt;&lt;td&gt;${esc(x.phone)}&lt;/td&gt;&lt;td&gt;${money(x.salary)}&lt;/td&gt;&lt;td&gt;&lt;button class=&quot;btn warning&quot; onclick=&quot;editTeacher(&#x27;${x.id}&#x27;)&quot;&gt;ترمیم&lt;/button&gt;&lt;button class=&quot;btn danger&quot; onclick=&quot;del(&#x27;teachers&#x27;,&#x27;${x.id}&#x27;)&quot;&gt;حذف&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;`).join(&#x27;&#x27;)||&#x27;&lt;tr&gt;&lt;td colspan=&quot;5&quot; class=&quot;empty&quot;&gt;کوئی ریکارڈ نہیں&lt;/td&gt;&lt;/tr&gt;&#x27;}
-function editTeacher(k){const x=db.teachers.find(x=&gt;x.id===k);if(!x)return;teacherId.value=x.id;teacherName.value=x.name;teacherRole.value=x.role;teacherPhone.value=x.phone;teacherSalary.value=x.salary;showSection(&#x27;teachers&#x27;,document.querySelector(&#x27;nav button:nth-child(3)&#x27;))}
-
-
-function saveFee(){if(!feeStudent.value)return alert(&#x27;طالب علم منتخب کریں&#x27;);db.fees.push({id:id(),date:feeDate.value||today(),student:feeStudent.value,month:feeMonth.value,due:Number(feeDue.value)||0,paid:Number(feePaid.value)||0});save();resetForm(&#x27;fee&#x27;)}
-function renderFees(){feeTable.innerHTML=db.fees.slice().reverse().map(x=&gt;`&lt;tr&gt;&lt;td&gt;${esc(x.date)}&lt;/td&gt;&lt;td&gt;${studentNameBy(x.student)}&lt;/td&gt;&lt;td&gt;${esc(x.month)}&lt;/td&gt;&lt;td&gt;${money(x.due)}&lt;/td&gt;&lt;td&gt;${money(x.paid)}&lt;/td&gt;&lt;td&gt;${money(x.due-x.paid)}&lt;/td&gt;&lt;td&gt;&lt;button class=&quot;btn danger&quot; onclick=&quot;del(&#x27;fees&#x27;,&#x27;${x.id}&#x27;)&quot;&gt;حذف&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;`).join(&#x27;&#x27;)||&#x27;&lt;tr&gt;&lt;td colspan=&quot;7&quot; class=&quot;empty&quot;&gt;کوئی ریکارڈ نہیں&lt;/td&gt;&lt;/tr&gt;&#x27;}
-function saveDonor(){if(!donorName.value.trim())return alert(&#x27;معاون کا نام لکھیں&#x27;);db.donors.push({id:id(),name:donorName.value,phone:donorPhone.value,monthly:Number(donorMonthly.value)||0,paid:Number(donorPaid.value)||0,month:donorMonth.value,date:donorDate.value||today()});save();resetForm(&#x27;donor&#x27;)}
-function renderDonors(){donorTable.innerHTML=db.donors.slice().reverse().map(x=&gt;`&lt;tr&gt;&lt;td&gt;${esc(x.name)}&lt;/td&gt;&lt;td&gt;${esc(x.phone)}&lt;/td&gt;&lt;td&gt;${money(x.monthly)}&lt;/td&gt;&lt;td&gt;${money(x.paid)}&lt;/td&gt;&lt;td&gt;${esc(x.month)}&lt;/td&gt;&lt;td&gt;&lt;button class=&quot;btn danger&quot; onclick=&quot;del(&#x27;donors&#x27;,&#x27;${x.id}&#x27;)&quot;&gt;حذف&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;`).join(&#x27;&#x27;)||&#x27;&lt;tr&gt;&lt;td colspan=&quot;6&quot; class=&quot;empty&quot;&gt;کوئی ریکارڈ نہیں&lt;/td&gt;&lt;/tr&gt;&#x27;}
-function saveSalary(){if(!salaryTeacher.value)return alert(&#x27;استاد منتخب کریں&#x27;);db.salaries.push({id:id(),teacher:salaryTeacher.value,month:salaryMonth.value,due:Number(salaryDue.value)||0,paid:Number(salaryPaid.value)||0,date:salaryDate.value||today()});save();resetForm(&#x27;salary&#x27;)}
-function renderSalaries(){salaryTable.innerHTML=db.salaries.slice().reverse().map(x=&gt;`&lt;tr&gt;&lt;td&gt;${teacherNameBy(x.teacher)}&lt;/td&gt;&lt;td&gt;${esc(x.month)}&lt;/td&gt;&lt;td&gt;${money(x.due)}&lt;/td&gt;&lt;td&gt;${money(x.paid)}&lt;/td&gt;&lt;td&gt;${money(x.due-x.paid)}&lt;/td&gt;&lt;td&gt;&lt;button class=&quot;btn danger&quot; onclick=&quot;del(&#x27;salaries&#x27;,&#x27;${x.id}&#x27;)&quot;&gt;حذف&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;`).join(&#x27;&#x27;)||&#x27;&lt;tr&gt;&lt;td colspan=&quot;6&quot; class=&quot;empty&quot;&gt;کوئی ریکارڈ نہیں&lt;/td&gt;&lt;/tr&gt;&#x27;}
-function saveFinance(){if(!finAmount.value)return alert(&#x27;رقم درج کریں&#x27;);db.finance.push({id:id(),date:finDate.value||today(),type:finType.value,amount:Number(finAmount.value)||0,note:finNote.value});save();resetForm(&#x27;finance&#x27;)}
-function renderFinance(){financeTable.innerHTML=db.finance.slice().reverse().map(x=&gt;`&lt;tr&gt;&lt;td&gt;${esc(x.date)}&lt;/td&gt;&lt;td&gt;${esc(x.type)}&lt;/td&gt;&lt;td&gt;${money(x.amount)}&lt;/td&gt;&lt;td&gt;${esc(x.note)}&lt;/td&gt;&lt;td&gt;&lt;button class=&quot;btn danger&quot; onclick=&quot;del(&#x27;finance&#x27;,&#x27;${x.id}&#x27;)&quot;&gt;حذف&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;`).join(&#x27;&#x27;)||&#x27;&lt;tr&gt;&lt;td colspan=&quot;5&quot; class=&quot;empty&quot;&gt;کوئی ریکارڈ نہیں&lt;/td&gt;&lt;/tr&gt;&#x27;}
-
-function del(arr,key){if(confirm(&#x27;کیا یہ ریکارڈ حذف کرنا ہے؟&#x27;)){db[arr]=db[arr].filter(x=&gt;x.id!==key);save()}}
-function resetForm(type){
- if(type===&#x27;student&#x27;){document.querySelectorAll(&#x27;#students input&#x27;).forEach(x=&gt;{if(x.type!==&#x27;hidden&#x27;)x.value=&#x27;&#x27;});studentId.value=&#x27;&#x27;}
- if(type===&#x27;teacher&#x27;){document.querySelectorAll(&#x27;#teachers input&#x27;).forEach(x=&gt;{if(x.type!==&#x27;hidden&#x27;)x.value=&#x27;&#x27;});teacherId.value=&#x27;&#x27;}
- if(type===&#x27;fee&#x27;){feeMonth.value=&#x27;&#x27;;feeDue.value=&#x27;&#x27;;feePaid.value=&#x27;&#x27;;feeDate.value=today()}
- if(type===&#x27;donor&#x27;){donorName.value=&#x27;&#x27;;donorPhone.value=&#x27;&#x27;;donorMonthly.value=&#x27;&#x27;;donorPaid.value=&#x27;&#x27;;donorMonth.value=&#x27;&#x27;;donorDate.value=today()}
- if(type===&#x27;salary&#x27;){salaryTeacher.value=&#x27;&#x27;;salaryMonth.value=&#x27;&#x27;;salaryDue.value=&#x27;&#x27;;salaryPaid.value=&#x27;&#x27;;salaryDate.value=today()}
- if(type===&#x27;finance&#x27;){finAmount.value=&#x27;&#x27;;finNote.value=&#x27;&#x27;;finDate.value=today()}
+  w.document.open();
+  w.document.write(`&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ur&quot; dir=&quot;rtl&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;${esc(title)}&lt;/title&gt;
+&lt;style&gt;
+body{font-family:Arial,&quot;Noto Nastaliq Urdu&quot;,sans-serif;padding:20px;color:#172033}
+h2{text-align:center;margin:8px 0}
+table{width:100%;border-collapse:collapse;margin-top:20px}
+th,td{border:1px solid #999;padding:8px;text-align:center}
+th{background:#eee}.present{background:#dcfce7;color:#166534;font-weight:bold}
+.absent{background:#fee2e2;color:#991b1b;font-weight:bold}
+@page{size:A4;margin:12mm}
+@media print{.printBtn{display:none}}
+.printBtn{display:block;margin:15px auto;padding:10px 20px;border:0;border-radius:8px;background:#0f766e;color:#fff;font-weight:bold}
+&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;pdfContent&quot;&gt;${report.innerHTML}&lt;/div&gt;
+&lt;button class=&quot;printBtn&quot; onclick=&quot;window.print()&quot;&gt;📄 PDF / پرنٹ&lt;/button&gt;
+&lt;script&gt;
+window.onload=function(){
+  setTimeout(function(){try{window.print()}catch(e){}},500);
+};
+&lt;\/script&gt;
+&lt;/body&gt;&lt;/html&gt;`);
+  w.document.close();
 }
 
-function report(type){
-  let title=&#x27;&#x27;,html=&#x27;&#x27;;
-  const from=(document.getElementById(&#x27;reportFrom&#x27;)?.value||&#x27;&#x27;),to=(document.getElementById(&#x27;reportTo&#x27;)?.value||&#x27;&#x27;);
-  const inRange=d=&gt;(!from||!d||d&gt;=from)&amp;&amp;(!to||!d||d&lt;=to);
-  const filtered=a=&gt;a.filter(x=&gt;inRange(x.date||&#x27;&#x27;));
-  const T=(u)=&gt;currentLanguage===&#x27;gu&#x27;?(URDU_GUJARATI[u]||u):u;
-  const noRec=T(&#x27;کوئی ریکارڈ نہیں&#x27;);
-  if(type===&#x27;students&#x27;){
-    title=T(&#x27;طلبہ کی رپورٹ&#x27;);
-    html=&#x27;&lt;table&gt;&lt;tr&gt;&lt;th&gt;&#x27;+T(&#x27;نام&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;والد&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;جماعت&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;موبائل&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;تاریخ&#x27;)+&#x27;&lt;/th&gt;&lt;/tr&gt;&#x27;+filtered(db.students).map(x=&gt;`&lt;tr&gt;&lt;td&gt;${esc(x.name)}&lt;/td&gt;&lt;td&gt;${esc(x.father)}&lt;/td&gt;&lt;td&gt;${esc(x.cls)}&lt;/td&gt;&lt;td&gt;${esc(x.phone)}&lt;/td&gt;&lt;td&gt;${esc(x.date)}&lt;/td&gt;&lt;/tr&gt;`).join(&#x27;&#x27;)+&#x27;&lt;/table&gt;&#x27;;
-  }
-  if(type===&#x27;fees&#x27;){
-    title=T(&#x27;فیس رپورٹ&#x27;);
-    html=&#x27;&lt;table&gt;&lt;tr&gt;&lt;th&gt;&#x27;+T(&#x27;تاریخ&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;طالب علم&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;مہینہ&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;واجب&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;جمع&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;باقی&#x27;)+&#x27;&lt;/th&gt;&lt;/tr&gt;&#x27;+filtered(db.fees).map(x=&gt;`&lt;tr&gt;&lt;td&gt;${esc(x.date)}&lt;/td&gt;&lt;td&gt;${studentNameBy(x.student)}&lt;/td&gt;&lt;td&gt;${esc(x.month)}&lt;/td&gt;&lt;td&gt;${money(x.due)}&lt;/td&gt;&lt;td&gt;${money(x.paid)}&lt;/td&gt;&lt;td&gt;${money(x.due-x.paid)}&lt;/td&gt;&lt;/tr&gt;`).join(&#x27;&#x27;)+&#x27;&lt;/table&gt;&#x27;;
-  }
-  if(type===&#x27;donors&#x27;){
-    title=T(&#x27;تعاون رپورٹ&#x27;);
-    html=&#x27;&lt;table&gt;&lt;tr&gt;&lt;th&gt;&#x27;+T(&#x27;تاریخ&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;معاون&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;ماہانہ&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;جمع&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;مہینہ&#x27;)+&#x27;&lt;/th&gt;&lt;/tr&gt;&#x27;+filtered(db.donors).map(x=&gt;`&lt;tr&gt;&lt;td&gt;${esc(x.date)}&lt;/td&gt;&lt;td&gt;${esc(x.name)}&lt;/td&gt;&lt;td&gt;${money(x.monthly)}&lt;/td&gt;&lt;td&gt;${money(x.paid)}&lt;/td&gt;&lt;td&gt;${esc(x.month)}&lt;/td&gt;&lt;/tr&gt;`).join(&#x27;&#x27;)+&#x27;&lt;/table&gt;&#x27;;
-  }
-  if(type===&#x27;salaries&#x27;){
-    title=T(&#x27;تنخواہ رپورٹ&#x27;);
-    html=&#x27;&lt;table&gt;&lt;tr&gt;&lt;th&gt;&#x27;+T(&#x27;تاریخ&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;نام&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;مہینہ&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;مقررہ&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;ادا&#x27;)+&#x27;&lt;/th&gt;&lt;th&gt;&#x27;+T(&#x27;باقی&#x27;)+&#x27;&lt;/th&gt;&lt;/tr&gt;&#x27;+filtered(db.salaries).map(x=&gt;`&lt;tr&gt;&lt;td&gt;${esc(x.date)}&lt;/td&gt;&lt;td&gt;${teacherNameBy(x.teacher)}&lt;/td&gt;&lt;td&gt;${esc(x.month)}&lt;/td&gt;&lt;td&gt;${money(x.due)}&lt;/td&gt;&lt;td&gt;${money(x.paid)}&lt;/td&gt;&lt;td&gt;${money(x.due-x.paid)}&lt;/td&gt;&lt;/tr&gt;`).join(&#x27;&#x27;)+&#x27;&lt;/table&gt;&#x27;;
-  }
-  if(type===&#x27;finance&#x27;){
-    title=T(&#x27;مالی رپورٹ&#x27;);
-    const rows=filtered(db.finance),inc=rows.filter(x=&gt;x.type===&#x27;آمدنی&#x27;).reduce((a,x)=&gt;a+x.amount,0),exp=rows.filter(x=&gt;x.type===&#x27;اخراجات&#x27;).reduce((a,x)=&gt;a+x.amount,0);
-    html=`&lt;p&gt;&lt;b&gt;${T(&#x27;کل آمدنی&#x27;)}:&lt;/b&gt; ${money(inc)} &amp;nbsp; &lt;b&gt;${T(&#x27;کل اخراجات&#x27;)}:&lt;/b&gt; ${money(exp)} &amp;nbsp; &lt;b&gt;${T(&#x27;موجودہ بیلنس&#x27;)}:&lt;/b&gt; ${money(inc-exp)}&lt;/p&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;${T(&#x27;تاریخ&#x27;)}&lt;/th&gt;&lt;th&gt;${T(&#x27;قسم&#x27;)}&lt;/th&gt;&lt;th&gt;${T(&#x27;رقم&#x27;)}&lt;/th&gt;&lt;th&gt;${T(&#x27;تفصیل&#x27;)}&lt;/th&gt;&lt;/tr&gt;`+rows.map(x=&gt;`&lt;tr&gt;&lt;td&gt;${esc(x.date)}&lt;/td&gt;&lt;td&gt;${currentLanguage===&#x27;gu&#x27;?(x.type===&#x27;آمدنی&#x27;?&#x27;આવક&#x27;:&#x27;ખર્ચ&#x27;):esc(x.type)}&lt;/td&gt;&lt;td&gt;${money(x.amount)}&lt;/td&gt;&lt;td&gt;${esc(x.note)}&lt;/td&gt;&lt;/tr&gt;`).join(&#x27;&#x27;)+&#x27;&lt;/table&gt;&#x27;;
-  }
-  if(!html) html=&#x27;&lt;div class=&quot;empty&quot;&gt;&#x27;+noRec+&#x27;&lt;/div&gt;&#x27;;
-  reportOutput.innerHTML=`&lt;h3&gt;${title}&lt;/h3&gt;&lt;div class=&quot;small&quot;&gt;${T(&#x27;تاریخ:&#x27;)} ${from||T(&#x27;ابتدا&#x27;)} ${T(&#x27;تا&#x27;)} ${to||T(&#x27;آخر تک&#x27;)}&lt;/div&gt;${html}&lt;button class=&quot;btn no-print&quot; onclick=&quot;window.print()&quot;&gt;🖨️ ${T(&#x27;پرنٹ / Save as PDF&#x27;)}&lt;/button&gt;`;
-}
+/* ہر منتخب مدرسے کا الگ بیک اپ */
+function getFreshBackupData(){return JSON.parse(JSON.stringify(db));}
+function backupData(){try{save();const backup=getFreshBackupData(),backupFile={backupVersion:&quot;2.0&quot;,backupType:&quot;SPECIAL_STUDENTS_ATTENDANCE&quot;,createdAt:new Date().toISOString(),madrasaName:db.schoolName||activeMadrasa().name||&quot;مدرسہ&quot;,schoolName:backup.schoolName||&quot;&quot;,students:backup.students||[],attendance:backup.attendance||{}},json=JSON.stringify(backupFile,null,2),blob=new Blob([json],{type:&quot;application/json;charset=utf-8&quot;}),now=new Date(),date=now.toISOString().slice(0,10),time=now.toTimeString().slice(0,8).replace(/:/g,&quot;-&quot;),fileName=`Madrasa_Attendance_${date}_${time}.json`,url=URL.createObjectURL(blob),a=document.createElement(&quot;a&quot;);a.href=url;a.download=fileName;document.body.appendChild(a);a.click();a.remove();setTimeout(()=&gt;URL.revokeObjectURL(url),2000);try{localStorage.setItem(SELECTED_BACKUP_KEY,JSON.stringify({fileName,data:backupFile,savedAt:new Date().toISOString()}));selectedBackupFile={name:fileName,data:backupFile};document.getElementById(&quot;backupFileName&quot;).textContent=&quot;نیا بیک اپ تیار ہوگیا: &quot;+fileName+&quot; ✓&quot;;document.getElementById(&quot;restoreBtn&quot;).disabled=false;}catch(e){}alert(&quot;اس مدرسے کا بیک اپ تیار ہوگیا۔&quot;);}catch(error){alert(&quot;بیک اپ بنانے میں مسئلہ آیا: &quot;+error.message);}}
+let selectedBackupFile=null;
+function validBackup(x){return !!(x&amp;&amp;Array.isArray(x.students)&amp;&amp;x.attendance&amp;&amp;typeof x.attendance===&quot;object&quot;);}
+function fileSelected(e){const file=e.target.files[0]||null;if(!file){e.target.value=&quot;&quot;;return;}const reader=new FileReader();reader.onload=()=&gt;{try{const x=JSON.parse(reader.result);if(!validBackup(x))throw 0;localStorage.setItem(SELECTED_BACKUP_KEY,JSON.stringify({fileName:file.name,data:x,savedAt:new Date().toISOString()}));selectedBackupFile={name:file.name,data:x};document.getElementById(&quot;backupFileName&quot;).textContent=&quot;منتخب بیک اپ: &quot;+file.name+&quot; ✓&quot;;document.getElementById(&quot;restoreBtn&quot;).disabled=false;alert(&quot;بیک اپ منتخب ہوگیا۔ اب بحالی کا بٹن دبائیں۔&quot;);e.target.value=&quot;&quot;;}catch(error){alert(&quot;یہ درست حاضری بیک اپ فائل نہیں ہے۔&quot;);e.target.value=&quot;&quot;;}};reader.onerror=()=&gt;{alert(&quot;بیک اپ فائل پڑھی نہیں جاسکی۔&quot;);e.target.value=&quot;&quot;;};reader.readAsText(file,&quot;UTF-8&quot;);}
+function restoreSelectedBackupInfo(){try{const raw=localStorage.getItem(SELECTED_BACKUP_KEY);if(!raw)throw 0;const saved=JSON.parse(raw);if(!validBackup(saved.data))throw 0;selectedBackupFile={name:saved.fileName||&quot;منتخب بیک اپ&quot;,data:saved.data};document.getElementById(&quot;backupFileName&quot;).textContent=&quot;منتخب بیک اپ: &quot;+selectedBackupFile.name+&quot; ✓&quot;;document.getElementById(&quot;restoreBtn&quot;).disabled=false;}catch(e){localStorage.removeItem(SELECTED_BACKUP_KEY);selectedBackupFile=null;document.getElementById(&quot;backupFileName&quot;).textContent=&quot;کوئی بیک اپ فائل منتخب نہیں کی گئی۔&quot;;document.getElementById(&quot;restoreBtn&quot;).disabled=true;}}
+function restoreSelected(){if(!selectedBackupFile){restoreSelectedBackupInfo();if(!selectedBackupFile)return alert(&quot;پہلے بیک اپ فائل منتخب کریں۔&quot;);}if(!confirm(&quot;منتخب بیک اپ موجودہ منتخب مدرسے کے طلبہ اور حاضری سے بدل جائے گا۔ کیا جاری رکھیں؟&quot;))return;try{const x=selectedBackupFile.data;if(!validBackup(x))throw 0;db=cleanDB(x);if(!save())throw 0;init();alert(&quot;منتخب مدرسے کا بیک اپ بحال ہوگیا۔&quot;);}catch(error){alert(&quot;بیک اپ بحال نہیں ہوسکا۔&quot;);}}
+function clearSelectedBackup(){if(!confirm(&quot;کیا منتخب بیک اپ کو اس ایپ سے ہٹانا ہے؟ اصل JSON فائل حذف نہیں ہوگی۔&quot;))return;localStorage.removeItem(SELECTED_BACKUP_KEY);selectedBackupFile=null;document.getElementById(&quot;backupFileName&quot;).textContent=&quot;کوئی بیک اپ فائل منتخب نہیں کی گئی۔&quot;;document.getElementById(&quot;restoreBtn&quot;).disabled=true;}
 
-function clearReportDates(){document.getElementById(&#x27;reportFrom&#x27;).value=&#x27;&#x27;;document.getElementById(&#x27;reportTo&#x27;).value=&#x27;&#x27;}
-function goBack(){if(history.length&gt;1)history.back();else showSection(&#x27;home&#x27;,document.querySelector(&#x27;nav button&#x27;))}
-function exitApp(){if(confirm(&#x27;کیا آپ سسٹم سے باہر نکلنا چاہتے ہیں؟&#x27;)){window.close();setTimeout(()=&gt;alert(&#x27;اگر ایپ خود بند نہ ہو تو اس ونڈو/ٹیب کو دستی طور پر بند کریں۔&#x27;),300)}}
-
-function exportData(){const blob=new Blob([JSON.stringify(db,null,2)],{type:&#x27;application/json&#x27;});const a=document.createElement(&#x27;a&#x27;);a.href=URL.createObjectURL(blob);a.download=&#x27;Madrasa_Management_Backup.json&#x27;;a.click();URL.revokeObjectURL(a.href)}
-function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=&gt;{try{const x=JSON.parse(r.result);if(!x.students||!x.teachers)throw 0;[&quot;exams&quot;,&quot;attendance&quot;,&quot;fees&quot;,&quot;donors&quot;,&quot;salaries&quot;,&quot;finance&quot;].forEach(k=&gt;{if(!Array.isArray(x[k]))x[k]=[]});db=x;save();alert(&#x27;بیک اپ کامیابی سے بحال ہوگیا۔&#x27;)}catch{alert(&#x27;غلط بیک اپ فائل&#x27;)}};r.readAsText(f)}
-function clearAll(){if(confirm(&#x27;تمام ریکارڈ مستقل طور پر حذف ہو جائیں گے۔ کیا آپ پُریقین ہیں؟&#x27;)){localStorage.removeItem(KEY);location.reload()}}
-function setMadrasaName(){
-  const current=localStorage.getItem(&quot;madrasa_name&quot;)||&quot;&quot;;
-  const name=prompt(&quot;مدرسے کا نام درج کریں:&quot;,current);
-  if(name===null)return;
-  const clean=name.trim();
-  if(clean){
-    localStorage.setItem(&quot;madrasa_name&quot;,clean);
-    updateMadrasaName();
-    alert(&quot;مدرسے کا نام محفوظ ہوگیا۔&quot;);
-  }else{
-    localStorage.removeItem(&quot;madrasa_name&quot;);
-    updateMadrasaName();
-  }
-}
-function updateMadrasaName(){
-  const name=localStorage.getItem(&quot;madrasa_name&quot;)||&quot;&quot;;
-  const title=document.getElementById(&quot;appTitle&quot;);
-  const sub=document.getElementById(&quot;madrasaNameDisplay&quot;);
-  if(name){
-    title.textContent=name;
-    sub.textContent=&quot;مدرسہ مینجمنٹ سسٹم&quot;;
-  }else{
-    title.textContent=&quot;مدرسہ مینجمنٹ سسٹم&quot;;
-    sub.textContent=&quot;طلبہ، اساتذہ، فیس، تعاون، تنخواہوں اور مالی حساب کا جامع ریکارڈ&quot;;
-  }
-}
-function refresh(){
- fillSelects();renderStudents();renderTeachers();renderFees();renderDonors();renderSalaries();renderFinance();
- const income=db.finance.filter(x=&gt;x.type===&#x27;آمدنی&#x27;).reduce((a,x)=&gt;a+x.amount,0)+db.fees.reduce((a,x)=&gt;a+x.paid,0)+db.donors.reduce((a,x)=&gt;a+x.paid,0);
- const expense=db.finance.filter(x=&gt;x.type===&#x27;اخراجات&#x27;).reduce((a,x)=&gt;a+x.amount,0)+db.salaries.reduce((a,x)=&gt;a+x.paid,0);
- sStudents.textContent=db.students.length;sTeachers.textContent=db.teachers.length;sDonors.textContent=db.donors.length;sIncome.textContent=money(income);sExpense.textContent=money(expense);sBalance.textContent=money(income-expense)
-}
-document.addEventListener(&#x27;DOMContentLoaded&#x27;,()=&gt;{[&#x27;feeDate&#x27;,&#x27;donorDate&#x27;,&#x27;salaryDate&#x27;,&#x27;finDate&#x27;,&#x27;studentDate&#x27;].forEach(x=&gt;{if(document.getElementById(x))document.getElementById(x).value=today()});refresh();updateMadrasaName();translatePage()});
+init();
 &lt;/script&gt;
 &lt;/body&gt;
-&lt;/html&gt;" style="display:none;border:0;width:100%;height:calc(100% - 54px);background:#fff;"></iframe>
+&lt;/html&gt;"></iframe>
 </div>
 
 
