@@ -152,6 +152,26 @@ body:has(.article-detail:target) .hero{display:none}
 .date-note{display:block;margin-top:9px;color:#e8d8b6;font-size:11px;line-height:1.8}
 @media(max-width:420px){.date-panel{margin-top:16px;padding:11px}.date-grid{gap:7px}.date-cell{padding:9px 6px}}
 
+
+
+/* صفحے کے اوپر مختصر خوبصورت ڈیجیٹل گھڑی */
+.live-clock{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:9px;width:max-content;max-width:calc(100% - 20px);margin:0 auto 11px;padding:6px 15px;border:1px solid #e5c77e;border-radius:999px;background:linear-gradient(110deg,#061d1ddd,#174e43ee);box-shadow:0 4px 14px #0003;color:#fff8e8}
+.live-clock .clock-icon{font-size:18px;line-height:1}
+.live-clock .clock-label{font-size:11px;color:#f5dfae;white-space:nowrap}
+.live-clock .clock-time{font-family:Arial,sans-serif;font-size:clamp(19px,4.8vw,25px);font-weight:800;letter-spacing:1px;direction:ltr;font-variant-numeric:tabular-nums;white-space:nowrap}
+.live-clock .clock-period{font-size:11px;color:#ffe4a5;white-space:nowrap}
+@media(max-width:420px){.live-clock{gap:7px;margin-bottom:9px;padding:5px 11px}.live-clock .clock-label{font-size:10px}.live-clock .clock-time{font-size:20px}}
+
+/* رمضان المبارک کی آمد کا مختصر کاؤنٹ ڈاؤن */
+.ramadan-countdown{position:relative;z-index:1;max-width:510px;margin:0 auto 14px;padding:8px 12px 9px;border:1px solid #e5c77e;border-radius:14px;background:linear-gradient(110deg,#071e1dcc,#1d5b4dcc);box-shadow:0 6px 18px #0003;backdrop-filter:blur(5px)}
+.ramadan-countdown .rc-title{margin:0 0 5px;color:#ffe4a5;font-size:clamp(13px,2.8vw,16px);line-height:1.7}
+.ramadan-countdown .rc-units{display:flex;justify-content:center;align-items:center;gap:7px;direction:rtl}
+.ramadan-countdown .rc-unit{min-width:76px;padding:3px 8px;border-radius:9px;background:#ffffff12;border:1px solid #ffffff30;line-height:1.4}
+.ramadan-countdown .rc-num{display:block;color:#fff;font-family:Arial,sans-serif;font-size:clamp(19px,4.4vw,25px);font-weight:800;direction:ltr;font-variant-numeric:tabular-nums}
+.ramadan-countdown .rc-label{display:block;color:#f5dfae;font-size:11px}
+.ramadan-countdown .rc-note{display:block;margin-top:5px;color:#e8d8b6;font-size:10px;line-height:1.6}
+@media(max-width:420px){.ramadan-countdown{margin-bottom:10px;padding:7px 8px}.ramadan-countdown .rc-unit{min-width:68px;padding:3px 5px}.ramadan-countdown .rc-note{font-size:9px}}
+
 </style>
 <style>
 .image-tools{display:flex!important;visibility:visible!important;opacity:1!important;width:100%;box-sizing:border-box;position:relative;z-index:2}
@@ -161,6 +181,21 @@ body:has(.article-detail:target) .hero{display:none}
 </head>
 <body>
 <header class="hero" id="top">
+  <section class="live-clock" aria-label="موجودہ وقت">
+    <span class="clock-icon" aria-hidden="true">🕰️</span>
+    <span class="clock-label">موجودہ وقت</span>
+    <time class="clock-time" id="liveClock" dir="ltr">--:--:--</time>
+    <span class="clock-period" id="clockPeriod">--</span>
+  </section>
+  <section class="ramadan-countdown" aria-label="رمضان المبارک کی آمد کا کاؤنٹ ڈاؤن">
+    <p class="rc-title">🌙 رمضان المبارک کی آمد میں باقی وقت</p>
+    <div class="rc-units">
+      <div class="rc-unit"><span class="rc-num" id="ramadanDays">---</span><span class="rc-label">دن</span></div>
+      <div class="rc-unit"><span class="rc-num" id="ramadanHours">--</span><span class="rc-label">گھنٹے</span></div>
+      <div class="rc-unit"><span class="rc-num" id="ramadanMinutes">--</span><span class="rc-label">منٹ</span></div>
+    </div>
+    <small class="rc-note" id="ramadanNote">یکم رمضان 1448ھ کی متوقع تاریخ: 8 فروری 2027ء — رؤیتِ ہلال کے مطابق ایک دن فرق ممکن ہے۔</small>
+  </section>
   <div class="ornament">✦ ۞ ✦</div>
   <h1>مسنون اذکار و دعائیں</h1>
   <p>سونے، بیدار ہونے، طہارت اور صبح و شام کے مسنون اذکار</p>
@@ -1005,6 +1040,16 @@ init();
     const hijri = document.getElementById('hijriDate');
     if (!greg || !hijri) return;
 
+    // ہفتے کا دن ہندوستانی مقامی تاریخ سے ایک ہی مرتبہ متعین کریں۔
+    const weekdayEnglish = new Intl.DateTimeFormat('en-US', {
+      weekday:'long', timeZone:zone, calendar:'gregory'
+    }).format(now);
+    const weekdaysUrdu = {
+      Monday:'پیر', Tuesday:'منگل', Wednesday:'بدھ',
+      Thursday:'جمعرات', Friday:'جمعہ', Saturday:'ہفتہ', Sunday:'اتوار'
+    };
+    const weekdayName = weekdaysUrdu[weekdayEnglish] || weekdayEnglish;
+
     // Build the Gregorian date only from numeric Gregorian fields.
     // No era field is requested or displayed, so BC/BCE cannot appear.
     try {
@@ -1035,7 +1080,8 @@ init();
       ];
       const monthNumber = Number(h.month);
       const monthName = hijriMonths[monthNumber - 1] || '';
-      hijri.textContent = `${h.day} ${monthName} ${h.year}ھ`;
+      // ہجری تاریخ میں بھی وہی مقامی دن دکھائیں جو اوپر گریگورین تاریخ میں ہے۔
+      hijri.textContent = `${weekdayName}، ${h.day} ${monthName} ${h.year}ھ`;
     } catch (e) {
       hijri.textContent = 'اسلامی تاریخ دستیاب نہیں';
     }
@@ -1044,5 +1090,57 @@ init();
   setInterval(updateSiteDates, 60000);
 })();
 </script>
+
+<script>
+(function(){
+  // ہندوستانی کیلنڈر کے مطابق یکم رمضان 1448ھ کی متوقع تاریخ
+  const ramadanStart = new Date('2027-02-08T00:00:00+05:30').getTime();
+  const daysEl = document.getElementById('ramadanDays');
+  const hoursEl = document.getElementById('ramadanHours');
+  const minutesEl = document.getElementById('ramadanMinutes');
+  const noteEl = document.getElementById('ramadanNote');
+  if(!daysEl || !hoursEl || !minutesEl) return;
+  const digits = n => String(n).padStart(2,'0');
+  function updateRamadanCountdown(){
+    const remaining = ramadanStart - Date.now();
+    if(remaining <= 0){
+      daysEl.textContent = '🌙';
+      hoursEl.textContent = 'رمضان';
+      minutesEl.textContent = 'مبارک';
+      if(noteEl) noteEl.textContent = 'اللہ تعالیٰ ہمیں رمضان المبارک کی برکتیں نصیب فرمائے۔';
+      return;
+    }
+    const totalMinutes = Math.floor(remaining / 60000);
+    const days = Math.floor(totalMinutes / 1440);
+    const hours = Math.floor((totalMinutes % 1440) / 60);
+    const minutes = totalMinutes % 60;
+    daysEl.textContent = String(days);
+    hoursEl.textContent = digits(hours);
+    minutesEl.textContent = digits(minutes);
+  }
+  updateRamadanCountdown();
+  setInterval(updateRamadanCountdown, 1000);
+})();
+</script>
+
+<script>
+(function(){
+  const clock = document.getElementById('liveClock');
+  const period = document.getElementById('clockPeriod');
+  if(!clock || !period) return;
+  const formatter = new Intl.DateTimeFormat('en-IN', {
+    timeZone:'Asia/Kolkata', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:true
+  });
+  function updateClock(){
+    const parts = {};
+    formatter.formatToParts(new Date()).forEach(part => { parts[part.type] = part.value; });
+    clock.textContent = `${parts.hour}:${parts.minute}:${parts.second}`;
+    period.textContent = parts.dayPeriod === 'am' ? 'صبح' : 'شام';
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+})();
+</script>
+
 </body>
 </html>
