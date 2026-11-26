@@ -140,6 +140,18 @@ body:has(.article-detail:target) .creator{display:none}
 body:has(.article-detail:target) .hero{display:none}
 .folder:has(.article-detail:target) .article-link{display:flex}
 
+
+/* خوبصورت انگریزی اور اسلامی تاریخ کا پینل */
+.date-panel{max-width:720px;margin:22px auto 0;padding:14px 18px;border:1px solid #e5c77e;border-radius:18px;background:linear-gradient(135deg,#ffffff18,#071f1d66);box-shadow:0 10px 28px #0004;backdrop-filter:blur(5px)}
+.date-panel-title{color:#ffe5a6;font-size:14px;margin-bottom:10px;letter-spacing:.3px}
+.date-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.date-cell{padding:11px 9px;border-radius:13px;background:#071f1d55;border:1px solid #ffffff30;min-width:0}
+.date-label{display:block;color:#e7d5a9;font-family:Arial,sans-serif;font-size:11px;letter-spacing:1.2px;margin-bottom:5px}
+.date-value{display:block;color:#fff8e8;font-family:Arial,'Noto Sans',sans-serif;font-size:clamp(15px,3.5vw,20px);font-weight:700;line-height:1.55;direction:ltr}
+.date-cell.hijri .date-value{font-family:'Noto Nastaliq Urdu','Jameel Noori Nastaleeq',serif;font-size:clamp(16px,3.7vw,21px);direction:rtl;line-height:1.9}
+.date-note{display:block;margin-top:9px;color:#e8d8b6;font-size:11px;line-height:1.8}
+@media(max-width:420px){.date-panel{margin-top:16px;padding:11px}.date-grid{gap:7px}.date-cell{padding:9px 6px}}
+
 </style>
 <style>
 .image-tools{display:flex!important;visibility:visible!important;opacity:1!important;width:100%;box-sizing:border-box;position:relative;z-index:2}
@@ -153,6 +165,21 @@ body:has(.article-detail:target) .hero{display:none}
   <h1>مسنون اذکار و دعائیں</h1>
   <p>سونے، بیدار ہونے، طہارت اور صبح و شام کے مسنون اذکار</p>
   <div class="ornament">❁ ❁ ❁</div>
+
+  <section class="date-panel" aria-label="آج کی انگریزی اور اسلامی تاریخ">
+    <div class="date-panel-title">✦ آج کی تاریخ | TODAY’S DATE ✦</div>
+    <div class="date-grid">
+      <div class="date-cell">
+        <span class="date-label">GREGORIAN DATE</span>
+        <time class="date-value" id="gregorianDate">--</time>
+      </div>
+      <div class="date-cell hijri">
+        <span class="date-label">التَّارِيخُ الهِجْرِيُّ</span>
+        <time class="date-value" id="hijriDate">--</time>
+      </div>
+    </div>
+    
+  </section>
 </header>
 <main class="wrap">
   <div class="intro"><strong>ذکرِ الٰہی سے رات کو بابرکت اور صبح کو روشن بنائیے</strong><br>اس صفحے میں دعاؤں کی فہرست دی گئی ہے۔ مطلوبہ دعا پر کلک کریں، وہیں پہنچ جائیں گے۔</div>
@@ -1058,5 +1085,58 @@ document.addEventListener(&#x27;DOMContentLoaded&#x27;,()=&gt;{[&#x27;feeDate&#x
 &lt;/html&gt;" style="display:none;border:0;width:100%;height:calc(100% - 54px);background:#fff;"></iframe>
 </div>
 
+
+<script>
+(function(){
+  const zone = 'Asia/Kolkata';
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function partsMap(formatter, date) {
+    return Object.fromEntries(formatter.formatToParts(date).filter(x => x.type !== 'literal').map(x => [x.type, x.value]));
+  }
+  function updateSiteDates(){
+    const now = new Date();
+    const greg = document.getElementById('gregorianDate');
+    const hijri = document.getElementById('hijriDate');
+    if (!greg || !hijri) return;
+
+    // Build the Gregorian date only from numeric Gregorian fields.
+    // No era field is requested or displayed, so BC/BCE cannot appear.
+    try {
+      const g = partsMap(new Intl.DateTimeFormat('en-GB-u-ca-gregory', {
+        weekday:'long', day:'2-digit', month:'2-digit', year:'numeric',
+        calendar:'gregory', timeZone:zone
+      }), now);
+      const monthIndex = Math.max(1, Math.min(12, Number(g.month))) - 1;
+      greg.textContent = `${g.weekday}, ${Number(g.day)} ${months[monthIndex]} ${g.year}`;
+    } catch (e) {
+      const d = new Date(now.toLocaleString('en-US', {timeZone:zone}));
+      greg.textContent = `${['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+    }
+
+    // India-local fallback: one day behind Umm al-Qura.
+    // The actual Gujarat Ruet-e-Hilal announcement takes precedence;
+    // a static/offline page cannot fetch live committee announcements.
+    try {
+      const indiaCalendarDate = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+      const h = partsMap(new Intl.DateTimeFormat('en-GB-u-ca-islamic-umalqura', {
+        day:'numeric', month:'numeric', year:'numeric',
+        calendar:'islamic-umalqura', timeZone:zone, numberingSystem:'latn'
+      }), indiaCalendarDate);
+      const hijriMonths = [
+        'محرم','صفر','ربیع الاول','ربیع الآخر',
+        'جمادی الاول','جمادی الآخر','رجب','شعبان',
+        'رمضان','شوال','ذوالقعدہ','ذوالحجہ'
+      ];
+      const monthNumber = Number(h.month);
+      const monthName = hijriMonths[monthNumber - 1] || '';
+      hijri.textContent = `${h.day} ${monthName} ${h.year}ھ`;
+    } catch (e) {
+      hijri.textContent = 'اسلامی تاریخ دستیاب نہیں';
+    }
+  }
+  updateSiteDates();
+  setInterval(updateSiteDates, 60000);
+})();
+</script>
 </body>
 </html>
