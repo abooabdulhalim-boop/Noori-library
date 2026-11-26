@@ -867,9 +867,32 @@ footer{text-align:center;color:#64748b;padding:20px}
 #appRoot{display:none}
 .home-back{width:auto;padding:7px 13px;margin-top:10px;background:#115e59;border:1px solid #ffffff66;font-size:14px}
 @media(max-width:480px){.home-inner h1{font-size:24px}.folder-card{padding:22px 14px}}
+
+#loginGate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(145deg,#e0f2fe,#f0fdfa)}
+.login-card{width:100%;max-width:420px;background:#fff;border-radius:18px;padding:24px;box-shadow:0 8px 28px #0f172a20;text-align:center}
+.login-card h2{margin-bottom:10px}.login-card input{margin:7px 0;direction:ltr;text-align:left}
+#loginMessage{min-height:24px;color:#b91c1c;font-size:14px;margin-top:8px}
+#cloudStatus{font-size:12px;background:#ecfeff;color:#155e75;padding:6px 10px;border-radius:20px;display:inline-block;margin-top:7px}
+#logoutBtn{width:auto;padding:7px 12px;background:#475569;margin:8px auto 0}
 &lt;/style&gt;
+&lt;script src=&quot;https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js&quot;&gt;&lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
+&lt;div id=&quot;loginGate&quot;&gt;
+  &lt;div class=&quot;login-card&quot;&gt;
+    &lt;h2&gt;🔐 مکاتب حاضری مینجمنٹ&lt;/h2&gt;
+    &lt;p&gt;مجاز صارف اپنا ای میل اور پاس ورڈ درج کرکے لاگ اِن کریں۔&lt;/p&gt;
+    &lt;form onsubmit=&quot;event.preventDefault();loginUser()&quot;&gt;
+      &lt;input id=&quot;loginEmail&quot; type=&quot;email&quot; autocomplete=&quot;username&quot; placeholder=&quot;Email address&quot; required&gt;
+      &lt;input id=&quot;loginPassword&quot; type=&quot;password&quot; autocomplete=&quot;current-password&quot; placeholder=&quot;Password&quot; required&gt;
+      &lt;button type=&quot;submit&quot; id=&quot;loginBtn&quot;&gt;لاگ اِن کریں&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;div id=&quot;loginMessage&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;small&quot;&gt;اکاؤنٹ منتظم کی طرف سے بنایا جائے گا۔&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 &lt;div id=&quot;homePage&quot; class=&quot;home-page&quot;&gt;
   &lt;div class=&quot;home-inner&quot;&gt;
     &lt;h1&gt;مکاتب حاضری مینجمنٹ&lt;/h1&gt;
@@ -883,7 +906,7 @@ footer{text-align:center;color:#64748b;padding:20px}
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&quot;appRoot&quot;&gt;
-&lt;header&gt;&lt;h1&gt;مکاتب حاضری مینجمنٹ&lt;/h1&gt;&lt;div id=&quot;schoolTitle&quot;&gt;مدرسہ کا نام درج کریں&lt;/div&gt;&lt;button class=&quot;home-back no-print&quot; onclick=&quot;backToHome()&quot;&gt;⌂ مرکزی صفحہ&lt;/button&gt;&lt;/header&gt;
+&lt;header&gt;&lt;h1&gt;مکاتب حاضری مینجمنٹ&lt;/h1&gt;&lt;div id=&quot;schoolTitle&quot;&gt;مدرسہ کا نام درج کریں&lt;/div&gt;&lt;div&gt;&lt;span id=&quot;cloudStatus&quot;&gt;آن لائن ڈیٹا بیس&lt;/span&gt;&lt;/div&gt;&lt;button id=&quot;logoutBtn&quot; class=&quot;no-print&quot; onclick=&quot;logoutUser()&quot;&gt;لاگ آؤٹ&lt;/button&gt;&lt;button class=&quot;home-back no-print&quot; onclick=&quot;backToHome()&quot;&gt;⌂ مرکزی صفحہ&lt;/button&gt;&lt;/header&gt;
 &lt;div class=&quot;container&quot;&gt;
 &lt;div class=&quot;card form-card&quot;&gt;&lt;h2&gt;🏫 مدرسہ / مکتب منتخب کریں&lt;/h2&gt;&lt;div class=&quot;grid&quot;&gt;&lt;select id=&quot;madrasaSelect&quot; onchange=&quot;switchMadrasa(this.value)&quot; aria-label=&quot;مدرسہ منتخب کریں&quot;&gt;&lt;/select&gt;&lt;button class=&quot;btn-green&quot; onclick=&quot;addMadrasa()&quot;&gt;➕ نیا مدرسہ / مکتب شامل کریں&lt;/button&gt;&lt;button class=&quot;btn-red&quot; onclick=&quot;deleteMadrasa()&quot;&gt;🗑️ موجودہ مدرسہ حذف کریں&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;small&quot;&gt;ہر مدرسے کے طلبہ، حاضری، ماہانہ و سالانہ رپورٹس اور بیک اپ الگ محفوظ رہیں گے۔&lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;card form-card&quot;&gt;&lt;h2&gt;🏫 مدرسہ کی معلومات&lt;/h2&gt;&lt;div class=&quot;grid&quot;&gt;&lt;input id=&quot;schoolName&quot; placeholder=&quot;مدرسہ کا نام لکھیں&quot;&gt;&lt;button onclick=&quot;saveSchoolName()&quot;&gt;مدرسہ کا نام محفوظ کریں&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;small&quot;&gt;مدرسہ کا نام ایک مرتبہ محفوظ کرنے کے بعد تمام رپورٹس میں خودکار ظاہر ہوگا۔&lt;/div&gt;&lt;/div&gt;
@@ -903,11 +926,54 @@ footer{text-align:center;color:#64748b;padding:20px}
 &lt;div class=&quot;card&quot;&gt;&lt;div id=&quot;reportArea&quot;&gt;&lt;div class=&quot;report-title&quot;&gt;&lt;h2 id=&quot;reportSchoolName&quot;&gt;&lt;/h2&gt;&lt;h2 id=&quot;reportHeading&quot;&gt;رپورٹ&lt;/h2&gt;&lt;/div&gt;&lt;div id=&quot;allReport&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;card form-card&quot;&gt;&lt;h2&gt;👥 طلبہ کی فہرست&lt;/h2&gt;&lt;div id=&quot;studentsList&quot;&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;footer&gt;مکاتب حاضری مینجمنٹ — ڈیٹا اسی ڈیوائس میں محفوظ رہتا ہے۔&lt;/footer&gt;
+&lt;footer&gt;مکاتب حاضری مینجمنٹ — ڈیٹا Firebase کے ذریعے مجاز موبائلز میں مشترک محفوظ ہوتا ہے۔&lt;/footer&gt;
 &lt;/div&gt;
 &lt;script&gt;
 function openAttendanceSystem(){document.getElementById(&quot;homePage&quot;).style.display=&quot;none&quot;;document.getElementById(&quot;appRoot&quot;).style.display=&quot;block&quot;;window.scrollTo(0,0)}
 function backToHome(){document.getElementById(&quot;appRoot&quot;).style.display=&quot;none&quot;;document.getElementById(&quot;homePage&quot;).style.display=&quot;flex&quot;;window.scrollTo(0,0)}
+
+const firebaseConfig = {
+  apiKey: &quot;AIzaSyBTckc7sbcLjeZEkigqgPM84O5C18Q1Wdg&quot;,
+  authDomain: &quot;school-management-system-bcc11.firebaseapp.com&quot;,
+  databaseURL: &quot;https://school-management-system-bcc11-default-rtdb.firebaseio.com&quot;,
+  projectId: &quot;school-management-system-bcc11&quot;,
+  storageBucket: &quot;school-management-system-bcc11.firebasestorage.app&quot;,
+  messagingSenderId: &quot;810971362601&quot;,
+  appId: &quot;1:810971362601:web:2c85f396f9ecd6ce9ef338&quot;,
+  measurementId: &quot;G-TYRSNVNJME&quot;
+};
+firebase.initializeApp(firebaseConfig);
+const auth=firebase.auth(), cloudDB=firebase.database(), cloudRef=cloudDB.ref(&quot;makatibAttendance/appState&quot;);
+let firebaseUser=null, cloudListener=null, cloudReady=false;
+function setCloudStatus(message){const el=document.getElementById(&quot;cloudStatus&quot;);if(el)el.textContent=message;}
+function showLoginMessage(message){const el=document.getElementById(&quot;loginMessage&quot;);if(el)el.textContent=message||&quot;&quot;;}
+async function loginUser(){
+  const email=document.getElementById(&quot;loginEmail&quot;).value.trim(), password=document.getElementById(&quot;loginPassword&quot;).value;
+  if(!email||!password)return;
+  const btn=document.getElementById(&quot;loginBtn&quot;);btn.disabled=true;btn.textContent=&quot;لاگ اِن ہو رہا ہے...&quot;;showLoginMessage(&quot;&quot;);
+  try{await auth.signInWithEmailAndPassword(email,password);}
+  catch(e){showLoginMessage(firebaseAuthError(e));btn.disabled=false;btn.textContent=&quot;لاگ اِن کریں&quot;;}
+}
+function firebaseAuthError(e){const c=e&amp;&amp;e.code||&quot;&quot;;if(c.includes(&quot;wrong-password&quot;)||c.includes(&quot;invalid-credential&quot;))return&quot;ای میل یا پاس ورڈ درست نہیں۔&quot;;if(c.includes(&quot;user-not-found&quot;))return&quot;یہ ای میل رجسٹرڈ نہیں۔ منتظم سے اکاؤنٹ بنوائیں۔&quot;;if(c.includes(&quot;invalid-email&quot;))return&quot;ای میل درست درج کریں۔&quot;;if(c.includes(&quot;too-many-requests&quot;))return&quot;بار بار کوشش ہوئی ہے۔ کچھ دیر بعد دوبارہ کوشش کریں۔&quot;;return&quot;لاگ اِن نہیں ہوسکا: &quot;+(e.message||c);}
+async function logoutUser(){if(!confirm(&quot;کیا آپ لاگ آؤٹ کرنا چاہتے ہیں؟&quot;))return;try{await auth.signOut();}catch(e){alert(&quot;لاگ آؤٹ میں مسئلہ: &quot;+e.message)}}
+async function startCloudSession(user){
+  firebaseUser=user;cloudReady=false;document.getElementById(&quot;loginGate&quot;).style.display=&quot;none&quot;;document.getElementById(&quot;homePage&quot;).style.display=&quot;none&quot;;document.getElementById(&quot;appRoot&quot;).style.display=&quot;block&quot;;setCloudStatus(&quot;ڈیٹا لوڈ ہو رہا ہے...&quot;);
+  try{
+    const snap=await cloudRef.once(&quot;value&quot;);
+    if(snap.exists()){
+      const remote=snap.val();
+      if(remote&amp;&amp;Array.isArray(remote.madrasas)&amp;&amp;remote.madrasas.length){appState=remote; if(!appState.madrasas.some(m=&gt;m.id===appState.activeId))appState.activeId=appState.madrasas[0].id;appState.madrasas=appState.madrasas.map(m=&gt;({id:String(m.id),name:m.name||m.data?.schoolName||&quot;مدرسہ&quot;,data:cleanDB(m.data)}));db=activeMadrasa().data;localStorage.setItem(MULTI_KEY,JSON.stringify(appState));}
+    } else {
+      // پہلی مرتبہ: اس آلے کا موجودہ مقامی ریکارڈ کلاؤڈ میں منتقل کریں
+      await cloudRef.set(appState);
+    }
+    cloudReady=true;init();setCloudStatus(&quot;☁️ مشترک ڈیٹا سے منسلک&quot;);
+    if(cloudListener)cloudRef.off(&quot;value&quot;,cloudListener);
+    cloudListener=snap=&gt;{if(!cloudReady||!snap.exists())return;const incoming=snap.val();if(!incoming||!Array.isArray(incoming.madrasas))return;const a=JSON.stringify(incoming),b=JSON.stringify(appState);if(a!==b){appState=incoming;if(!appState.madrasas.some(m=&gt;m.id===appState.activeId))appState.activeId=appState.madrasas[0].id;appState.madrasas=appState.madrasas.map(m=&gt;({id:String(m.id),name:m.name||m.data?.schoolName||&quot;مدرسہ&quot;,data:cleanDB(m.data)}));db=activeMadrasa().data;try{localStorage.setItem(MULTI_KEY,JSON.stringify(appState));}catch(e){}init();setCloudStatus(&quot;☁️ دوسرے موبائل سے نیا ڈیٹا موصول ہوا&quot;);}};
+    cloudRef.on(&quot;value&quot;,cloudListener);
+  }catch(e){setCloudStatus(&quot;کنکشن میں مسئلہ&quot;);alert(&quot;Firebase سے ڈیٹا حاصل نہیں ہوسکا۔ انٹرنیٹ اور Database Rules چیک کریں۔\n&quot;+e.message);}
+}
+auth.onAuthStateChanged(user=&gt;{if(user){startCloudSession(user);}else{firebaseUser=null;cloudReady=false;if(cloudListener){cloudRef.off(&quot;value&quot;,cloudListener);cloudListener=null;}document.getElementById(&quot;appRoot&quot;).style.display=&quot;none&quot;;document.getElementById(&quot;homePage&quot;).style.display=&quot;none&quot;;document.getElementById(&quot;loginGate&quot;).style.display=&quot;flex&quot;;const btn=document.getElementById(&quot;loginBtn&quot;);if(btn){btn.disabled=false;btn.textContent=&quot;لاگ اِن کریں&quot;;}}});
 
 const KEY=&quot;SPECIAL_STUDENTS_ATTENDANCE_V1&quot;,MULTI_KEY=&quot;SPECIAL_STUDENTS_MULTI_MADRASA_V1&quot;,SELECTED_BACKUP_KEY=&quot;SPECIAL_STUDENTS_SELECTED_BACKUP_V1&quot;;
 function emptyDB(name=&quot;&quot;){return{schoolName:name,students:[],attendance:{}}}
@@ -921,7 +987,7 @@ function loadAppState(){
 let appState=loadAppState();
 function activeMadrasa(){return appState.madrasas.find(m=&gt;m.id===appState.activeId)||appState.madrasas[0];}
 let db=activeMadrasa().data;
-function save(){try{const m=activeMadrasa();if(!m)return false;m.data=db;m.name=db.schoolName||m.name||&quot;مدرسہ&quot;;localStorage.setItem(MULTI_KEY,JSON.stringify(appState));return true;}catch(e){alert(&quot;ڈیٹا محفوظ نہیں ہوسکا۔&quot;);return false}}
+function save(){try{const m=activeMadrasa();if(!m)return false;m.data=db;m.name=db.schoolName||m.name||&quot;مدرسہ&quot;;localStorage.setItem(MULTI_KEY,JSON.stringify(appState));if(firebaseUser&amp;&amp;cloudReady){setCloudStatus(&quot;☁️ محفوظ کیا جا رہا ہے...&quot;);cloudRef.set(appState).then(()=&gt;setCloudStatus(&quot;☁️ کلاؤڈ میں محفوظ ہوگیا&quot;)).catch(e=&gt;{setCloudStatus(&quot;کلاؤڈ محفوظ نہیں ہوا&quot;);alert(&quot;مقامی ڈیوائس پر محفوظ ہوگیا، لیکن Firebase پر محفوظ نہیں ہوسکا: &quot;+e.message);});}return true;}catch(e){alert(&quot;ڈیٹا محفوظ نہیں ہوسکا۔&quot;);return false}}
 function renderMadrasaSelect(){const el=document.getElementById(&quot;madrasaSelect&quot;);if(!el)return;el.innerHTML=appState.madrasas.map(m=&gt;`&lt;option value=&quot;${esc(m.id)}&quot;&gt;${esc(m.name)}&lt;/option&gt;`).join(&quot;&quot;);el.value=appState.activeId;}
 function switchMadrasa(id){if(id===appState.activeId)return;save();const m=appState.madrasas.find(x=&gt;x.id===id);if(!m)return;appState.activeId=id;db=m.data;save();init();}
 function addMadrasa(){const name=prompt(&quot;نئے مدرسے یا مکتب کا نام لکھیں:&quot;);if(name===null)return;const n=name.trim();if(!n)return alert(&quot;مدرسے کا نام ضروری ہے۔&quot;);if(appState.madrasas.some(m=&gt;(m.name||&quot;&quot;).trim().toLocaleLowerCase()===n.toLocaleLowerCase()))return alert(&quot;اس نام کا مدرسہ پہلے سے موجود ہے۔&quot;);save();const m={id:&quot;m_&quot;+Date.now()+&quot;_&quot;+Math.random().toString(36).slice(2,7),name:n,data:emptyDB(n)};appState.madrasas.push(m);appState.activeId=m.id;db=m.data;save();init();alert(&quot;نیا مدرسہ شامل ہوگیا۔&quot;);}
@@ -1020,7 +1086,6 @@ function restoreSelectedBackupInfo(){try{const raw=localStorage.getItem(SELECTED
 function restoreSelected(){if(!selectedBackupFile){restoreSelectedBackupInfo();if(!selectedBackupFile)return alert(&quot;پہلے بیک اپ فائل منتخب کریں۔&quot;);}if(!confirm(&quot;منتخب بیک اپ موجودہ منتخب مدرسے کے طلبہ اور حاضری سے بدل جائے گا۔ کیا جاری رکھیں؟&quot;))return;try{const x=selectedBackupFile.data;if(!validBackup(x))throw 0;db=cleanDB(x);if(!save())throw 0;init();alert(&quot;منتخب مدرسے کا بیک اپ بحال ہوگیا۔&quot;);}catch(error){alert(&quot;بیک اپ بحال نہیں ہوسکا۔&quot;);}}
 function clearSelectedBackup(){if(!confirm(&quot;کیا منتخب بیک اپ کو اس ایپ سے ہٹانا ہے؟ اصل JSON فائل حذف نہیں ہوگی۔&quot;))return;localStorage.removeItem(SELECTED_BACKUP_KEY);selectedBackupFile=null;document.getElementById(&quot;backupFileName&quot;).textContent=&quot;کوئی بیک اپ فائل منتخب نہیں کی گئی۔&quot;;document.getElementById(&quot;restoreBtn&quot;).disabled=true;}
 
-init();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;"></iframe>
